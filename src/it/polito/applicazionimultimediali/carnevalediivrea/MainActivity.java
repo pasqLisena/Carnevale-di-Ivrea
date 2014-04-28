@@ -2,7 +2,9 @@ package it.polito.applicazionimultimediali.carnevalediivrea;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
 
 public class MainActivity extends Activity {
 
@@ -20,4 +22,10 @@ public class MainActivity extends Activity {
         return true;
     }
     
+    
+    public void goToMap(View view) {
+        Intent intent = new Intent(this, MapPane.class);
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
 }
