@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<places>
+
+    <place
+        id="1"
+        name="Castellazzo"
+        latlng="45.465541, 7.872252" />
+    <place
+        id="2"
+        name="Piazza di Città"
+        latlng="45.466086, 7.875289">
+        <team id="PIC" />
+        <team id="MOR" />
+        </place>
+
+</places>

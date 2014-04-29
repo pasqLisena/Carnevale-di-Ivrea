@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<teams>
+    <team id="PIC" name="Picche"/>
+    <team id="MOR" name="Morte"/>
+    <team id="ARD" name="Scorpioni d'Arduino" short-name="Arduini"/>
+    <team id="TUC" name="Tuchini"/>
+    <team id="SCA" name="Scacchi"/>
+    <team id="PAN" name="Pantere"/>
+    <team id="DIA" name="Diavoli"/>
+    <team id="MER" name="Mercenari"/>
+    <team id="CRE" name="Credendari"/>
+</teams>

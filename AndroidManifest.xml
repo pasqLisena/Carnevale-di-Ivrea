@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="it.polito.applicazionimultimediali.carnevalediivrea.MapPane"
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane"
             android:label="@string/ivrea_map_title"
             android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity" >
             <meta-data
