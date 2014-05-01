@@ -7,5 +7,7 @@
     <string name="button_map">Vai alla mappa</string>
     <string name="ivrea_map_title">Ivrea</string>
     <string name="ivrea_map_suggest">Scegli un luogo</string>
+    <string name="ivrea_map_button_history">Storia</string>
+    <string name="ivrea_map_button_battle">Battaglia</string>
     
 </resources>

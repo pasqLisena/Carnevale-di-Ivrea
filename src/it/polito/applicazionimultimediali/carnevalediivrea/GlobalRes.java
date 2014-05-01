@@ -4,9 +4,7 @@ import it.polito.applicazionimultimediali.carnevalediivrea.map.Place;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -26,10 +24,12 @@ public class GlobalRes {
 	public static SparseArray<Place> placesList;
 	public static List<Team> teamsList;
 	private static Context ctx;
+	private static Player currentPlayer;
 
 	static void prepareResources(Context context) {
 		ctx = context;
 
+		// Load places
 		if (GlobalRes.placesList == null) {
 			try {
 				GlobalRes.placesList = new SparseArray<Place>();
@@ -43,6 +43,7 @@ public class GlobalRes {
 			}
 		}
 
+		// Load teams
 		if (GlobalRes.teamsList == null) {
 			try {
 				GlobalRes.teamsList = new ArrayList<Team>();
@@ -55,7 +56,9 @@ public class GlobalRes {
 				e.printStackTrace();
 			}
 		}
-
+		
+		// TODO Load current player
+		currentPlayer = new Player("testPlayer");
 	}
 
 	private static void parseTeams() throws XmlPullParserException, IOException {
@@ -106,5 +109,9 @@ public class GlobalRes {
 			eventType = xml.next();
 		}
 		Log.v(DEBUG_TAG, "Document End");
+	}
+
+	public static Player getCurrentPlayer() {
+		return currentPlayer;
 	}
 }

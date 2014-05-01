@@ -12,18 +12,19 @@
         android:layout_weight="0.90" />
 
     <LinearLayout
+        android:id="@+id/placebar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.10" >
+        android:layout_weight="0.10"
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/ivrea_map_suggest"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/ivrea_map_suggest"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
 
 </LinearLayout>
