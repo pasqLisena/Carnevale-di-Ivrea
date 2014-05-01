@@ -9,8 +9,6 @@
         id="2"
         name="Piazza di Città"
         latlng="45.466779, 7.875750" >
-        <team id="PIC" />
-        <team id="MOR" />
     </place>
     <place
         id="3"

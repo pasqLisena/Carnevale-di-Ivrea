@@ -8,7 +8,7 @@ import java.util.List;
 import com.google.android.gms.maps.model.LatLng;
 
 public class Place {
-	private String id;
+	private int id;
 	private String name;
 	private LatLng latLng;
 
@@ -16,7 +16,7 @@ public class Place {
 
 	private boolean locked;
 
-	public Place(String id, String name, String latLng) {
+	public Place(int id, String name, String latLng) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,7 +28,7 @@ public class Place {
 		this.locked = true;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -43,24 +43,27 @@ public class Place {
 	public boolean isLocked() {
 		return locked;
 	}
-
-	public void addTeam(String id) {
+	
+	public void addTeam(Team team) {
 		if (teamsList == null) {
 			teamsList = new ArrayList<Team>();
 		}
 
-		// TODO qui ci sarà una ricerca
-		teamsList.add(new Team(id));
+		teamsList.add(team);
 	}
 
+	public boolean isBattlePlace(){
+		return (teamsList!=null && teamsList.size() > 0);
+	}
+	
 	public String getTeamsString() {
 		String s = "";
 		if (teamsList != null) {
 			for(Team t: teamsList){
 				if(s.length()>0){
-					s+="\n";
+					s+=" - ";
 				}
-				s += "Team " + t.getId();
+				s += t.getShortName();
 			}
 		}
 

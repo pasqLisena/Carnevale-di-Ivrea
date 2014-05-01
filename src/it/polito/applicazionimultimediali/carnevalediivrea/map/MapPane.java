@@ -2,17 +2,8 @@ package it.polito.applicazionimultimediali.carnevalediivrea.map;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.xmlpull.v1.XmlPullParserException;
-
 import android.app.Activity;
-import android.content.res.XmlResourceParser;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -35,15 +26,24 @@ public class MapPane extends Activity {
 
 		map.setMyLocationEnabled(true);
 		//TODO modificare il centro
-		map.moveCamera(CameraUpdateFactory.newLatLngZoom(GlobalRes.placesList.get(0)
+		map.moveCamera(CameraUpdateFactory.newLatLngZoom(GlobalRes.placesList.get(1)
 				.getLatLng(), 16));
 
-		for (Place p : GlobalRes.placesList) {
+		for(int i = 0, nsize = GlobalRes.placesList.size(); i < nsize; i++) {
+			Place p = GlobalRes.placesList.valueAt(i);
+			if(p.isBattlePlace()){
 			map.addMarker(new MarkerOptions().title(p.getName())
 					.snippet(p.getTeamsString()).position(p.getLatLng()).icon(BitmapDescriptorFactory.fromResource(R.drawable.orange_marker))
 	                .anchor(0.5f, 1.0f) // Anchors the marker on the bottom left
 	                );
+			}else{
+				map.addMarker(new MarkerOptions().title(p.getName())
+						.snippet(p.getTeamsString()).position(p.getLatLng()).icon(BitmapDescriptorFactory.fromResource(R.drawable.carnival_marker))
+		                .anchor(0.5f, 1.0f) // Anchors the marker on the bottom left
+		                );
+			}
 		}
+		
 		
 		
 
