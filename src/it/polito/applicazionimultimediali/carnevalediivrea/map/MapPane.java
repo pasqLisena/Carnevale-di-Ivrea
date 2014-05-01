@@ -17,6 +17,7 @@ import android.util.Log;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapPane extends Activity {
@@ -39,8 +40,12 @@ public class MapPane extends Activity {
 
 		for (Place p : GlobalRes.placesList) {
 			map.addMarker(new MarkerOptions().title(p.getName())
-					.snippet(p.getTeamsString()).position(p.getLatLng()));
+					.snippet(p.getTeamsString()).position(p.getLatLng()).icon(BitmapDescriptorFactory.fromResource(R.drawable.orange_marker))
+	                .anchor(0.5f, 1.0f) // Anchors the marker on the bottom left
+	                );
 		}
+		
+		
 
 	}
 

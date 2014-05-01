@@ -14,7 +14,7 @@ import android.util.Log;
 
 /**
  * Questa classe racchiude tutti gli oggetti ritenuti
- * necessarie globalmente a livello di applicazione
+ * necessari globalmente a livello di applicazione
  * (e non di singola activity)
  *
  */
