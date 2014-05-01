@@ -34,10 +34,11 @@ public class MapPane extends Activity {
 
 		map.setMyLocationEnabled(true);
 		//TODO modificare il centro
-		map.moveCamera(CameraUpdateFactory.newLatLngZoom(GlobalRes.placesList.get(0)
+		map.moveCamera(CameraUpdateFactory.newLatLngZoom(GlobalRes.placesList.get(1)
 				.getLatLng(), 16));
 
-		for (Place p : GlobalRes.placesList) {
+		for(int i = 0, nsize = GlobalRes.placesList.size(); i < nsize; i++) {
+			Place p = GlobalRes.placesList.valueAt(i);
 			map.addMarker(new MarkerOptions().title(p.getName())
 					.snippet(p.getTeamsString()).position(p.getLatLng()));
 		}

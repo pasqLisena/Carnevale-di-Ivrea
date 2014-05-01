@@ -4,23 +4,25 @@ import it.polito.applicazionimultimediali.carnevalediivrea.map.Place;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.util.Log;
+import android.util.SparseArray;
 
 /**
- * Questa classe racchiude tutti gli oggetti ritenuti
- * necessarie globalmente a livello di applicazione
- * (e non di singola activity)
- *
+ * Questa classe racchiude tutti gli oggetti ritenuti necessari globalmente a
+ * livello di applicazione (e non di singola activity)
+ * 
  */
 public class GlobalRes {
 	private static final String DEBUG_TAG = "Global Res";
-	public static List<Place> placesList;
+	public static SparseArray<Place> placesList;
 	public static List<Team> teamsList;
 	private static Context ctx;
 
@@ -29,7 +31,7 @@ public class GlobalRes {
 
 		if (GlobalRes.placesList == null) {
 			try {
-				GlobalRes.placesList = new ArrayList<Place>();
+				GlobalRes.placesList = new SparseArray<Place>();
 				parsePlaces();
 			} catch (XmlPullParserException e) {
 				// TODO Auto-generated catch block
@@ -39,7 +41,7 @@ public class GlobalRes {
 				e.printStackTrace();
 			}
 		}
-		
+
 		if (GlobalRes.teamsList == null) {
 			try {
 				GlobalRes.teamsList = new ArrayList<Team>();
@@ -56,26 +58,31 @@ public class GlobalRes {
 	}
 
 	private static void parseTeams() throws XmlPullParserException, IOException {
-		XmlResourceParser xmlParser = ctx.getResources().getXml(R.xml.teams);
+		XmlResourceParser xml = ctx.getResources().getXml(R.xml.teams);
 
 		int eventType = -1;
 		while (eventType != XmlResourceParser.END_DOCUMENT) {
 			if (eventType == XmlResourceParser.START_DOCUMENT) {
 				Log.v(DEBUG_TAG, "Document Start");
 			} else if (eventType == XmlResourceParser.START_TAG) {
-				String parserName = xmlParser.getName();
+				String parserName = xml.getName();
 				if (parserName.equals("team")) {
-					teamsList.add(new Team(xmlParser.getAttributeValue(null, "id")));
+					int squareId = Integer.parseInt(xml.getAttributeValue(null,
+							"square"));
+					teamsList.add(new Team(xml.getAttributeValue(null, "id"),
+							xml.getAttributeValue(null, "name"), xml
+									.getAttributeValue(null, "shortname"),
+							placesList.get(squareId)));
 				}
 			}
-			eventType = xmlParser.next();
+			eventType = xml.next();
 		}
 		Log.v(DEBUG_TAG, "Document End");
 	}
 
 	private static void parsePlaces() throws XmlPullParserException,
 			IOException {
-		XmlResourceParser xmlParser = ctx.getResources().getXml(R.xml.places);
+		XmlResourceParser xml = ctx.getResources().getXml(R.xml.places);
 
 		int eventType = -1;
 		Place p = null;
@@ -83,17 +90,19 @@ public class GlobalRes {
 			if (eventType == XmlResourceParser.START_DOCUMENT) {
 				Log.v(DEBUG_TAG, "Document Start");
 			} else if (eventType == XmlResourceParser.START_TAG) {
-				String parserName = xmlParser.getName();
+				String parserName = xml.getName();
 				if (parserName.equals("place")) {
-					p = new Place(xmlParser.getAttributeValue(null, "id"),
-							xmlParser.getAttributeValue(null, "name"),
-							xmlParser.getAttributeValue(null, "latlng"));
-					placesList.add(p);
-				} else if (parserName.equals("team")) {
-					p.addTeam(xmlParser.getAttributeValue(null, "id"));
+					int id = Integer
+							.parseInt(xml.getAttributeValue(null, "id"));
+					p = new Place(id, xml.getAttributeValue(null, "name"),
+							xml.getAttributeValue(null, "latlng"));
+					placesList.put(id, p);
 				}
+				// else if (parserName.equals("team")) {
+				// p.addTeam(xml.getAttributeValue(null, "id"));
+				// }
 			}
-			eventType = xmlParser.next();
+			eventType = xml.next();
 		}
 		Log.v(DEBUG_TAG, "Document End");
 	}

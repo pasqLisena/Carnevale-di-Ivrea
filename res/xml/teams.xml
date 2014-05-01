@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <teams>
-    <team id="PIC" name="Picche"/>
-    <team id="MOR" name="Morte"/>
-    <team id="ARD" name="Scorpioni d'Arduino" short-name="Arduini"/>
-    <team id="TUC" name="Tuchini"/>
-    <team id="SCA" name="Scacchi"/>
-    <team id="PAN" name="Pantere"/>
-    <team id="DIA" name="Diavoli"/>
-    <team id="MER" name="Mercenari"/>
-    <team id="CRE" name="Credendari"/>
+
+    <team
+        id="PIC"
+        name="Picche"
+        square="2" />
+    <team
+        id="MOR"
+        name="Morte"
+        square="2" />
+    <team
+        id="ARD"
+        name="Scorpioni d&apos;Arduino"
+        short-name="Arduini"
+        square="7" />
+    <team
+        id="TUC"
+        name="Tuchini"
+        square="4" />
+    <team
+        id="SCA"
+        name="Scacchi"
+        square="7" />
+    <team
+        id="PAN"
+        name="Pantere"
+        square="6" />
+    <team
+        id="DIA"
+        name="Diavoli"
+        square="6" />
+    <team
+        id="MER"
+        name="Mercenari"
+        square="6" />
+    <team
+        id="CRE"
+        name="Credendari"
+        square="5" />
 </teams>
