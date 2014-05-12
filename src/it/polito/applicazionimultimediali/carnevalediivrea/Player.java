@@ -32,4 +32,13 @@ public class Player {
 	public void gainOranges(int oranges){
 		this.oranges = oranges;
 	}
+
+	public boolean playAGame() {
+		if(oranges >= GlobalRes.orangesPerPlay){
+			oranges-= GlobalRes.orangesPerPlay;
+			gainPoint(100);
+			return true;
+		}
+		return false;
+	}
 }

@@ -14,27 +14,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="Activity finta"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginTop="59dp"
+        android:gravity="center"
+        android:text="Premendo il bottone verranno sottratte 15 arance al totale e si guadagnano 100 punti... Mica Male!"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
-        android:onClick="goToMap"
-        android:text="@string/button_map" />
-
-    <Button
-        android:id="@+id/button1"
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:onClick="goToBattle"
-        android:text="@string/ivrea_map_button_battle" />
-
+        android:onClick="fakePlay"
+        android:text="@string/button_battle" />
+    
 </RelativeLayout>

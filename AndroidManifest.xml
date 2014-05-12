@@ -41,6 +41,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity" />
         </activity>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity"
+            android:label="@string/ivrea_map_button_battle"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity" />
+        </activity>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.PlayerActivity"
+            android:label="@string/player" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

@@ -21,6 +21,9 @@ import android.util.SparseArray;
  */
 public class GlobalRes {
 	private static final String DEBUG_TAG = "Global Res";
+	
+	public static int orangesPerPlay = 15;
+	
 	public static SparseArray<Place> placesList;
 	public static List<Team> teamsList;
 	private static Context ctx;
