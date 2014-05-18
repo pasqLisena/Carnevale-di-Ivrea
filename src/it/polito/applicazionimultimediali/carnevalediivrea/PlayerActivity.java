@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 public class PlayerActivity extends Activity {
 
-	private Player player;
+	private CurrentPlayer player;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class PlayerActivity extends Activity {
 		TextView playerNameTV = (TextView) findViewById(R.id.playerName);
 		playerNameTV.setText(playerName);
 
-		int orangesNum = player.oranges;
+		int orangesNum = player.getOranges();
 		TextView orangesCounter = (TextView) findViewById(R.id.oranges_counter);
 		orangesCounter.setText(getResources().getQuantityString(
 				R.plurals.orange, orangesNum, orangesNum));

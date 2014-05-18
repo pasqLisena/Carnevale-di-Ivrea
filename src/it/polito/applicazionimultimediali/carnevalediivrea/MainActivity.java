@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity {
 
@@ -28,28 +29,35 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.player:
-	    		Intent intent = new Intent(this, PlayerActivity.class);
-//	    		intent.putExtra(EXTRA_MESSAGE, message);
-	    		startActivity(intent);
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		// Handle presses on the action bar items
+		int itemID = item.getItemId();
+		if (itemID == R.id.player) {
+			Intent intent = new Intent(this, PlayerActivity.class);
+			// intent.putExtra(EXTRA_MESSAGE, message);
+			startActivity(intent);
+		} else {
+			return super.onOptionsItemSelected(item);
+		}
+		return false;
 	}
 
-	
 	public void goToMap(View view) {
 		Intent intent = new Intent(this, MapPane.class);
 		// intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
 	}
-	
-	//TODO remove when no more needed
+
+	// TODO remove when no more needed
 	public void goToBattle(View view) {
 		Intent intent = new Intent(this, BattleActivity.class);
 		// intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
 	}
+
+	public void logout(View view) {
+		Intent intent = new Intent(this, BattleActivity.class);
+		// intent.putExtra(EXTRA_MESSAGE, message);
+		startActivity(intent);
+	}
+
 }

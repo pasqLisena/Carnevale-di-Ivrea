@@ -1,5 +1,6 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
+import it.polito.applicazionimultimediali.carnevalediivrea.CurrentPlayer;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.Player;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
@@ -21,7 +22,7 @@ public class BattleActivity extends Activity {
 
 	
 	public void fakePlay(View v) {
-		Player player = GlobalRes.getCurrentPlayer();
+		CurrentPlayer player = GlobalRes.getCurrentPlayer();
 		String text;
 
 		if (player.playAGame()) {

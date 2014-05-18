@@ -9,25 +9,28 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
+import android.preference.Preference;
 import android.util.Log;
 import android.util.SparseArray;
 
 /**
- * Questa classe racchiude tutti gli oggetti ritenuti
- * necessari globalmente a livello di applicazione
- * (e non di singola activity)
- *
+ * Questa classe racchiude tutti gli oggetti ritenuti necessari globalmente a
+ * livello di applicazione (e non di singola activity)
+ * 
  */
 public class GlobalRes {
 	private static final String DEBUG_TAG = "Global Res";
-	
+
 	public static int orangesPerPlay = 15;
-	
+
 	public static SparseArray<Place> placesList;
 	public static List<Team> teamsList;
 	private static Context ctx;
-	private static Player currentPlayer;
+	private static CurrentPlayer currentPlayer;
+
+	private static SharedPreferences playerData;
 
 	static void prepareResources(Context context) {
 		ctx = context;
@@ -59,9 +62,11 @@ public class GlobalRes {
 				e.printStackTrace();
 			}
 		}
-		
+
 		// TODO Load current player
-		currentPlayer = new Player("testPlayer");
+		playerData = ctx.getSharedPreferences("CurrentPlayer",
+				Context.MODE_PRIVATE);
+		currentPlayer = new CurrentPlayer(playerData);
 	}
 
 	private static void parseTeams() throws XmlPullParserException, IOException {
@@ -114,7 +119,8 @@ public class GlobalRes {
 		Log.v(DEBUG_TAG, "Document End");
 	}
 
-	public static Player getCurrentPlayer() {
+	public static CurrentPlayer getCurrentPlayer() {
 		return currentPlayer;
 	}
+
 }
