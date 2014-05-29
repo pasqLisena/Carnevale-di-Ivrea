@@ -27,7 +27,7 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 
 	private static final String DEBUG_TAG = "Map Pane";
 	private Map<Marker, Place> markerMap;
-	private boolean placeSelected = false;
+	private Place selectedPlace;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +53,12 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 			if (p.isBattlePlace()) {
 				marker_icon = BitmapDescriptorFactory
 						.fromResource(R.drawable.orange_marker);
-			} else {
+			} else if (p.hasMinigame()) {
 				marker_icon = BitmapDescriptorFactory
 						.fromResource(R.drawable.carnival_marker);
+			} else {
+				marker_icon = BitmapDescriptorFactory
+						.fromResource(R.drawable.historical_marker);
 			}
 
 			Marker m = map.addMarker(new MarkerOptions().title(p.getName())
@@ -75,12 +78,12 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		Bundle data = new Bundle();
 		data.putInt("place", p.getId());
 		placeBarFrag.setArguments(data);
-		if (!placeSelected) {
+		if (selectedPlace == null) {
 			((ViewGroup) this.findViewById(R.id.placebar_container))
 					.removeAllViews();
-			placeSelected = true;
+			selectedPlace = p;
 		}
-		
+
 		FragmentTransaction transaction = getFragmentManager()
 				.beginTransaction();
 		transaction.replace(R.id.placebar_container, placeBarFrag);
@@ -90,9 +93,14 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		return true;
 	}
 
-	
 	public void goToBattle(View view) {
 		Intent intent = new Intent(this, BattleActivity.class);
+		// intent.putExtra(EXTRA_MESSAGE, message);
+		startActivity(intent);
+	}
+
+	public void goToMinigame(View view) {
+		Intent intent = new Intent(this, selectedPlace.getMinigame());
 		// intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
 	}

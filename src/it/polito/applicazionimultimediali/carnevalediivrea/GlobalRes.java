@@ -107,7 +107,7 @@ public class GlobalRes {
 					int id = Integer
 							.parseInt(xml.getAttributeValue(null, "id"));
 					p = new Place(id, xml.getAttributeValue(null, "name"),
-							xml.getAttributeValue(null, "latlng"));
+							xml.getAttributeValue(null, "latlng"), xml.getAttributeBooleanValue(null, "minigame", false));
 					placesList.put(id, p);
 				}
 				// else if (parserName.equals("team")) {

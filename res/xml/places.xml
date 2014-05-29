@@ -4,51 +4,43 @@
     <place
         id="1"
         name="Castellazzo"
-        latlng="45.465090, 7.872041" />
+        latlng="45.465090, 7.872041"
+        minigame="true" />
     <place
         id="2"
         name="Piazza di Città"
-        latlng="45.466779, 7.875750" >
-    </place>
+        latlng="45.466779, 7.875750" />
     <place
         id="3"
         name="Piazza Maretta"
-        latlng="45.465872, 7.871290" >
-    </place>
+        latlng="45.465872, 7.871290" />
     <place
         id="4"
         name="Borghetto"
-        latlng="45.463953, 7.871108" >
-    </place>
+        latlng="45.463953, 7.871108" />
     <place
         id="5"
         name="Piazza Freguglia"
-        latlng="45.466290, 7.881392" >
-    </place>
+        latlng="45.466290, 7.881392" />
     <place
         id="6"
         name="Piazza Rondolino"
-        latlng="45.465506, 7.881005" >
-    </place>
+        latlng="45.465506, 7.881005" />
     <place
         id="7"
         name="Piazza Ottinetti"
-        latlng="45.467436, 7.878425" >
-    </place>
+        latlng="45.467436, 7.878425" />
     <place
         id="8"
         name="Piazza Duomo"
-        latlng="45.468433, 7.875700" >
-    </place>
+        latlng="45.468433, 7.875700" />
     <place
         id="9"
         name="Piazza Castello"
-        latlng="45.467721, 7.874919" >
-    </place>
+        latlng="45.467721, 7.874919" />
     <place
         id="10"
         name="Via Palma"
-        latlng="45.467134, 7.874530" >
-    </place>
+        latlng="45.467134, 7.874530" />
 
 </places>

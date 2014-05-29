@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/startMinigameFullLayout"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="0dp"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mg_preda_in_dora" />
+
+    <TextView
+        android:id="@+id/instructionPiD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#99000000"
+        android:gravity="center_horizontal|center_vertical"
+        android:minEms="2"
+        android:minLines="2"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:text="Colpisci una pietra"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/white"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:id="@+id/rockCont"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/instructionPiD"
+        android:layout_margin="5dp"
+        android:padding="3dp" >
+
+        <ImageView
+            android:id="@+id/rock1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:onClick="breakRock"
+            android:src="@drawable/mg_sasso" />
+
+        <ImageView
+            android:id="@+id/rock2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:onClick="breakRock"
+            android:src="@drawable/mg_sasso" />
+
+        <ImageView
+            android:id="@+id/rock3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:onClick="breakRock"
+            android:src="@drawable/mg_sasso" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pidOrangeCont"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_alignBottom="@+id/rockCont"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/rockCont"
+        android:layout_alignTop="@+id/rockCont"
+        android:layout_margin="5dp"
+        android:layout_weight="0.3"
+        android:padding="3dp" >
+
+        <TextView
+            android:id="@+id/pidRockOr1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:alpha="0"
+            android:gravity="center"
+            android:text="40"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/pidRockOr2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:alpha="0"
+            android:gravity="center"
+            android:text="30"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/pidRockOr3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:alpha="0"
+            android:gravity="center"
+            android:text="20"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
+
+</RelativeLayout>

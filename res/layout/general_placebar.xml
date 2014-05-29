@@ -13,16 +13,35 @@
 
     <LinearLayout
         android:id="@+id/placebar_btn_cont"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/history_btn"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ivrea_map_button_history" />
 
+        <Button
+            android:id="@+id/battle_btn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goToBattle"
+            android:text="@string/ivrea_map_button_battle"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/minigame_btn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goToMinigame"
+            android:text="@string/ivrea_map_button_minigame"
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>
