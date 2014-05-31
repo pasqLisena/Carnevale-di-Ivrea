@@ -11,7 +11,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
-import android.preference.Preference;
 import android.util.Log;
 import android.util.SparseArray;
 

@@ -36,4 +36,36 @@
         android:onClick="play"
         android:text="Comincia" />
 
+    <ProgressBar
+        android:id="@+id/mgTimerBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mgTimerBar"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/mgTimerTextA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prossima partita tra"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/mgTimerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
 </RelativeLayout>
