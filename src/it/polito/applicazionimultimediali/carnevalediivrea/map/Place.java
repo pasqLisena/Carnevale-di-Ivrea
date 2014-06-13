@@ -1,11 +1,12 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.map;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
-import it.polito.applicazionimultimediali.carnevalediivrea.minigame.Minigame;
 import it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import android.graphics.Point;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -13,6 +14,7 @@ public class Place {
 	private int id;
 	private String name;
 	private LatLng latLng;
+	private Point pos;
 
 	private List<Team> teamsList;
 
@@ -34,6 +36,12 @@ public class Place {
 		}
 	}
 
+	public Place(int id, String name, String latLng, Point pos,
+			boolean hasMinigame) {
+		this(id, name, latLng, hasMinigame);
+		this.setPos(pos);
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -49,8 +57,17 @@ public class Place {
 	public LatLng getLatLng() {
 		return latLng;
 	}
+
 	public Class<?> getMinigame() {
 		return minigame;
+	}
+
+	public Point getPos() {
+		return pos;
+	}
+
+	public void setPos(Point pos) {
+		this.pos = pos;
 	}
 
 	public boolean isLocked() {
