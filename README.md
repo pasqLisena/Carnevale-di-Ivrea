@@ -19,4 +19,5 @@ Turist Social Game for Android set during the Historic Carnival of Ivrea (ITALY)
 		&lt;/resources&gt;
 	</pre>
 </li>
+<li>Install <a href="https://developers.google.com/games/services/android/quickstart">Google Play Games</a></li>
 </ul>
