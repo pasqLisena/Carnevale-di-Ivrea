@@ -1,16 +1,21 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
+import com.google.android.gms.*;
+import com.google.example.games.basegameutils.BaseGameActivity;
+
 import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseGameActivity implements
+		View.OnClickListener {
+
+	private View signinBtn, signoutBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,16 @@ public class MainActivity extends Activity {
 
 		GlobalRes.prepareResources(this);
 		setContentView(R.layout.activity_main);
+
+		signinBtn = findViewById(R.id.sign_in_button);
+		signoutBtn = findViewById(R.id.sign_out_button);
+		signoutBtn.setOnClickListener(this);
+		signinBtn.setOnClickListener(this);
+
+		if (isSignedIn()) {
+			signinBtn.setVisibility(View.GONE);
+			signoutBtn.setVisibility(View.VISIBLE);
+		}
 	}
 
 	@Override
@@ -58,6 +73,40 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, BattleActivity.class);
 		// intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
+	}
+
+	@Override
+	public void onSignInFailed() {
+		// show sign-out button, hide the sign-in button
+		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+
+		// (your code here: update UI, enable functionality that depends on sign
+		// in, etc)
+	}
+
+	@Override
+	public void onSignInSucceeded() {
+		// show sign-out button, hide the sign-in button
+		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+
+		// (your code here: update UI, enable functionality that depends on sign
+		// in, etc)
+	}
+
+	@Override
+	public void onClick(View view) {
+		if (view.getId() == R.id.sign_in_button) {
+			// start the asynchronous sign in flow
+			beginUserInitiatedSignIn();
+		} else if (view.getId() == R.id.sign_out_button) {
+			signOut();
+
+			// show sign-in button, hide the sign-out button
+			signinBtn.setVisibility(View.VISIBLE);
+			signoutBtn.setVisibility(View.GONE);
+		}
 	}
 
 }
