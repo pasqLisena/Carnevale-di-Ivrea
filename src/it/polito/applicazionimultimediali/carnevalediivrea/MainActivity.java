@@ -78,8 +78,8 @@ public class MainActivity extends BaseGameActivity implements
 	@Override
 	public void onSignInFailed() {
 		// show sign-out button, hide the sign-in button
-		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+		signoutBtn.setVisibility(View.GONE);
+		signinBtn.setVisibility(View.VISIBLE);
 
 		// (your code here: update UI, enable functionality that depends on sign
 		// in, etc)
@@ -88,8 +88,8 @@ public class MainActivity extends BaseGameActivity implements
 	@Override
 	public void onSignInSucceeded() {
 		// show sign-out button, hide the sign-in button
-		findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-		findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+		signinBtn.setVisibility(View.GONE);
+		signoutBtn.setVisibility(View.VISIBLE);
 
 		// (your code here: update UI, enable functionality that depends on sign
 		// in, etc)
