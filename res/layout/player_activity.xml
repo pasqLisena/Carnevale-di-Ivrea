@@ -14,10 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <QuickContactBadge
+        <ImageView
             android:id="@+id/profileImage"
             android:layout_width="76dp"
-            android:layout_height="76dp" />
+            android:layout_height="76dp"
+            android:contentDescription="Me" />
 
         <TextView
             android:id="@+id/playerName"

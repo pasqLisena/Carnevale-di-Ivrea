@@ -1,27 +1,28 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
-import com.google.android.gms.*;
-import com.google.example.games.basegameutils.BaseGameActivity;
-
 import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+
+import com.google.android.gms.games.Games;
+import com.google.android.gms.games.Player;
+import com.google.example.games.basegameutils.BaseGameActivity;
 
 public class MainActivity extends BaseGameActivity implements
 		View.OnClickListener {
 
+	private static final String TAG = "Main Activity";
 	private View signinBtn, signoutBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		GlobalRes.prepareResources(this);
 		setContentView(R.layout.activity_main);
 
 		signinBtn = findViewById(R.id.sign_in_button);
@@ -33,6 +34,8 @@ public class MainActivity extends BaseGameActivity implements
 			signinBtn.setVisibility(View.GONE);
 			signoutBtn.setVisibility(View.VISIBLE);
 		}
+
+		GlobalRes.prepareResources(this);
 	}
 
 	@Override
@@ -80,9 +83,6 @@ public class MainActivity extends BaseGameActivity implements
 		// show sign-out button, hide the sign-in button
 		signoutBtn.setVisibility(View.GONE);
 		signinBtn.setVisibility(View.VISIBLE);
-
-		// (your code here: update UI, enable functionality that depends on sign
-		// in, etc)
 	}
 
 	@Override
@@ -91,8 +91,19 @@ public class MainActivity extends BaseGameActivity implements
 		signinBtn.setVisibility(View.GONE);
 		signoutBtn.setVisibility(View.VISIBLE);
 
-		// (your code here: update UI, enable functionality that depends on sign
-		// in, etc)
+		Player p = Games.Players.getCurrentPlayer(getApiClient());
+		if (p == null) {
+			Log.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
+			return;
+		}
+
+		String nickname = p.getDisplayName();
+		Uri icoImg = null;
+		if (p.hasIconImage()) {
+			icoImg = p.getIconImageUri();
+		}
+
+		GlobalRes.getCurrentPlayer().updateInfo(nickname, icoImg);
 	}
 
 	@Override

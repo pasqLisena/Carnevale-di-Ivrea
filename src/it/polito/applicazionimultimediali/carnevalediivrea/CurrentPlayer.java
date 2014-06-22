@@ -1,17 +1,20 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 
 public class CurrentPlayer extends Player {
 	private int oranges;
 	private SharedPreferences playerData;
 
 	public CurrentPlayer(SharedPreferences playerData) {
-		super(playerData.getString("nickname", "Anonimo"));
+		super(playerData.getString("nickname", "Anonimo"), Uri.parse(playerData
+				.getString("icoImg", "")));
 		this.playerData = playerData;
 		this.points = playerData.getInt("points", 0);
 		this.oranges = playerData.getInt("oranges", 30);
-//		this.team = playerData.getString("Team", null);
+		// this.team = playerData.getString("Team", null);
 	}
 
 	public int getOranges() {
@@ -24,7 +27,7 @@ public class CurrentPlayer extends Player {
 	}
 
 	private void updateLocalData(String key, int value) {
-		SharedPreferences.Editor prefEditor = playerData.edit(); 
+		SharedPreferences.Editor prefEditor = playerData.edit();
 		prefEditor.putInt(key, value);
 		prefEditor.commit();
 	}
@@ -38,7 +41,7 @@ public class CurrentPlayer extends Player {
 		}
 		return false;
 	}
-	
+
 	public void gainPoint(int points) {
 		this.points += points;
 		updateLocalData("points", this.points);
@@ -49,5 +52,15 @@ public class CurrentPlayer extends Player {
 		gainPoint(newPoints);
 	}
 
+	public void updateInfo(String nickname, Uri icoImg) {
+		this.nickname = nickname;
+		this.icoImgUri = icoImg;
 
+		SharedPreferences.Editor prefEditor = playerData.edit();
+		prefEditor.putString("nickname", nickname);
+		if (icoImg != null) {
+			prefEditor.putString("icoImg", icoImg.toString());
+		}
+		prefEditor.commit();
+	}
 }
