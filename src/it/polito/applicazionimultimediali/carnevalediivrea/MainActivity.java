@@ -2,11 +2,6 @@ package it.polito.applicazionimultimediali.carnevalediivrea;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
-<<<<<<< HEAD
-
-import android.app.Activity;
-=======
->>>>>>> origin/master
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
