@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
@@ -72,10 +73,10 @@ public class GlobalRes {
 		XmlResourceParser xml = ctx.getResources().getXml(R.xml.teams);
 
 		int eventType = -1;
-		while (eventType != XmlResourceParser.END_DOCUMENT) {
-			if (eventType == XmlResourceParser.START_DOCUMENT) {
+		while (eventType != XmlPullParser.END_DOCUMENT) {
+			if (eventType == XmlPullParser.START_DOCUMENT) {
 				Log.v(DEBUG_TAG, "Document Start");
-			} else if (eventType == XmlResourceParser.START_TAG) {
+			} else if (eventType == XmlPullParser.START_TAG) {
 				String parserName = xml.getName();
 				if (parserName.equals("team")) {
 					int squareId = Integer.parseInt(xml.getAttributeValue(null,
@@ -97,10 +98,10 @@ public class GlobalRes {
 
 		int eventType = -1;
 		Place p = null;
-		while (eventType != XmlResourceParser.END_DOCUMENT) {
-			if (eventType == XmlResourceParser.START_DOCUMENT) {
+		while (eventType != XmlPullParser.END_DOCUMENT) {
+			if (eventType == XmlPullParser.START_DOCUMENT) {
 				Log.v(DEBUG_TAG, "Document Start");
-			} else if (eventType == XmlResourceParser.START_TAG) {
+			} else if (eventType == XmlPullParser.START_TAG) {
 				String parserName = xml.getName();
 				if (parserName.equals("place")) {
 					int id = Integer

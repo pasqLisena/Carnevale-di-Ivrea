@@ -1,7 +1,6 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.map;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
-import it.polito.applicazionimultimediali.carnevalediivrea.minigame.Minigame;
 import it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora;
 
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
+import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;

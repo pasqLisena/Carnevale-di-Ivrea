@@ -2,7 +2,6 @@ package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.CurrentPlayer;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
-import it.polito.applicazionimultimediali.carnevalediivrea.Player;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import android.app.Activity;
 import android.os.Bundle;
