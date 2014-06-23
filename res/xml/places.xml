@@ -5,7 +5,8 @@
         id="1"
         name="Castellazzo"
         latlng="45.465090, 7.872041"
-        minigame="true" />
+        minigame="true"
+        xy="127,253" />
     <place
         id="2"
         name="Piazza di Città"

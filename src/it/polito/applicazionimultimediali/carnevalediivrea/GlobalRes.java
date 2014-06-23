@@ -12,6 +12,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
+import android.graphics.Point;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -108,6 +109,11 @@ public class GlobalRes {
 							.parseInt(xml.getAttributeValue(null, "id"));
 					p = new Place(id, xml.getAttributeValue(null, "name"),
 							xml.getAttributeValue(null, "latlng"), xml.getAttributeBooleanValue(null, "minigame", false));
+					String pos = xml.getAttributeValue(null, "xy");
+					if(pos != null){
+						String[] posSplit = pos.split(",");
+						p.setPos(new Point(Integer.parseInt(posSplit[0]), Integer.parseInt(posSplit[1])));
+					}
 					placesList.put(id, p);
 				}
 				// else if (parserName.equals("team")) {

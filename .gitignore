@@ -23,6 +23,5 @@ local.properties
 proguard/
 
 # Avoid to override ourselves :)
-res/values/keys.xml
 project.properties
 .README.md.html
