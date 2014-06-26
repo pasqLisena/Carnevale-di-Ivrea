@@ -9,6 +9,8 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
@@ -108,11 +110,14 @@ public class GlobalRes {
 					int id = Integer
 							.parseInt(xml.getAttributeValue(null, "id"));
 					p = new Place(id, xml.getAttributeValue(null, "name"),
-							xml.getAttributeValue(null, "latlng"), xml.getAttributeBooleanValue(null, "minigame", false));
+							xml.getAttributeValue(null, "latlng"),
+							xml.getAttributeBooleanValue(null, "minigame",
+									false));
 					String pos = xml.getAttributeValue(null, "xy");
-					if(pos != null){
+					if (pos != null) {
 						String[] posSplit = pos.split(",");
-						p.setPos(new Point(Integer.parseInt(posSplit[0]), Integer.parseInt(posSplit[1])));
+						p.setPos(new Point(Integer.parseInt(posSplit[0]),
+								Integer.parseInt(posSplit[1])));
 					}
 					placesList.put(id, p);
 				}
@@ -127,6 +132,10 @@ public class GlobalRes {
 
 	public static CurrentPlayer getCurrentPlayer() {
 		return currentPlayer;
+	}
+	
+	public static String getArancieriLeaderboard(){
+		return ctx.getString(R.string.aranceri_leaderboards);
 	}
 
 }

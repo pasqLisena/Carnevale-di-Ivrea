@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -52,6 +52,9 @@
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.PlayerActivity"
             android:label="@string/player" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity" />
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora"

@@ -1,5 +1,8 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -31,12 +34,17 @@ public class CurrentPlayer extends Player {
 		prefEditor.putInt(key, value);
 		prefEditor.commit();
 	}
-
-	public boolean playAGame() {
+	
+	
+	public boolean playAGame(GoogleApiClient googleApiClient) {
 		if (getOranges() >= GlobalRes.orangesPerPlay) {
 			this.oranges = getOranges() - GlobalRes.orangesPerPlay;
 			updateLocalData("oranges", this.oranges);
 			gainPoint(100);
+
+			if(googleApiClient != null){
+				Games.Leaderboards.submitScore(googleApiClient, GlobalRes.getArancieriLeaderboard(), this.points);
+			}
 			return true;
 		}
 		return false;
