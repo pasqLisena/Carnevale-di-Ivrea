@@ -42,7 +42,7 @@
         android:background="#55878476"
         android:paddingBottom="3dp"
         android:paddingRight="5dp"
-        android:visibility="gone" >
+        android:visibility="invisible" >
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
@@ -86,7 +86,6 @@
                 android:textColorHint="@color/ivreaBlue"
                 android:textColorLink="@color/ivreaBlue" />
         </LinearLayout>
-
     </FrameLayout>
 
 </RelativeLayout>
