@@ -12,10 +12,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <!--
-     The following two permissions are not required to use
-     Google Maps Android API v2, but are recommended.
-    -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -27,6 +23,7 @@
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity"
             android:label="@string/app_name"
+            android:noHistory="true"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,11 +33,7 @@
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane"
-            android:label="@string/ivrea_map_title"
-            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity" />
+            android:label="@string/ivrea_map_title" >
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity"
@@ -48,14 +41,14 @@
             android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity" />
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.PlayerActivity"
             android:label="@string/player" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="it.polito.applicazionimultimediali.carnevalediivrea.MainActivity" />
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora"
