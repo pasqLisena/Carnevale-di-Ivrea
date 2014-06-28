@@ -39,36 +39,38 @@
 
             <Button
                 android:id="@+id/sign_out_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:background="@drawable/orange_button"
-                android:text="Sign Out"
+                android:padding="5dp"
+                android:text="@string/log_out"
+                android:textColor="@color/ivreaOrange"
+                android:textColorHint="@color/ivreaGray"
+                android:textColorLink="@color/ivreaOrange"
                 android:visibility="gone" />
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/sign_in_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal" >
             </com.google.android.gms.common.SignInButton>
 
             <Button
                 android:id="@+id/button1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/orange_button"
                 android:onClick="goToMap"
                 android:padding="5dp"
-                android:layout_marginTop="15dp"
                 android:text="@string/button_map"
                 android:textColor="@color/ivreaOrange"
                 android:textColorHint="@color/ivreaGray"
                 android:textColorLink="@color/ivreaOrange" />
-
         </LinearLayout>
-
     </RelativeLayout>
 
 </LinearLayout>

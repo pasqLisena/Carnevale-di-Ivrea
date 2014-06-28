@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.Player;
 import com.google.example.games.basegameutils.BaseGameActivity;
@@ -29,6 +30,7 @@ public class MainActivity extends BaseGameActivity implements
 		signoutBtn = findViewById(R.id.sign_out_button);
 		signoutBtn.setOnClickListener(this);
 		signinBtn.setOnClickListener(this);
+		((SignInButton)signinBtn).setSize(SignInButton.SIZE_WIDE);
 
 		if (isSignedIn()) {
 			signinBtn.setVisibility(View.GONE);
