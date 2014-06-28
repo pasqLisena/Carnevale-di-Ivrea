@@ -1,7 +1,5 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
-import it.polito.applicazionimultimediali.carnevalediivrea.R;
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +25,7 @@ public class PlayerActivity extends BaseGameActivity implements OnImageLoadedLis
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getGameHelper().setMaxAutoSignInAttempts(0);
 
 		setContentView(R.layout.player_activity);
 		signinBtn = findViewById(R.id.sign_in_button);
