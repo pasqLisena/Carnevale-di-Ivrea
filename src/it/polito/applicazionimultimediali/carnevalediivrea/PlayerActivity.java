@@ -1,7 +1,5 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
-import it.polito.applicazionimultimediali.carnevalediivrea.R;
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,7 +16,8 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.games.Player;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
-public class PlayerActivity extends BaseGameActivity implements OnImageLoadedListener, OnClickListener {
+public class PlayerActivity extends BaseGameActivity implements
+		OnImageLoadedListener, OnClickListener {
 
 	private CurrentPlayer player;
 	private View signoutBtn;
@@ -27,6 +26,7 @@ public class PlayerActivity extends BaseGameActivity implements OnImageLoadedLis
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getGameHelper().setMaxAutoSignInAttempts(0);
 
 		setContentView(R.layout.player_activity);
 		signinBtn = findViewById(R.id.sign_in_button);
@@ -35,7 +35,6 @@ public class PlayerActivity extends BaseGameActivity implements OnImageLoadedLis
 		signinBtn.setOnClickListener(this);
 		((SignInButton) signinBtn).setSize(SignInButton.SIZE_WIDE);
 
-		
 		player = GlobalRes.getCurrentPlayer();
 		String playerName = player.nickname;
 		TextView playerNameTV = (TextView) findViewById(R.id.playerName);
@@ -51,9 +50,8 @@ public class PlayerActivity extends BaseGameActivity implements OnImageLoadedLis
 		pointsCounter.setText(getResources().getQuantityString(R.plurals.point,
 				pointsNum, pointsNum));
 
-		if (player.getIcoImgUri() != null
-				&& player.getIcoImgUri().toString().length() > 0) {
-			ImageManager.create(getApplicationContext()).loadImage(this, player.getIcoImgUri());
+		if (isSignedIn()) {
+			onSignInSucceeded();
 		}
 	}
 
@@ -64,22 +62,20 @@ public class PlayerActivity extends BaseGameActivity implements OnImageLoadedLis
 			profileImg.setImageDrawable(d);
 		}
 	}
-	
-	public void showLeaderboard(View v){
-		startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(), GlobalRes.getArancieriLeaderboard()), 1);
-	}
 
+	public void showLeaderboard(View v) {
+		startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
+				getApiClient(), GlobalRes.getArancieriLeaderboard()), 1);
+	}
 
 	@Override
 	public void onSignInFailed() {
-		// show sign-out button, hide the sign-in button
 		signoutBtn.setVisibility(View.GONE);
 		signinBtn.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void onSignInSucceeded() {
-		// show sign-out button, hide the sign-in button
 		signinBtn.setVisibility(View.GONE);
 		signoutBtn.setVisibility(View.VISIBLE);
 
@@ -96,9 +92,17 @@ public class PlayerActivity extends BaseGameActivity implements OnImageLoadedLis
 		}
 
 		GlobalRes.getCurrentPlayer().updateInfo(nickname, icoImg);
+
+		if (player.getIcoImgUri() != null
+				&& player.getIcoImgUri().toString().length() > 0) {
+			ImageManager.create(getApplicationContext()).loadImage(this,
+					player.getIcoImgUri());
+		}
+
+		// TODO fare un submit del punteggio?
+
 	}
 
-	
 	@Override
 	public void onClick(View view) {
 		if (view.getId() == R.id.sign_in_button) {
@@ -107,7 +111,6 @@ public class PlayerActivity extends BaseGameActivity implements OnImageLoadedLis
 		} else if (view.getId() == R.id.sign_out_button) {
 			signOut();
 
-			// show sign-in button, hide the sign-out button
 			signinBtn.setVisibility(View.VISIBLE);
 			signoutBtn.setVisibility(View.GONE);
 		}
