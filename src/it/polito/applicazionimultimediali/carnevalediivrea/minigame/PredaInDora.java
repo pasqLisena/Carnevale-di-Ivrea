@@ -1,12 +1,11 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.minigame;
 
-import it.polito.applicazionimultimediali.carnevalediivrea.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,6 +29,7 @@ public class PredaInDora extends Minigame {
 		descrImg = R.drawable.mg_predaindora_bg;
 	}
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		btnStartMinigame = findViewById(R.id.btnStartMinigame);

@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -73,10 +76,10 @@ public class GlobalRes {
 		XmlResourceParser xml = ctx.getResources().getXml(R.xml.teams);
 
 		int eventType = -1;
-		while (eventType != XmlResourceParser.END_DOCUMENT) {
-			if (eventType == XmlResourceParser.START_DOCUMENT) {
+		while (eventType != XmlPullParser.END_DOCUMENT) {
+			if (eventType == XmlPullParser.START_DOCUMENT) {
 				Log.v(DEBUG_TAG, "Document Start");
-			} else if (eventType == XmlResourceParser.START_TAG) {
+			} else if (eventType == XmlPullParser.START_TAG) {
 				String parserName = xml.getName();
 				if (parserName.equals("team")) {
 					int squareId = Integer.parseInt(xml.getAttributeValue(null,
@@ -98,20 +101,23 @@ public class GlobalRes {
 
 		int eventType = -1;
 		Place p = null;
-		while (eventType != XmlResourceParser.END_DOCUMENT) {
-			if (eventType == XmlResourceParser.START_DOCUMENT) {
+		while (eventType != XmlPullParser.END_DOCUMENT) {
+			if (eventType == XmlPullParser.START_DOCUMENT) {
 				Log.v(DEBUG_TAG, "Document Start");
-			} else if (eventType == XmlResourceParser.START_TAG) {
+			} else if (eventType == XmlPullParser.START_TAG) {
 				String parserName = xml.getName();
 				if (parserName.equals("place")) {
 					int id = Integer
 							.parseInt(xml.getAttributeValue(null, "id"));
 					p = new Place(id, xml.getAttributeValue(null, "name"),
-							xml.getAttributeValue(null, "latlng"), xml.getAttributeBooleanValue(null, "minigame", false));
+							xml.getAttributeValue(null, "latlng"),
+							xml.getAttributeBooleanValue(null, "minigame",
+									false));
 					String pos = xml.getAttributeValue(null, "xy");
-					if(pos != null){
+					if (pos != null) {
 						String[] posSplit = pos.split(",");
-						p.setPos(new Point(Integer.parseInt(posSplit[0]), Integer.parseInt(posSplit[1])));
+						p.setPos(new Point(Integer.parseInt(posSplit[0]),
+								Integer.parseInt(posSplit[1])));
 					}
 					placesList.put(id, p);
 				}
@@ -126,6 +132,10 @@ public class GlobalRes {
 
 	public static CurrentPlayer getCurrentPlayer() {
 		return currentPlayer;
+	}
+	
+	public static String getArancieriLeaderboard(){
+		return ctx.getString(R.string.aranceri_leaderboards);
 	}
 
 }

@@ -1,17 +1,21 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
+import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.images.ImageManager;
 import com.google.android.gms.common.images.ImageManager.OnImageLoadedListener;
+import com.google.android.gms.games.Games;
+import com.google.example.games.basegameutils.BaseGameActivity;
 
-public class PlayerActivity extends Activity implements OnImageLoadedListener {
+public class PlayerActivity extends BaseGameActivity implements OnImageLoadedListener {
 
 	private CurrentPlayer player;
 
@@ -44,11 +48,27 @@ public class PlayerActivity extends Activity implements OnImageLoadedListener {
 
 	@Override
 	public void onImageLoaded(Uri uri, Drawable d, boolean isRequestedDrawable) {
-		Log.w("QQQQ", "Uri " + uri.toString());
 		if (uri.equals(player.getIcoImgUri())) {
 			ImageView profileImg = (ImageView) findViewById(R.id.profileImage);
 			profileImg.setImageDrawable(d);
 		}
 	}
+	
+	public void showLeaderboard(View v){
+		startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(), GlobalRes.getArancieriLeaderboard()), 1);
+	}
+
+	@Override
+	public void onSignInFailed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onSignInSucceeded() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

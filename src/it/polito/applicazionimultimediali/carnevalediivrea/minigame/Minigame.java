@@ -11,6 +11,7 @@ public abstract class Minigame extends Activity {
 	static String descr;
 	static int descrImg;
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.start_minigame_activity);

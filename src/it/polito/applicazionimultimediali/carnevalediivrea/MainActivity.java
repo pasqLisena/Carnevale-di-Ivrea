@@ -121,5 +121,4 @@ public class MainActivity extends BaseGameActivity implements
 			signoutBtn.setVisibility(View.GONE);
 		}
 	}
-
 }
