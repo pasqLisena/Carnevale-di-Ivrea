@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="ivreaGray">#EEEAD0</color>
-    <color name="ivreaGrayLight">#F9F4D9</color>
+    <color name="ivreaGrayOpacity80">#DDEEEAD0</color>
     <color name="ivreaOrange">#F7941D</color>
     <color name="ivreaOrangeLight">#FF991E</color>
+    <color name="ivreaBlue">#2A4B78</color>
     
     <color name="white">#FFFFFF</color>
     <color name="yellow">#FFFF00</color>

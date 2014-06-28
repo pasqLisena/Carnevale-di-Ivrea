@@ -1,6 +1,7 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.map;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
+import it.polito.applicazionimultimediali.carnevalediivrea.PlayerActivity;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
 
@@ -12,6 +13,8 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -77,6 +80,27 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 			markerMap.put(m, p);
 		}
 
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle presses on the action bar items
+		int itemID = item.getItemId();
+		if (itemID == R.id.player) {
+			Intent intent = new Intent(this, PlayerActivity.class);
+			// intent.putExtra(EXTRA_MESSAGE, message);
+			startActivity(intent);
+		} else {
+			return super.onOptionsItemSelected(item);
+		}
+		return false;
 	}
 
 	@Override

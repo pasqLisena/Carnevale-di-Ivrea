@@ -1,76 +1,109 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:geekui="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ivreaOrange"
     android:gravity="center"
     tools:context=".MainActivity" >
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="6"
-        android:scaleType="centerCrop"
-        android:src="@drawable/home_bg" />
 
     <!-- sign-in button -->
 
 
     <!-- sign-out button -->
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="6"
-        android:background="@color/ivreaOrange"
-        android:minWidth="450dip" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/home_bg_3" />
+
+        <com.mobsandgeeks.ui.TypefaceTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="35dp"
+            android:text="@string/app_name"
+            android:textColor="@color/ivreaGray"
+            android:textSize="50sp"
+            geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/login_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#55878476"
+        android:paddingBottom="3dp"
+        android:paddingRight="5dp"
+        android:visibility="gone" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentStart="false"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_weight="1"
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@color/ivreaGrayOpacity80"
             android:orientation="vertical"
-            android:padding="20dp" >
+            android:paddingBottom="10dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="10dp" >
 
             <Button
                 android:id="@+id/sign_out_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
                 android:background="@drawable/orange_button"
                 android:padding="5dp"
                 android:text="@string/log_out"
-                android:textColor="@color/ivreaOrange"
-                android:textColorHint="@color/ivreaGray"
-                android:textColorLink="@color/ivreaOrange"
+                android:textColor="@color/ivreaBlue"
+                android:textColorHint="@color/ivreaBlue"
+                android:textColorLink="@color/ivreaBlue"
                 android:visibility="gone" />
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal" >
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textColorLink="@color/white" >
             </com.google.android.gms.common.SignInButton>
 
-            <Button
-                android:id="@+id/button1"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:text="@string/oppure"
+                android:textColor="@color/ivreaBlue"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/goToMapButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/orange_button"
                 android:onClick="goToMap"
-                android:padding="5dp"
+                android:padding="20dp"
                 android:text="@string/button_map"
-                android:textColor="@color/ivreaOrange"
-                android:textColorHint="@color/ivreaGray"
-                android:textColorLink="@color/ivreaOrange" />
+                android:textColor="@color/ivreaBlue"
+                android:textColorHint="@color/ivreaBlue"
+                android:textColorLink="@color/ivreaBlue" />
         </LinearLayout>
-    </RelativeLayout>
 
-</LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout>

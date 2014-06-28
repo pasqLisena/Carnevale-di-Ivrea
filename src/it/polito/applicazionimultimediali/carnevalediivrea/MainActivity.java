@@ -5,6 +5,7 @@ import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,26 +20,64 @@ public class MainActivity extends BaseGameActivity implements
 		View.OnClickListener {
 
 	private static final String TAG = "Main Activity";
-	private View signinBtn, signoutBtn;
+	private View signinBtn, signoutBtn, loginPopup;
+	private Handler mHandler;
+	private Runnable goToMap = new Runnable() {
+		@Override
+		public void run() {
+			goToMap(null);
+		}
+	};
+	private Runnable showLoginPopup = new Runnable() {
+		@Override
+		public void run() {
+			if (!isSignedIn())
+				loginPopup.setVisibility(View.VISIBLE);
+			else goToMap(null);
+		}
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		mHandler = new Handler();
+
+		loginPopup = findViewById(R.id.login_popup);
 		signinBtn = findViewById(R.id.sign_in_button);
 		signoutBtn = findViewById(R.id.sign_out_button);
 		signoutBtn.setOnClickListener(this);
 		signinBtn.setOnClickListener(this);
-		((SignInButton)signinBtn).setSize(SignInButton.SIZE_WIDE);
+		((SignInButton) signinBtn).setSize(SignInButton.SIZE_WIDE);
 
 		if (isSignedIn()) {
 			signinBtn.setVisibility(View.GONE);
 			signoutBtn.setVisibility(View.VISIBLE);
 		}
 
+		if (!isSignedIn()) {
+			mHandler.postDelayed(showLoginPopup, 2000);
+		}
+
 		GlobalRes.prepareResources(this);
+
 	}
+
+	// just as an example, we'll start the task when the activity is started
+	@Override
+	public void onStart() {
+		super.onStart();
+	}
+
+	// at some point in your program you will probably want the handler to stop
+	// (in onStop is a good place)
+	@Override
+	public void onStop() {
+		super.onStop();
+		mHandler.removeCallbacks(showLoginPopup);
+
+	};
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -106,6 +145,8 @@ public class MainActivity extends BaseGameActivity implements
 		}
 
 		GlobalRes.getCurrentPlayer().updateInfo(nickname, icoImg);
+
+		mHandler.postDelayed(goToMap, 2000);
 	}
 
 	@Override
