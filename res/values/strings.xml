@@ -4,7 +4,7 @@
     <string name="app_name">Carnevale di Ivrea</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="button_map">Vai alla mappa</string>
+    <string name="button_map">Gioca senza loggarti</string>
     <string name="button_battle">Gioca</string>
     <string name="ivrea_map_title">Ivrea</string>
     <string name="ivrea_map_suggest">Scegli un luogo</string>

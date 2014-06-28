@@ -26,8 +26,8 @@ public class PredaInDora extends Minigame {
 	private Date nextPlay;
 
 	public PredaInDora() {
-		descr = "Questa è la storia del Podestà. Per piacere, finiscimi!";
-		descrImg = R.drawable.mg_podesta;
+		descr = "Colpisci una pietra del Castellazzo per vincere le arance!";
+		descrImg = R.drawable.mg_predaindora_bg;
 	}
 
 	public void onCreate(Bundle savedInstanceState) {

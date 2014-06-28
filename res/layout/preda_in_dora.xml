@@ -10,8 +10,8 @@
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/mg_preda_in_dora" />
+        android:scaleType="fitXY"
+        android:src="@drawable/mg_predaindora_bg" />
 
     <TextView
         android:id="@+id/instructionPiD"

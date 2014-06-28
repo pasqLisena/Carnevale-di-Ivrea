@@ -26,6 +26,7 @@ public class PredaInDoraPlay extends Activity {
 		orangeToWin.add(40);
 		orangeToWin.add(60);
 		Collections.shuffle(orangeToWin);
+		
 
 		pidOrangeCont = (ViewGroup) findViewById(R.id.pidOrangeCont);
 		for (int i = 0; i < pidOrangeCont.getChildCount(); i++) {
