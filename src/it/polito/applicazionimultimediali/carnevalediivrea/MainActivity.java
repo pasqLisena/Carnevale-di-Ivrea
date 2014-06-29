@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.games.Games;
@@ -28,9 +30,9 @@ public class MainActivity extends BaseGameActivity implements
 	private Runnable showLoginPopup = new Runnable() {
 		@Override
 		public void run() {
-			if (!isSignedIn())
-				loginPopup.setVisibility(View.VISIBLE);
-			else
+			if (!isSignedIn()) {
+				showLoginPopup();
+			} else
 				goToMap(null);
 		}
 	};
@@ -68,6 +70,13 @@ public class MainActivity extends BaseGameActivity implements
 		Intent intent = new Intent(this, MapPane.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
+	}
+
+	public void showLoginPopup() {
+		 loginPopup.setVisibility(View.VISIBLE);
+		Animation myFadeInAnimation = AnimationUtils.loadAnimation(this,
+				R.anim.fadein);
+		loginPopup.startAnimation(myFadeInAnimation);
 	}
 
 	@Override

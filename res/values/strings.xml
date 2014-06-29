@@ -12,18 +12,23 @@
     <string name="ivrea_map_button_history">Storia</string>
     <string name="ivrea_map_button_minigame">Minigame</string>
     <string name="ivrea_map_button_battle">Battaglia</string>
-    <string name="orange">Arance</string>
+    <string name="leaderboard_btn">Classifica</string>
+    <string name="orange">arance</string>
 
     <plurals name="orange">
         <item quantity="one">1 arancia</item>
         <item quantity="other">%d arance</item>
     </plurals>
+
+    <string name="point">punti</string>
+
     <plurals name="point">
         <item quantity="one">1 punto</item>
         <item quantity="other">%d punti</item>
     </plurals>
 
     <string name="player">Player</string>
+    <string name="default_player_name">Anonimo</string>
     <string name="logout">Logout</string>
     <string name="register">Entra</string>
 
