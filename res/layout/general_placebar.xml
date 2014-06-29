@@ -4,18 +4,12 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/placebar_place_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical|center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <LinearLayout
         android:id="@+id/placebar_btn_cont"
         style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal" >
 
         <Button
@@ -43,5 +37,17 @@
             android:text="@string/ivrea_map_button_minigame"
             android:visibility="gone" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/placebar_place_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/ivrea_map_suggest"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/ivreaOrange"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:textStyle="bold" />
 
 </LinearLayout>
