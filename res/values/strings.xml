@@ -14,6 +14,8 @@
     <string name="ivrea_map_button_battle">Battaglia</string>
     <string name="leaderboard_btn">Classifica</string>
     <string name="orange">arance</string>
+    <string name="predaindora_bg">Castellazzo</string>
+    <string name="predaindora_btn">preda in Dora - roccia</string>
 
     <plurals name="orange">
         <item quantity="one">1 arancia</item>
