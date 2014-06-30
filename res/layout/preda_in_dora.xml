@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:layout_margin="0dp"
-    tools:context=".MainActivity" >
+    tools:context=".PredaInDoraPlay" >
 
     <ImageView
         android:id="@+id/predaindora_bg"
@@ -13,53 +13,61 @@
         android:layout_alignParentBottom="true"
         android:contentDescription="@string/predaindora_bg"
         android:scaleType="centerCrop"
-        android:src="@drawable/mg_predaindora_bg" />
+        android:src="@drawable/predaindora_bg" />
 
-    
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rocksContent"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:visibility="invisible"
-        >
+        android:layout_centerHorizontal="true" >
 
-        <View
-            android:id="@+id/emptyView"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:visibility="invisible" />
-        
-        <ImageButton
-            android:id="@+id/rock3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/emptyView"
-            android:layout_alignTop="@id/emptyView"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="100dp"
-            android:background="@drawable/rock3"
-            android:contentDescription="@string/predaindora_btn" />
+            android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/rock2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/emptyView"
-            android:layout_alignTop="@id/emptyView"
-            android:layout_marginTop="220dp"
-            android:layout_marginLeft="226dp"
-            android:background="@drawable/rock2"
-            android:contentDescription="@string/predaindora_btn" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/rock3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/rock3"
+                    android:contentDescription="@string/predaindora_btn"
+                    android:onClick="breakRock" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/rock2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rock2"
+                    android:contentDescription="@string/predaindora_btn"
+                    android:onClick="breakRock" />
+            </FrameLayout>
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/rock1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:background="@drawable/rock1"
-            android:contentDescription="@string/predaindora_btn" />
-
-    </RelativeLayout>
+            android:contentDescription="@string/predaindora_btn"
+            android:onClick="breakRock" />
+    </LinearLayout>
 
 </RelativeLayout>

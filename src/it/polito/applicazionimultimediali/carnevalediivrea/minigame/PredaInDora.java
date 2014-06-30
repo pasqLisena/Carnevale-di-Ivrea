@@ -20,18 +20,21 @@ public class PredaInDora extends Minigame {
 	private ProgressBar mgTimerBar;
 	private TextView mgTimerText;
 
-	private final int hour = 60 * 60 * 1000;
+//	private final int hour = 60 * 60 * 1000;
+	private final int hour = 1;
 	private long lastPlay;
 	private Date nextPlay;
 
 	public PredaInDora() {
 		descr = "Colpisci una pietra del Castellazzo per vincere le arance!";
-		descrImg = R.drawable.mg_predaindora_bg;
+		descrImg = R.drawable.predaindora_bg;
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.start_minigame_activity);
+		
 		btnStartMinigame = findViewById(R.id.btnStartMinigame);
 		mgTimerBar = (ProgressBar) findViewById(R.id.mgTimerBar);
 		mgTimerText = (TextView) findViewById(R.id.mgTimerText);
