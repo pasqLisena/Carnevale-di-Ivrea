@@ -18,5 +18,8 @@ Turist Social Game for Android set during the Historic Carnival of Ivrea (ITALY)
 		<li>Click OK</li>
 	</ul>
 </li>
-<li>Install <a href="https://github.com/ragunathjawahar/android-typeface-textview">Typeface TextView</a><code>new!</code></li>
+<li>Install <a href="https://github.com/ragunathjawahar/android-typeface-textview">Typeface TextView</a> <code>new!</code></li>
+<li>Install <a href="http://unity3d.com/">Unity</a> <code>new!</code></li>
+<li>Import the committed folder <i>UnityGame</i> as a new project and mark it as library <code>new!</code>
+	<ul><li>Then add it to the main project</li></ul>
 </ul>
