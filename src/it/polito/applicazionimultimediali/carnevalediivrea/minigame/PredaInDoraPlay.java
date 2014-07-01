@@ -9,22 +9,34 @@ import java.util.Collections;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class PredaInDoraPlay extends Activity {
 	private static ArrayList<Integer> orangeToWin;
 	private static ArrayList<View> rocks;
-	private View rock1, rock2, rock3;
+	private ImageButton rock1, rock2, rock3;
+	private View rock1After, rock2After, rock3After;
+	private ViewGroup rocksCont;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.preda_in_dora);
 
-		rock1 = findViewById(R.id.rock1);
-		rock2 = findViewById(R.id.rock2);
-		rock3 = findViewById(R.id.rock3);
+		rock1 = (ImageButton) findViewById(R.id.rock1);
+		rock2 = (ImageButton) findViewById(R.id.rock2);
+		rock3 = (ImageButton) findViewById(R.id.rock3);
+
+		rock1After = findViewById(R.id.rock1_after);
+		rock2After = findViewById(R.id.rock2_after);
+		rock3After = findViewById(R.id.rock3_after);
 
 		rocks = new ArrayList<View>();
 		rocks.add(rock1);
@@ -37,9 +49,9 @@ public class PredaInDoraPlay extends Activity {
 		orangeToWin.add(60);
 		Collections.shuffle(orangeToWin);
 
-		// pidOrangeCont = (ViewGroup) findViewById(R.id.pidOrangeCont);
-		// for (int i = 0; i < pidOrangeCont.getChildCount(); i++) {
-		// TextView orangeText = (TextView) pidOrangeCont.getChildAt(i);
+		// rocksCont = (ViewGroup) findViewById(R.id.textCont);
+		// for (int i = 0; i < rocksCont.getChildCount(); i++) {
+		// TextView orangeText = (TextView) rocksCont.getChildAt(i);
 		// orangeText.setText(orangeToWin.get(i).toString());
 		// }
 	}
@@ -60,20 +72,30 @@ public class PredaInDoraPlay extends Activity {
 			return;
 		}
 
-		GlobalRes.getCurrentPlayer().gainOranges(orangeToWin.get(index));
+		Animation myscrolldownAnimation = AnimationUtils.loadAnimation(this,
+				R.anim.scroll_down);
+		Animation myfadeoutAnimation = AnimationUtils.loadAnimation(this,
+				R.anim.fadeout);
+
+		// GlobalRes.getCurrentPlayer().gainOranges(orangeToWin.get(index));
 
 		for (int i = 0; i < rocks.size(); i++) {
-			rocks.get(i).setClickable(false);
-		}
+			if (rocks.get(i) == v) {
+				rocks.get(i).startAnimation(myscrolldownAnimation);
+			} else {
+				rocks.get(i).startAnimation(myfadeoutAnimation);
 
+			}
+			rocks.get(i).setClickable(false);
+			rocks.get(i).setVisibility(View.GONE);
+		}
 
 		// final Handler mHandler = new Handler();
 		// Runnable showAllOranges = new Runnable() {
 		// @Override
 		// public void run() {
-		// for (int i = 0; i < pidOrangeCont.getChildCount(); i++) {
-		// TextView orangeText = (TextView) pidOrangeCont
-		// .getChildAt(i);
+		// for (int i = 0; i < rocksCont.getChildCount(); i++) {
+		// TextView orangeText = (TextView) rocksCont.getChildAt(i);
 		// orangeText.setAlpha(1);
 		// }
 		// }
