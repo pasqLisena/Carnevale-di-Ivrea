@@ -33,11 +33,11 @@
                 android:layout_weight="1" >
 
                 <ImageButton
-                    android:id="@+id/rock3"
+                    android:id="@+id/rock1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/rock3"
+                    android:background="@drawable/rock1"
                     android:contentDescription="@string/predaindora_btn"
                     android:onClick="breakRock" />
             </FrameLayout>
@@ -61,11 +61,11 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/rock1"
+            android:id="@+id/rock3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/rock1"
+            android:background="@drawable/rock3"
             android:contentDescription="@string/predaindora_btn"
             android:onClick="breakRock" />
     </LinearLayout>
