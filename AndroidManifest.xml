@@ -52,8 +52,8 @@
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora"
-            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" 
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
@@ -64,6 +64,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora" />
+        </activity>
+        <activity
+            android:name=".map.PlaceActivity"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
 
         <meta-data

@@ -31,4 +31,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/open_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/placebar_container"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/overmap_open"
+        android:contentDescription="@string/ivrea_map_button_openplace"
+        android:onClick="openPlace"
+        android:visibility="gone" />
+
 </RelativeLayout>

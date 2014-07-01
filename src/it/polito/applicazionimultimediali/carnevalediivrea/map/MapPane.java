@@ -13,6 +13,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,7 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 	private static final String DEBUG_TAG = "Map Pane";
 	private Map<Marker, Place> markerMap;
 	private Place selectedPlace;
+	private View openPlace;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +81,9 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 
 			markerMap.put(m, p);
 		}
+		
 
+		openPlace = findViewById(R.id.open_place);
 	}
 
 	@Override
@@ -88,6 +92,7 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle presses on the action bar items
@@ -113,8 +118,8 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		if (selectedPlace == null) {
 			((ViewGroup) this.findViewById(R.id.placebar_container))
 					.removeAllViews();
-			selectedPlace = p;
 		}
+		selectedPlace = p;
 
 		FragmentTransaction transaction = getFragmentManager()
 				.beginTransaction();
@@ -122,6 +127,8 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		// Commit the transaction
 		transaction.commit();
 
+		openPlace.setVisibility(View.VISIBLE);
+		
 		return true;
 	}
 
@@ -134,6 +141,12 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 	public void goToMinigame(View view) {
 		Intent intent = new Intent(this, selectedPlace.getMinigame());
 		// intent.putExtra(EXTRA_MESSAGE, message);
+		startActivity(intent);
+	}
+
+	public void openPlace(View view) {
+		Intent intent = new Intent(this, PlaceActivity.class);
+		intent.putExtra("place", selectedPlace.getId()+"");
 		startActivity(intent);
 	}
 

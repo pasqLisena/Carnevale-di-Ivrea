@@ -100,6 +100,10 @@ public class Place {
 		return s;
 	}
 
+	public List<Team> getTeamsList() {
+		return teamsList;
+	}
+
 	private Class<?> findMinigame(int id) {
 		switch (id) {
 		case 1:
