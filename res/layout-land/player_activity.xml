@@ -47,6 +47,18 @@
             android:textColorLink="@color/white" >
         </com.google.android.gms.common.SignInButton>
 
+        <Button
+            android:id="@+id/sign_out_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/orange_button"
+            android:padding="5dp"
+            android:text="@string/log_out"
+            android:textColor="@color/ivreaBlue"
+            android:textColorHint="@color/ivreaBlue"
+            android:textColorLink="@color/ivreaBlue"
+            android:visibility="gone" />
+
     </LinearLayout>
 
     <View
@@ -93,18 +105,6 @@
             android:layout_marginTop="30dp"
             android:onClick="showLeaderboard"
             android:text="@string/leaderboard_btn" />
-
-        <Button
-            android:id="@+id/sign_out_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/orange_button"
-            android:padding="5dp"
-            android:text="@string/log_out"
-            android:textColor="@color/ivreaBlue"
-            android:textColorHint="@color/ivreaBlue"
-            android:textColorLink="@color/ivreaBlue"
-            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

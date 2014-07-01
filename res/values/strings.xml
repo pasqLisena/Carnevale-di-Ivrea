@@ -11,6 +11,7 @@
     <string name="ivrea_map_suggest">Scegli un luogo</string>
     <string name="ivrea_map_button_history">Storia</string>
     <string name="ivrea_map_button_minigame">Minigame</string>
+    <string name="ivrea_map_button_openplace">Apri</string>
     <string name="ivrea_map_button_battle">Battaglia</string>
     <string name="leaderboard_btn">Classifica</string>
     <string name="orange">arance</string>

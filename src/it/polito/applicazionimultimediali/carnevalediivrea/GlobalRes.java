@@ -9,8 +9,6 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
@@ -133,9 +131,8 @@ public class GlobalRes {
 	public static CurrentPlayer getCurrentPlayer() {
 		return currentPlayer;
 	}
-	
-	public static String getArancieriLeaderboard(){
+
+	public static String getArancieriLeaderboard() {
 		return ctx.getString(R.string.aranceri_leaderboards);
 	}
-
 }
