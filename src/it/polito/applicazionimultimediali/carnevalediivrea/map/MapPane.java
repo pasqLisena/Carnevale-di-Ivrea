@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -81,7 +82,6 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 
 			markerMap.put(m, p);
 		}
-		
 
 		openPlace = findViewById(R.id.open_place);
 	}
@@ -128,7 +128,7 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		transaction.commit();
 
 		openPlace.setVisibility(View.VISIBLE);
-		
+
 		return true;
 	}
 
@@ -146,8 +146,9 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 
 	public void openPlace(View view) {
 		Intent intent = new Intent(this, PlaceActivity.class);
-		intent.putExtra("place", selectedPlace.getId()+"");
-		startActivity(intent);
-	}
+		intent.putExtra("place", selectedPlace.getId() + "");
 
+		startActivity(intent);
+		overridePendingTransition (R.anim.curtainup, R.anim.curtainup_over);
+	}
 }

@@ -40,9 +40,9 @@ public class PlaceActivity extends Activity {
 	}
 
 	public void goToMinigame(View view) {
-		// Intent intent = new Intent(this, selectedPlace.getMinigame());
+		 Intent intent = new Intent(this, place.getMinigame());
 		// // intent.putExtra(EXTRA_MESSAGE, message);
-		// startActivity(intent);
+		 startActivity(intent);
 	}
 
 }
