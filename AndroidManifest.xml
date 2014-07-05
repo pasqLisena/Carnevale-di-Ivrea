@@ -74,6 +74,8 @@
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.map.PlaceActivity"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane"
+            android:screenOrientation="landscape"
             android:theme="@style/OrangeBarTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
