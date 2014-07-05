@@ -5,6 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="left"
+    android:onClick="openPlace"
     android:orientation="horizontal" >
 
     <com.mobsandgeeks.ui.TypefaceTextView
@@ -27,7 +28,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="left"
         android:layout_weight="1"
-        android:gravity="left"
+        android:gravity="right"
         android:orientation="horizontal"
         android:paddingBottom="15dp"
         android:paddingLeft="5dp"
