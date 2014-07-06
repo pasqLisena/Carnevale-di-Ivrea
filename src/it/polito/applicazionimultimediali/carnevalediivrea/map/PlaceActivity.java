@@ -43,8 +43,9 @@ public class PlaceActivity extends Activity {
 					getPackageName());
 			if (bg != 0)
 				((ImageView) findViewById(R.id.bgPlace)).setImageResource(bg);
+			
+			
 			int count = 0;
-
 			if (place.getTeamsList() != null)
 				for (Team t : place.getTeamsList()) {
 					++count;
@@ -53,12 +54,14 @@ public class PlaceActivity extends Activity {
 							"id", getPackageName());
 					findViewById(idRes).setVisibility(View.VISIBLE);
 
-//					String idTeam = t.getId();
-//					int idBT = getResources().getIdentifier(
-//							idTeam.toLowerCase() + count, "drawable", getPackageName());
-//					if (idBT != 0)
-//						findViewById(idBT).setBackground(idTeam.toLowerCase());
-
+					String idTeam = t.getId();
+					int team_mask = getResources().getIdentifier(
+							idTeam.toLowerCase(), "drawable", getPackageName());
+					int idTeamButton = getResources().getIdentifier("ButtonTeam" + count,
+							"id", getPackageName());
+					if (team_mask != 0)
+						findViewById(idTeamButton).setBackgroundResource(team_mask);
+					
 				}
 
 			if (place.hasMinigame()) {

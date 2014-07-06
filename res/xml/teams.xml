@@ -23,12 +23,12 @@
         name="Scacchi"
         square="7" />
     <team
-        id="PAN"
-        name="Pantere"
-        square="6" />
-    <team
         id="DIA"
         name="Diavoli"
+        square="6" />
+    <team
+        id="PAN"
+        name="Pantere"
         square="6" />
     <team
         id="MER"
