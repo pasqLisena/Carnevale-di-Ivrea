@@ -1,51 +1,190 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:geekui="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/RelativeLayout1"
+    xmlns:geekui="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/startMinigameFullLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/ivreaOrange"
-    android:gravity="center"
+    android:layout_height="fill_parent"
+    android:layout_margin="0dp"
+    android:background="@color/ivreaGray"
+    android:orientation="vertical"
     tools:context=".MainActivity" >
 
     <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/piazza_di_citta" />
-
-    <Button
-        android:id="@+id/minigame_ico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="64dp"
-        android:text="Minigame" 
-        android:onClick="goToMinigame"/>
-
-    <Button
-        android:id="@+id/battle_MOR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/bgPlace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="142dp"
-        android:text="Battle" 
-        android:onClick="goToBattle"/>
+        android:layout_alignParentTop="true"
+        android:background="@drawable/mg_castellazzo_bg"
+        android:scaleType="fitEnd" />
 
-    <Button
-        android:id="@+id/battle_PiC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
-        android:onClick="onStartMatchClicked"
-        android:text="Sfida" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1" >
+
+            <ImageButton
+                android:id="@+id/history_cloud"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/history_button"
+                android:contentDescription="history_cloud" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:baselineAligned="false" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/baloon" >
+
+
+                        <com.mobsandgeeks.ui.TypefaceTextView
+                            android:id="@+id/balloonMiniGame"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:text="@string/minigame_baloon"
+                            android:textColor="@color/ivreaGray"
+                            android:textSize="20sp"
+                            geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
+                        
+                    </FrameLayout>
+
+                <ImageButton
+                    android:id="@+id/ButtonMiniGame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/podesta"
+                    android:contentDescription="potesta_button"
+                    android:onClick="play" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_weight="1"
+                android:gravity="center_horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical" >
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/baloon" >
+
+                        <com.mobsandgeeks.ui.TypefaceTextView
+                            android:id="@+id/balloonTeam01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:text="@string/otherTeam_baloon"
+                            android:textColor="@color/ivreaGray"
+                            android:textSize="20sp"
+                            geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
+                    </FrameLayout>
+
+                    <ImageButton
+                        android:id="@+id/ButtonTeam01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/mercenari"
+                        android:onClick="play" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical" >
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/baloon" >
+
+                        <com.mobsandgeeks.ui.TypefaceTextView
+                            android:id="@+id/balloonTeam02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:text="@string/otherTeam_baloon"
+                            android:textColor="@color/ivreaGray"
+                            android:textSize="20sp"
+                            geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
+                    </FrameLayout>
+
+                    <ImageButton
+                        android:id="@+id/ButtonTeam02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/pantere"
+                        android:onClick="play" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical" >
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/baloon" >
+
+                        <com.mobsandgeeks.ui.TypefaceTextView
+                            android:id="@+id/balloonTeam03"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:text="@string/otherTeam_baloon"
+                            android:textColor="@color/ivreaGray"
+                            android:textSize="20sp"
+                            geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
+                    </FrameLayout>
+
+                    <ImageButton
+                        android:id="@+id/ButtonTeam03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/diavoli"
+                        android:onClick="play" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
