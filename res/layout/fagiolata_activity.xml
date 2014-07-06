@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FagiolataPlay" >
+
+    <!-- GIFT REQUEST STATUS AREA -->
+
+    <RelativeLayout
+        android:id="@+id/status_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_gift_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageViewReceiveGift"
+            android:layout_toRightOf="@+id/imageViewSendGift"
+            android:gravity="left"
+            android:text="loading" />
+
+        <TextView
+            android:id="@+id/tv_request_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewReceiveGift"
+            android:text="loading" />
+
+        <ImageView
+            android:id="@+id/imageViewReceiveGift"
+            android:layout_width="20sp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_request_count"
+            android:layout_alignTop="@+id/tv_request_count"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitEnd"
+            android:src="@drawable/orange_button" />
+
+        <ImageView
+            android:id="@+id/imageViewSendGift"
+            android:layout_width="20sp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_request_count"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/tv_request_count"
+            android:scaleType="fitEnd"
+            android:src="@drawable/orange" />
+    </RelativeLayout>
+
+    <!-- MAIN DISPLAY -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button_send_gift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/orange_button"
+            android:text="Send gift" />
+
+        <Button
+            android:id="@+id/button_send_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/button_send_gift"
+            android:src="@drawable/orange_button"
+            android:text="Send req" />
+
+        <Button
+            android:id="@+id/button_open_inbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/button_send_request"
+            android:src="@drawable/orange_button"
+            android:text="Open inbox" />
+
+    </RelativeLayout>
+
+    <!-- SIGN-IN BAR -->
+
+    <!-- SIGN-OUT BAR -->
+
+</LinearLayout>

@@ -50,9 +50,8 @@ public class PlayerActivity extends BaseGameActivity implements
 		pointsCounter.setText(getResources().getQuantityString(R.plurals.point,
 				pointsNum, pointsNum));
 
-		if (isSignedIn()) {
+		if (isSignedIn()) 
 			onSignInSucceeded();
-		}
 	}
 
 	@Override
