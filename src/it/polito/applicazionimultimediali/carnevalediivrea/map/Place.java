@@ -20,10 +20,11 @@ public class Place {
 
 	private boolean locked;
 	private Class<?> minigame;
-	private String minigameDescr, minigameBg;
+	private String minigameDescr, minigameBg, minigameMask;
+
 
 	public Place(int id, String name, String latLng, String bg,
-			String minigame_class, String minigame_descr, String minigame_bg) {
+			String minigame_class, String minigame_descr, String minigame_bg, String minigame_mask) {
 		this(id, name, latLng, bg);
 		if (minigame_class != null && minigame_class.length() > 0) {
 			try {
@@ -37,6 +38,9 @@ public class Place {
 				} else {
 					this.minigameBg = bg;
 				}
+				
+				this.minigameMask = minigame_mask;
+				
 			} catch (ClassNotFoundException e) {
 				// do nothing
 				e.printStackTrace();
@@ -123,4 +127,9 @@ public class Place {
 	public List<Team> getTeamsList() {
 		return teamsList;
 	}
+
+	public String getMinigameMask() {
+		return minigameMask;
+	}
+
 }

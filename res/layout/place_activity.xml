@@ -18,7 +18,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/mg_castellazzo_bg"
+        android:background="@drawable/place_castellazzo_bg"
         android:scaleType="fitEnd" />
 
     <LinearLayout
@@ -49,12 +49,14 @@
             android:baselineAligned="false" >
 
             <LinearLayout
+                android:id="@+id/LLminigame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical" 
+                android:visibility="invisible">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -91,10 +93,12 @@
                 android:gravity="center_horizontal" >
 
                 <LinearLayout
+                    android:id="@+id/LLteam3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:orientation="vertical" >
+                    android:layout_gravity="bottom|right"
+                    android:orientation="vertical" 
+                    android:visibility="invisible">
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -102,7 +106,7 @@
                         android:background="@drawable/baloon" >
 
                         <com.mobsandgeeks.ui.TypefaceTextView
-                            android:id="@+id/balloonTeam01"
+                            android:id="@+id/balloonTeam3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
@@ -114,20 +118,22 @@
                     </FrameLayout>
 
                     <ImageButton
-                        android:id="@+id/ButtonTeam01"
+                        android:id="@+id/ButtonTeam3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/mercenari"
+                        android:background="@drawable/mer"
                         android:contentDescription="@string/otherTeam_baloon"
                         android:onClick="goToBattle" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/LLteam2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:orientation="vertical" >
+                    android:layout_gravity="bottom|right"
+                    android:orientation="vertical" 
+                    android:visibility="invisible">
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -135,7 +141,7 @@
                         android:background="@drawable/baloon" >
 
                         <com.mobsandgeeks.ui.TypefaceTextView
-                            android:id="@+id/balloonTeam02"
+                            android:id="@+id/balloonTeam2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
@@ -147,20 +153,22 @@
                     </FrameLayout>
 
                     <ImageButton
-                        android:id="@+id/ButtonTeam02"
+                        android:id="@+id/ButtonTeam2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/pantere"
+                        android:background="@drawable/pan"
                         android:contentDescription="@string/otherTeam_baloon"
                         android:onClick="goToBattle" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/LLteam1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:orientation="vertical" >
+                    android:orientation="vertical" 
+                    android:visibility="invisible">
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -168,7 +176,7 @@
                         android:background="@drawable/baloon" >
 
                         <com.mobsandgeeks.ui.TypefaceTextView
-                            android:id="@+id/balloonTeam03"
+                            android:id="@+id/balloonTeam1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
@@ -180,11 +188,11 @@
                     </FrameLayout>
 
                     <ImageButton
-                        android:id="@+id/ButtonTeam03"
+                        android:id="@+id/ButtonTeam1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/diavoli"
+                        android:background="@drawable/dia"
                         android:contentDescription="@string/otherTeam_baloon"
                         android:onClick="goToBattle" />
                 </LinearLayout>
