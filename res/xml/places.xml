@@ -7,7 +7,7 @@
         bg="place_castellazzo_bg"
         latlng="45.465090, 7.872041"
         minigame="PredaInDora"
-        minigame_bg="PredaInDora"
+        minigame_bg="predaindora_bg"
         minigame_descr="Il Podestà era il supremo capo del governo del Comune, nominato ogni anno dai Credendari, i “senatori” della Città.
 Quando entrava in carica, svolgeva la cerimonia chiamata Preda in Dora: andava a prelevare, con un apposito martello conservato in Comune, un sasso tra i ruderi del Castellazzo e lo gettava in Dora in spregio al Marchese del Monferrato.
 
@@ -19,7 +19,10 @@ Il giocatore può scegliere fra 3 sassi dei ruderi per colpirlo con il suo marte
     <place
         id="3"
         name="Piazza Maretta"
-        latlng="45.465872, 7.871290" />
+        latlng="45.465872, 7.871290"
+        minigame="Fagiolata"
+        minigame_bg="predaindora_bg"
+        minigame_descr="Se sei loggato su Facebook o su Google, puoi donare ai tuoi amici un set di 10 arance." />
     <place
         id="4"
         name="Borghetto"

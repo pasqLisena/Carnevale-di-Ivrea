@@ -5,9 +5,13 @@ import it.polito.applicazionimultimediali.carnevalediivrea.Team;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 public class Place {
+	protected final String mgPackageName = "it.polito.applicazionimultimediali.carnevalediivrea.minigame.";
+
 	private int id;
 	private String name, bg;
 	private LatLng latLng;
@@ -23,7 +27,10 @@ public class Place {
 		this(id, name, latLng, bg);
 		if (minigame_class != null && minigame_class.length() > 0) {
 			try {
-				this.minigame = Class.forName(minigame_class);
+				Log.d("PLACE", minigame_class);
+				this.minigame = Class.forName(mgPackageName + minigame_class);
+				Log.d("PLACE", this.minigame.toString());
+
 				this.minigameDescr = minigame_descr;
 				if (minigame_bg == null) {
 					this.minigameBg = minigame_bg;

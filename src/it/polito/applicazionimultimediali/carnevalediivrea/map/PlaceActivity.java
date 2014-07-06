@@ -40,7 +40,9 @@ public class PlaceActivity extends Activity {
 	}
 
 	public void goToMinigame(View view) {
-		Intent intent = new Intent(this, place.getMinigame());
+		Class<?> mg = place.getMinigame();
+		if (mg == null) return;
+		Intent intent = new Intent(this, mg);
 		intent.putExtra("mg_bg", place.getMinigameBg());
 		intent.putExtra("mg_descr", place.getMinigameDescr());
 		startActivity(intent);

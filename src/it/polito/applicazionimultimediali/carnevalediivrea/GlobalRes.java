@@ -108,7 +108,6 @@ public class GlobalRes {
 					String name = xml.getAttributeValue(null, "name");
 					String latLng = xml.getAttributeValue(null, "latlng");
 					String bg = xml.getAttributeValue(null, "bg");
-					bg="piazza_di_citta";
 					String minigame_class = xml.getAttributeValue(null,
 							"minigame");
 

@@ -3,12 +3,13 @@ package it.polito.applicazionimultimediali.carnevalediivrea.minigame;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public abstract class Minigame extends Activity {
-	static String descr;
-	static int descrImg;
+	protected String descr;
+	protected int bg;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -16,24 +17,24 @@ public abstract class Minigame extends Activity {
 		setContentView(R.layout.start_minigame_activity);
 
 		String mg_bg = null;
-		String mg_descr = null;
+		String descr = null;
 		if (savedInstanceState == null) {
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
 				mg_bg = extras.getString("mg_bg");
-				mg_descr = extras.getString("mg_descr");
+				descr = extras.getString("mg_descr");
 			}
 		} else {
 			mg_bg = (String) savedInstanceState.getSerializable("mg_bg");
-			mg_descr = (String) savedInstanceState.getSerializable("mg_descr");
+			descr = (String) savedInstanceState.getSerializable("mg_descr");
 		}
 
-		int mgBg = getResources().getIdentifier(mg_bg, "drawable", null);
+		int bg = getResources().getIdentifier(mg_bg, "drawable", null);
 
 		
-		findViewById(R.id.startMinigameFullLayout).setBackgroundResource(mgBg);
+		findViewById(R.id.startMinigameFullLayout).setBackgroundResource(bg);
 
-		((TextView) findViewById(R.id.descrStartMinigame)).setText(mg_descr);
+		((TextView) findViewById(R.id.descrStartMinigame)).setText(descr);
 //		((ImageView)findViewById(R.id.bgImageMinigame)).setImageResource(descrImg);
 	}
 
