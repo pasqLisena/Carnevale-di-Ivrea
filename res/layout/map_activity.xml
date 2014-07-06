@@ -19,7 +19,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/overmap"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/ivrea_map_suggest"
@@ -29,7 +29,6 @@
             android:padding="10dp"
             android:text="@string/ivrea_map_suggest"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
 
     <ImageButton
@@ -40,6 +39,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/overmap_open"
         android:contentDescription="@string/ivrea_map_button_openplace"
-        android:onClick="openPlace" android:visibility="gone" />
+        android:onClick="openPlace"
+        android:visibility="gone" />
 
 </RelativeLayout>

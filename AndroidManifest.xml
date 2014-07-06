@@ -81,6 +81,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.Fagiolata"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.PlaceActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.PlaceActivity" />
+        </activity>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.FagiolataPlay"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.minigame.Fagiolata"
+            android:screenOrientation="landscape"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.Fagiolata" />
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
@@ -91,6 +109,7 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_api" />
+
     </application>
 
 </manifest>

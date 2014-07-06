@@ -29,13 +29,15 @@ public abstract class Minigame extends Activity {
 			descr = (String) savedInstanceState.getSerializable("mg_descr");
 		}
 
-		int bg = getResources().getIdentifier(mg_bg, "drawable", null);
-
-		
-		findViewById(R.id.startMinigameFullLayout).setBackgroundResource(bg);
+		if (mg_bg != null) {
+			int bg = getResources().getIdentifier(mg_bg, "drawable", null);
+			if (bg != 0)
+				findViewById(R.id.startMinigameFullLayout)
+						.setBackgroundResource(bg);
+		}
 
 		((TextView) findViewById(R.id.descrStartMinigame)).setText(descr);
-//		((ImageView)findViewById(R.id.bgImageMinigame)).setImageResource(descrImg);
+		// ((ImageView)findViewById(R.id.bgImageMinigame)).setImageResource(descrImg);
 	}
 
 	abstract public void play(View v);
