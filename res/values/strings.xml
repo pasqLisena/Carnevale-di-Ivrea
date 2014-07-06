@@ -19,6 +19,7 @@
     <string name="orange">arance</string>
     <string name="predaindora_bg">Castellazzo</string>
     <string name="predaindora_btn">preda in Dora - roccia</string>
+    <string name="quiz">Quiz</string>
 
     <plurals name="orange">
         <item quantity="one">1 arancia</item>

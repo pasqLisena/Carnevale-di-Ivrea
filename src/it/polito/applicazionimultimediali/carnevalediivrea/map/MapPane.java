@@ -3,7 +3,6 @@ package it.polito.applicazionimultimediali.carnevalediivrea.map;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.PlayerActivity;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
-import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -130,23 +129,11 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		return true;
 	}
 
-	public void goToBattle(View view) {
-		Intent intent = new Intent(this, BattleActivity.class);
-		// intent.putExtra(EXTRA_MESSAGE, message);
-		startActivity(intent);
-	}
-
-	public void goToMinigame(View view) {
-		Intent intent = new Intent(this, selectedPlace.getMinigame());
-		// intent.putExtra(EXTRA_MESSAGE, message);
-		startActivity(intent);
-	}
-
 	public void openPlace(View view) {
 		Intent intent = new Intent(this, PlaceActivity.class);
 		intent.putExtra("place", selectedPlace.getId() + "");
 
 		startActivity(intent);
-		overridePendingTransition (R.anim.curtainup, R.anim.curtainup_over);
+		overridePendingTransition(R.anim.curtainup, R.anim.curtainup_over);
 	}
 }

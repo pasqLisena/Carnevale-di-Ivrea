@@ -11,6 +11,7 @@
 
     <ImageView
         android:id="@+id/bgPlace"
+        android:contentDescription="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
@@ -38,7 +39,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:background="@drawable/history_button"
-                android:contentDescription="history_cloud" />
+                android:contentDescription="@string/quiz" />
         </FrameLayout>
 
         <LinearLayout
@@ -56,23 +57,21 @@
                 android:orientation="vertical" >
 
                 <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/baloon" >
+
+                    <com.mobsandgeeks.ui.TypefaceTextView
+                        android:id="@+id/balloonMiniGame"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/baloon" >
-
-
-                        <com.mobsandgeeks.ui.TypefaceTextView
-                            android:id="@+id/balloonMiniGame"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:text="@string/minigame_baloon"
-                            android:textColor="@color/ivreaGray"
-                            android:textSize="20sp"
-                            geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
-                        
-                    </FrameLayout>
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:text="@string/minigame_baloon"
+                        android:textColor="@color/ivreaGray"
+                        android:textSize="20sp"
+                        geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
+                </FrameLayout>
 
                 <ImageButton
                     android:id="@+id/ButtonMiniGame"
@@ -80,8 +79,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/podesta"
-                    android:contentDescription="potesta_button"
-                    android:onClick="play" />
+                    android:contentDescription="@string/minigame_baloon"
+                    android:onClick="goToMinigame" />
             </LinearLayout>
 
             <LinearLayout
@@ -107,6 +106,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
+                            android:onClick="goToBattle"
                             android:text="@string/otherTeam_baloon"
                             android:textColor="@color/ivreaGray"
                             android:textSize="20sp"
@@ -119,7 +119,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/mercenari"
-                        android:onClick="play" />
+                        android:contentDescription="@string/otherTeam_baloon"
+                        android:onClick="goToBattle" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -138,6 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
+                            android:onClick="goToBattle"
                             android:text="@string/otherTeam_baloon"
                             android:textColor="@color/ivreaGray"
                             android:textSize="20sp"
@@ -150,7 +152,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/pantere"
-                        android:onClick="play" />
+                        android:contentDescription="@string/otherTeam_baloon"
+                        android:onClick="goToBattle" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -169,6 +172,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
+                            android:onClick="goToBattle"
                             android:text="@string/otherTeam_baloon"
                             android:textColor="@color/ivreaGray"
                             android:textSize="20sp"
@@ -181,7 +185,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/diavoli"
-                        android:onClick="play" />
+                        android:contentDescription="@string/otherTeam_baloon"
+                        android:onClick="goToBattle" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

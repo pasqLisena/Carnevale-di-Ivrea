@@ -25,15 +25,9 @@ public class PredaInDora extends Minigame {
 	private long lastPlay;
 	private Date nextPlay;
 
-	public PredaInDora() {
-		descr = "Colpisci una pietra del Castellazzo per vincere le arance!";
-		descrImg = R.drawable.predaindora_bg;
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.start_minigame_activity);
 		
 		btnStartMinigame = findViewById(R.id.btnStartMinigame);
 		mgTimerBar = (ProgressBar) findViewById(R.id.mgTimerBar);
