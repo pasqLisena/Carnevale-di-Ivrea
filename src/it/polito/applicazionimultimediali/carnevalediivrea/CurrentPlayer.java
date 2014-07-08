@@ -1,11 +1,10 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.games.Games;
-
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
 
 public class CurrentPlayer extends Player {
 	private int oranges;

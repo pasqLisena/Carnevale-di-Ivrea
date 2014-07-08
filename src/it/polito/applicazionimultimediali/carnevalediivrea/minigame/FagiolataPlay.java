@@ -1,20 +1,6 @@
-/* Copyright (C) 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package it.polito.applicazionimultimediali.carnevalediivrea.minigame;
 
+import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 
 import java.util.ArrayList;
@@ -45,13 +31,6 @@ import com.google.android.gms.games.request.Requests.LoadRequestsResult;
 import com.google.android.gms.games.request.Requests.UpdateRequestsResult;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
-/**
- * Be Generous. A sample game that sets up the Google Play game services API and
- * allows the user to click buttons to give gifts, request gifts, and accept
- * gifts. Win by being the most generous!
- * 
- * @author Dan Galpin (Google) and Wolff Dobson (Google)
- */
 public class FagiolataPlay extends BaseGameActivity implements
 		View.OnClickListener {
 	private static boolean DEBUG_ENABLED = true;
@@ -79,6 +58,8 @@ public class FagiolataPlay extends BaseGameActivity implements
 
 		mGiftIcon = BitmapFactory.decodeResource(getResources(),
 				R.drawable.orange);
+		
+		setTitle(getString(R.string.fagiolata_title));
 	}
 
 	// Called back after you load the current requests
@@ -98,10 +79,12 @@ public class FagiolataPlay extends BaseGameActivity implements
 				wishCount = buf.getCount();
 			}
 			// Update the counts in the layout
-			((TextView) findViewById(R.id.tv_gift_count)).setText(String
-					.format("GIFT", giftCount));
-			((TextView) findViewById(R.id.tv_request_count)).setText(String
-					.format("REQ", wishCount));
+			((TextView) findViewById(R.id.tv_gift_count))
+					.setText(getResources().getQuantityString(R.plurals.gift,
+							giftCount, giftCount));
+			((TextView) findViewById(R.id.tv_request_count))
+					.setText(getResources().getQuantityString(
+							R.plurals.request, wishCount, wishCount));
 		}
 
 	};
@@ -118,18 +101,17 @@ public class FagiolataPlay extends BaseGameActivity implements
 
 	// This shows how to set up a listener for requests receieved. It is not
 	// necessary; it only is useful if you do not want the default notifications
-	// to
-	// happen when someone sends a request to someone.
+	// to happen when someone sends a request to someone.
 	private final OnRequestReceivedListener mRequestListener = new OnRequestReceivedListener() {
 		@Override
 		public void onRequestReceived(GameRequest request) {
 			int requestStringResource;
 			switch (request.getType()) {
 			case GameRequest.TYPE_GIFT:
-				requestStringResource = R.string.app_id;
+				requestStringResource = R.string.new_gift_received;
 				break;
 			case GameRequest.TYPE_WISH:
-				requestStringResource = R.string.app_name;
+				requestStringResource = R.string.new_request_received;
 				break;
 			default:
 				return;
@@ -200,15 +182,12 @@ public class FagiolataPlay extends BaseGameActivity implements
 			Bitmap icon;
 			switch (type) {
 			case GameRequest.TYPE_GIFT:
-				// description = getString(R.string.send_gift_description);
-				description = "senf gift descr";
+				description = getString(R.string.send_gift_description);
 				intentCode = SEND_GIFT_CODE;
 				icon = mGiftIcon;
 				break;
 			case GameRequest.TYPE_WISH:
-				// description = getString(R.string.send_request_description);
-				description = "senf req descr";
-
+				description = getString(R.string.send_request_description);
 				intentCode = SEND_REQUEST_CODE;
 				icon = mGiftIcon;
 				break;
@@ -223,22 +202,22 @@ public class FagiolataPlay extends BaseGameActivity implements
 
 	private String getRequestsString(ArrayList<GameRequest> requests) {
 		if (requests.size() == 0) {
-			return "You have no requests to accept.";
+			return getString(R.string.accept0);
 		}
 
 		if (requests.size() == 1) {
-			return "Do you want to accept this request from "
-					+ requests.get(0).getSender().getDisplayName() + "?";
+			return String.format(getString(R.string.accept1), requests.get(0)
+					.getSender().getDisplayName());
 		}
 
-		StringBuffer retVal = new StringBuffer(
-				"Do you want to accept the following requests?\n\n");
+		StringBuffer retVal = new StringBuffer(getString(R.string.acceptMore));
 
 		for (GameRequest request : requests) {
-			retVal.append("  � A "
-					+ (request.getType() == GameRequest.TYPE_GIFT ? "gift"
-							: "game request") + " from "
-					+ request.getSender().getDisplayName() + "\n");
+			int type = request.getType() == GameRequest.TYPE_GIFT ? R.plurals.gift
+					: R.plurals.request;
+			retVal.append(String.format(getString(R.string.accept1),
+					getResources().getQuantityString(type, 1, 1),
+					requests.get(0).getSender().getDisplayName()));
 		}
 
 		return retVal.toString();
@@ -297,15 +276,17 @@ public class FagiolataPlay extends BaseGameActivity implements
 						}
 
 						if (numGifts != 0) {
-							// Toast our gifts.
-							Toast.makeText(FagiolataPlay.this,
-									String.format("GIFT ", numGifts),
-									Toast.LENGTH_LONG).show();
+							int gainedOranges = numGifts * 15;
+							GlobalRes.getCurrentPlayer().gainOranges(
+									gainedOranges);
+							Toast.makeText(
+									FagiolataPlay.this,
+									String.format(
+											getString(R.string.gift_gained_msg),
+											gainedOranges), Toast.LENGTH_LONG)
+									.show();
 						}
 						if (numGifts != 0 || numRequests != 0) {
-							// if the user accepted any gifts or requests,
-							// update
-							// the displayed counts
 							updateRequestCounts();
 						}
 					}
@@ -326,14 +307,14 @@ public class FagiolataPlay extends BaseGameActivity implements
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getRequestsString(requests))
-				.setPositiveButton("Absolutely!",
+				.setPositiveButton(getString(R.string.accept),
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int id) {
 								acceptRequests(theRequests);
 							}
 						})
-				.setNegativeButton("No thanks",
+				.setNegativeButton(getString(R.string.refuse),
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int id) {
@@ -378,25 +359,25 @@ public class FagiolataPlay extends BaseGameActivity implements
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-//		case R.id.button_sign_in:
-//			// Check to see the developer who's running this sample code
-//			// read the instructions :-)
-//			// NOTE: this check is here only because this is a sample! Don't
-//			// include this
-//			// check in your actual production app.
-//			// if (!verifyPlaceholderIdsReplaced()) {
-//			// showAlert("Error: sample not correctly set up. See README!");
-//			// break;
-//			// }
-//
-//			// start the sign-in flow
-//			beginUserInitiatedSignIn();
-//			break;
-//		case R.id.button_sign_out:
-//			// sign out.
-//			signOut();
-//			showSignInBar();
-//			break;
+		// case R.id.button_sign_in:
+		// // Check to see the developer who's running this sample code
+		// // read the instructions :-)
+		// // NOTE: this check is here only because this is a sample! Don't
+		// // include this
+		// // check in your actual production app.
+		// // if (!verifyPlaceholderIdsReplaced()) {
+		// // showAlert("Error: sample not correctly set up. See README!");
+		// // break;
+		// // }
+		//
+		// // start the sign-in flow
+		// beginUserInitiatedSignIn();
+		// break;
+		// case R.id.button_sign_out:
+		// // sign out.
+		// signOut();
+		// showSignInBar();
+		// break;
 		case R.id.button_send_gift:
 			// send gift!
 			showSendIntent(GameRequest.TYPE_GIFT);
@@ -406,6 +387,7 @@ public class FagiolataPlay extends BaseGameActivity implements
 			showSendIntent(GameRequest.TYPE_WISH);
 			break;
 		case R.id.button_open_inbox:
+		case R.id.button_open_inbox2:
 			// show inbox!
 			if (getGameHelper().isSignedIn()) {
 				startActivityForResult(
@@ -416,24 +398,4 @@ public class FagiolataPlay extends BaseGameActivity implements
 		}
 	}
 
-	/**
-	 * Checks that the developer (that's you!) read the instructions. IMPORTANT:
-	 * a method like this SHOULD NOT EXIST in your production app! It merely
-	 * exists here to check that anyone running THIS PARTICULAR SAMPLE did what
-	 * they were supposed to in order for the sample to work.
-	 */
-	boolean verifyPlaceholderIdsReplaced() {
-		final boolean CHECK_PKGNAME = true; // set to false to disable check
-											// (not recommended!)
-
-		// Did the developer forget to change the package name?
-		if (CHECK_PKGNAME && getPackageName().startsWith("com.google.example.")) {
-			Log.e(TAG,
-					"*** Sample setup problem: "
-							+ "package name cannot be com.google.example.*. Use your own "
-							+ "package name.");
-			return false;
-		}
-		return true;
-	}
 }

@@ -88,6 +88,7 @@ public class PlaceActivity extends Activity {
 		Intent intent = new Intent(this, mg);
 		intent.putExtra("mg_bg", place.getMinigameBg());
 		intent.putExtra("mg_descr", place.getMinigameDescr());
+		intent.putExtra("mg_mask", place.getMinigameMask());
 		startActivity(intent);
 	}
 

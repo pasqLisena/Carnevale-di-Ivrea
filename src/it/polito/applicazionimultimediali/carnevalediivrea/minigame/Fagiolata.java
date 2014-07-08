@@ -68,8 +68,8 @@ public class Fagiolata extends Minigame {
 	@Override
 	public void play(View v) {
 		Intent intent = new Intent(this, FagiolataPlay.class);
-		// intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
+		overridePendingTransition(R.anim.fadein_fagiolata, R.anim.zoom_in_fagiolata);
 	}
 
 }

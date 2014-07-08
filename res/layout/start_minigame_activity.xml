@@ -21,7 +21,7 @@
             android:orientation="horizontal" >
 
             <ImageView
-                android:id="@+id/character"
+                android:id="@+id/character2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="14dp"
@@ -89,7 +89,9 @@
         android:id="@+id/character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:src="@drawable/podesta" />
 
 </RelativeLayout>

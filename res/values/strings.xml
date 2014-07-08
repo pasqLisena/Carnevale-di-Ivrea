@@ -32,10 +32,35 @@
         <item quantity="one">1 punto</item>
         <item quantity="other">%d punti</item>
     </plurals>
+    <plurals name="request">
+        <item quantity="one">1 richiesta</item>
+        <item quantity="other">%d richieste</item>
+    </plurals>
+    <plurals name="gift">
+        <item quantity="one">1 regalo</item>
+        <item quantity="other">%d regali</item>
+    </plurals>
 
+    <string name="new_gift_received">Fagiolata per te!</string>
+    <string name="new_request_received">Aiuta il tuo amico!</string>
+    <string name="send_gift_description">Aiuta i tuoi amici con un set di 15 arance!</string>
+    <string name="send_request_description">A secco di arance? Chiedi agli amici!</string>
+    <string name="send_gift">Invia arance</string>
+    <string name="send_request">Chiedi agli amici</string>
+    <string name="open_inbox">Apri</string>
+    <string name="accept">Accetta</string>
+    <string name="refuse">No, grazie</string>
+    <string name="accept0">Nessuna richiesta da accettare</string>
+    <string name="accept1">Vuoi accettare la richiesta di {0}?</string>
+    <string name="acceptMore">Vuoi accettare le seguenti richieste?\n\n</string>
+    <string name="acceptMoreLi">&#8226; {0} arance da {1}</string>
     <string name="player">Player</string>
     <string name="default_player_name">Anonimo</string>
     <string name="logout">Logout</string>
     <string name="register">Entra</string>
+    <string name="loading">loading</string>
 
+    <string name="gift_gained_msg">hai ottenuto {0} arance</string>
+    <string name="fagiolata_title">Fagiolata Benefica</string>
+    
 </resources>
