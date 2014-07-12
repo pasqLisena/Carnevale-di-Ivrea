@@ -25,3 +25,4 @@ proguard/
 # Avoid to override ourselves :)
 project.properties
 .README.md.html
+.settings/
