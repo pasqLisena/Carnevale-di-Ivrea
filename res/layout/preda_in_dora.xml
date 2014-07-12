@@ -38,15 +38,21 @@
                     android:id="@+id/rock1_after"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_vertical|center_horizontal"
                     android:background="@drawable/rock1_after"
                     android:contentDescription="@string/predaindora_btn" />
+
+                <TextView
+                    android:id="@+id/orangeText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal" />
 
                 <ImageButton
                     android:id="@+id/rock1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_vertical|center_horizontal"
                     android:background="@drawable/rock1"
                     android:contentDescription="@string/predaindora_btn"
                     android:onClick="breakRock" />
@@ -65,11 +71,17 @@
                     android:background="@drawable/rock3_after"
                     android:contentDescription="@string/predaindora_btn" />
 
+                <TextView
+                    android:id="@+id/orangeText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal" />
+
                 <ImageButton
                     android:id="@+id/rock3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_vertical|center_horizontal"
                     android:background="@drawable/rock3"
                     android:contentDescription="@string/predaindora_btn"
                     android:onClick="breakRock" />
@@ -77,7 +89,7 @@
         </LinearLayout>
 
         <FrameLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1" >
@@ -86,15 +98,21 @@
                 android:id="@+id/rock2_after"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:background="@drawable/rock2_after"
                 android:contentDescription="@string/predaindora_btn" />
+
+            <TextView
+                android:id="@+id/orangeText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal" />
 
             <ImageButton
                 android:id="@+id/rock2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:background="@drawable/rock2"
                 android:contentDescription="@string/predaindora_btn"
                 android:onClick="breakRock" />

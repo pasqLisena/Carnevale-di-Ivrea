@@ -215,7 +215,7 @@ public class FagiolataPlay extends BaseGameActivity implements
 		for (GameRequest request : requests) {
 			int type = request.getType() == GameRequest.TYPE_GIFT ? R.plurals.gift
 					: R.plurals.request;
-			retVal.append(String.format(getString(R.string.accept1),
+			retVal.append(String.format(getString(R.string.acceptMoreLi),
 					getResources().getQuantityString(type, 1, 1),
 					requests.get(0).getSender().getDisplayName()));
 		}
