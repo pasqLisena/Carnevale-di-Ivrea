@@ -8,86 +8,159 @@
     tools:context=".FagiolataPlay" >
 
     <LinearLayout
+        android:id="@+id/sing_in_cont"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center" >
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="10dp" android:visibility="gone" >
 
         <TextView
-            android:id="@+id/tv_gift_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableLeft="@drawable/orange"
-            android:drawablePadding="5dp"
+            android:layout_weight="2"
             android:gravity="center_vertical"
-            android:text="@string/loading"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white" />
+            android:text="@string/fagiolata_invite_singin"
+            android:textAlignment="gravity"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/button_open_inbox"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/orange_button"
-            android:text="@string/open_inbox" />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white" >
+
+        </com.google.android.gms.common.SignInButton>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="7dp"
+                android:gravity="center"
+                android:text="@string/oppure"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/goBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/orange_button"
+                android:padding="5dp"
+                android:text="@string/button_back"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/console_cont"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center" >
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tv_request_count"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableLeft="@drawable/orange"
-            android:drawablePadding="5dp"
-            android:gravity="center_vertical"
-            android:text="@string/loading"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white" />
+            android:layout_weight="1"
+            android:gravity="center" >
 
-        <Button
-            android:id="@+id/button_open_inbox2"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/orange_button"
-            android:text="@string/open_inbox" />
+            <TextView
+                android:id="@+id/tv_gift_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/orange_gift"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="@string/loading"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white" />
 
+            <Button
+                android:id="@+id/button_open_inbox"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/orange_button"
+                android:text="@string/open_inbox" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_request_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/orange_request"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="@string/loading"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/button_open_inbox2"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/orange_button"
+                android:text="@string/open_inbox" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/button_send_gift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/orange_button"
+                android:text="@string/send_gift" />
+
+            <Button
+                android:id="@+id/button_send_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/orange_button"
+                android:text="@string/send_request" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <!-- MAIN DISPLAY -->
-
-    <LinearLayout
-        android:id="@+id/LinearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/button_send_gift"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/orange_button"
-            android:text="@string/send_gift" />
-
-        <Button
-            android:id="@+id/button_send_request"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/orange_button"
-            android:text="@string/send_request" />
-    </LinearLayout>
 
     <!-- SIGN-IN BAR -->
 

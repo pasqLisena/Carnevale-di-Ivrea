@@ -15,6 +15,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +32,10 @@ import com.google.android.gms.games.request.Requests.LoadRequestsResult;
 import com.google.android.gms.games.request.Requests.UpdateRequestsResult;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
-public class FagiolataPlay extends BaseGameActivity implements
-		View.OnClickListener {
+public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
+	public OnRequestReceivedListener mRequestListener;
+	public ResultCallback<LoadRequestsResult> mLoadRequestsCallback;
+
 	private static boolean DEBUG_ENABLED = true;
 	private static final String TAG = "FagiolataPlay";
 	private static final int SHOW_INBOX = 1;
@@ -45,51 +48,35 @@ public class FagiolataPlay extends BaseGameActivity implements
 	/** Icon to be used to send gifts/requests */
 	private Bitmap mGiftIcon;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		enableDebugLog(DEBUG_ENABLED);
 		super.onCreate(savedInstanceState);
+		enableDebugLog(DEBUG_ENABLED);
 
 		// Set up click listeners
 		setContentView(R.layout.fagiolata_activity);
+		findViewById(R.id.sign_in_button).setOnClickListener(this);
+		findViewById(R.id.goBack).setOnClickListener(this);
 		findViewById(R.id.button_open_inbox).setOnClickListener(this);
 		findViewById(R.id.button_send_gift).setOnClickListener(this);
 		findViewById(R.id.button_send_request).setOnClickListener(this);
 
 		mGiftIcon = BitmapFactory.decodeResource(getResources(),
 				R.drawable.orange);
-		
+
 		setTitle(getString(R.string.fagiolata_title));
+
+		if (!isSignedIn()) {
+			findViewById(R.id.sing_in_cont).setVisibility(View.VISIBLE);
+			findViewById(R.id.console_cont).setVisibility(View.GONE);
+		} else {
+			findViewById(R.id.sing_in_cont).setVisibility(View.GONE);
+			findViewById(R.id.console_cont).setVisibility(View.VISIBLE);
+		}
+		getGameHelper().setMaxAutoSignInAttempts(0);
 	}
 
-	// Called back after you load the current requests
-	private final ResultCallback<Requests.LoadRequestsResult> mLoadRequestsCallback = new ResultCallback<Requests.LoadRequestsResult>() {
-
-		@Override
-		public void onResult(LoadRequestsResult result) {
-			int giftCount = 0;
-			int wishCount = 0;
-			GameRequestBuffer buf;
-			buf = result.getRequests(GameRequest.TYPE_GIFT);
-			if (null != buf) {
-				giftCount = buf.getCount();
-			}
-			buf = result.getRequests(GameRequest.TYPE_WISH);
-			if (null != buf) {
-				wishCount = buf.getCount();
-			}
-			// Update the counts in the layout
-			((TextView) findViewById(R.id.tv_gift_count))
-					.setText(getResources().getQuantityString(R.plurals.gift,
-							giftCount, giftCount));
-			((TextView) findViewById(R.id.tv_request_count))
-					.setText(getResources().getQuantityString(
-							R.plurals.request, wishCount, wishCount));
-		}
-
-	};
-
-	// Changes the numbers at the top of the layout
 	private void updateRequestCounts() {
 		PendingResult<Requests.LoadRequestsResult> result = Games.Requests
 				.loadRequests(getApiClient(),
@@ -99,36 +86,10 @@ public class FagiolataPlay extends BaseGameActivity implements
 		result.setResultCallback(mLoadRequestsCallback);
 	}
 
-	// This shows how to set up a listener for requests receieved. It is not
-	// necessary; it only is useful if you do not want the default notifications
-	// to happen when someone sends a request to someone.
-	private final OnRequestReceivedListener mRequestListener = new OnRequestReceivedListener() {
-		@Override
-		public void onRequestReceived(GameRequest request) {
-			int requestStringResource;
-			switch (request.getType()) {
-			case GameRequest.TYPE_GIFT:
-				requestStringResource = R.string.new_gift_received;
-				break;
-			case GameRequest.TYPE_WISH:
-				requestStringResource = R.string.new_request_received;
-				break;
-			default:
-				return;
-			}
-			Toast.makeText(FagiolataPlay.this, requestStringResource,
-					Toast.LENGTH_LONG).show();
-			updateRequestCounts();
-		}
-
-		@Override
-		public void onRequestRemoved(String requestId) {
-		}
-	};
-
 	@Override
 	public void onSignInFailed() {
-		// TODO
+		findViewById(R.id.sing_in_cont).setVisibility(View.VISIBLE);
+		findViewById(R.id.console_cont).setVisibility(View.GONE);
 	}
 
 	/**
@@ -137,10 +98,64 @@ public class FagiolataPlay extends BaseGameActivity implements
 	 */
 	@Override
 	public void onSignInSucceeded() {
-		// TODO
+		findViewById(R.id.sing_in_cont).setVisibility(View.GONE);
+		findViewById(R.id.console_cont).setVisibility(View.VISIBLE);
+		
 
-		// This is *NOT* required; if you do not register a handler for
-		// request events, you will get standard notifications instead.
+		if(mRequestListener == null){
+		 mRequestListener = new OnRequestReceivedListener() {
+				@Override
+				public void onRequestReceived(GameRequest request) {
+					int requestStringResource;
+					switch (request.getType()) {
+					case GameRequest.TYPE_GIFT:
+						requestStringResource = R.string.new_gift_received;
+						break;
+					case GameRequest.TYPE_WISH:
+						requestStringResource = R.string.new_request_received;
+						break;
+					default:
+						return;
+					}
+					Toast.makeText(FagiolataPlay.this, requestStringResource,
+							Toast.LENGTH_LONG).show();
+					updateRequestCounts();
+				}
+
+				@Override
+				public void onRequestRemoved(String requestId) {
+				}
+			};
+		}
+		
+		if(mLoadRequestsCallback == null){
+			mLoadRequestsCallback = new ResultCallback<Requests.LoadRequestsResult>() {
+
+				@Override
+				public void onResult(LoadRequestsResult result) {
+					int giftCount = 0;
+					int wishCount = 0;
+					GameRequestBuffer buf;
+					buf = result.getRequests(GameRequest.TYPE_GIFT);
+					if (null != buf) {
+						giftCount = buf.getCount();
+					}
+					buf = result.getRequests(GameRequest.TYPE_WISH);
+					if (null != buf) {
+						wishCount = buf.getCount();
+					}
+					// Update the counts in the layout
+					((TextView) findViewById(R.id.tv_gift_count))
+							.setText(getResources().getQuantityString(R.plurals.gift,
+									giftCount, giftCount));
+					((TextView) findViewById(R.id.tv_request_count))
+							.setText(getResources().getQuantityString(
+									R.plurals.request, wishCount, wishCount));
+				}
+
+			};
+		}
+		
 		Games.Requests
 				.registerRequestListener(getApiClient(), mRequestListener);
 
@@ -358,26 +373,15 @@ public class FagiolataPlay extends BaseGameActivity implements
 
 	@Override
 	public void onClick(View view) {
+		Log.d("AAAA", getResources().getResourceEntryName(view.getId()) );
+
 		switch (view.getId()) {
-		// case R.id.button_sign_in:
-		// // Check to see the developer who's running this sample code
-		// // read the instructions :-)
-		// // NOTE: this check is here only because this is a sample! Don't
-		// // include this
-		// // check in your actual production app.
-		// // if (!verifyPlaceholderIdsReplaced()) {
-		// // showAlert("Error: sample not correctly set up. See README!");
-		// // break;
-		// // }
-		//
-		// // start the sign-in flow
-		// beginUserInitiatedSignIn();
-		// break;
-		// case R.id.button_sign_out:
-		// // sign out.
-		// signOut();
-		// showSignInBar();
-		// break;
+		case R.id.sign_in_button:
+			beginUserInitiatedSignIn();
+			break;
+		case R.id.goBack:
+			finish();
+			break;
 		case R.id.button_send_gift:
 			// send gift!
 			showSendIntent(GameRequest.TYPE_GIFT);
