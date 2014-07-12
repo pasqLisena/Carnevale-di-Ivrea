@@ -1,47 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:geekui="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:gravity="center_horizontal"
+    android:onClick="openPlace"
+    android:orientation="horizontal" >
 
-    <TextView
+    <com.mobsandgeeks.ui.TypefaceTextView
         android:id="@+id/placebar_place_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
         android:gravity="center_vertical|center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:paddingLeft="10dp"
+        android:text="@string/ivrea_map_suggest"
+        android:textColor="@color/ivreaOrange"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
 
     <LinearLayout
-        android:id="@+id/placebar_btn_cont"
-        style="?android:attr/buttonBarStyle"
-        android:layout_width="match_parent"
+        android:id="@+id/overview_icon_cont"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal" >
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="15dp" >
 
-        <Button
-            android:id="@+id/history_btn"
-            style="?android:attr/buttonBarButtonStyle"
+        <ImageView
+            android:id="@+id/minigame_ico"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ivrea_map_button_history" />
-
-        <Button
-            android:id="@+id/battle_btn"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="goToBattle"
-            android:text="@string/ivrea_map_button_battle"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:contentDescription="@string/ivrea_map_button_minigame"
+            android:src="@drawable/badge_minigame"
             android:visibility="gone" />
 
-        <Button
-            android:id="@+id/minigame_btn"
-            style="?android:attr/buttonBarButtonStyle"
+        <ImageView
+            android:id="@+id/history_ico"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="goToMinigame"
-            android:text="@string/ivrea_map_button_minigame"
-            android:visibility="gone" />
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:contentDescription="@string/ivrea_map_button_history"
+            android:src="@drawable/badge_history" />
     </LinearLayout>
 
 </LinearLayout>

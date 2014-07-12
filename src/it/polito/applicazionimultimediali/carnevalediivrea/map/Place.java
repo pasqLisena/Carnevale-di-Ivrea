@@ -1,45 +1,65 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.map;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
-import it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.graphics.Point;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
 public class Place {
+	protected final String mgPackageName = "it.polito.applicazionimultimediali.carnevalediivrea.minigame.";
+
 	private int id;
-	private String name;
+	private String name, bg;
 	private LatLng latLng;
-	private Point pos;
 
 	private List<Team> teamsList;
 
 	private boolean locked;
 	private Class<?> minigame;
+	private String minigameDescr, minigameBg, minigameMask;
 
-	public Place(int id, String name, String latLng, boolean hasMinigame) {
+
+	public Place(int id, String name, String latLng, String bg,
+			String minigame_class, String minigame_descr, String minigame_bg, String minigame_mask) {
+		this(id, name, latLng, bg);
+		if (minigame_class != null && minigame_class.length() > 0) {
+			try {
+				Log.d("PLACE", minigame_class);
+				this.minigame = Class.forName(mgPackageName + minigame_class);
+				Log.d("PLACE", this.minigame.toString());
+
+				this.minigameDescr = minigame_descr;
+				if (minigame_bg == null) {
+					this.minigameBg = minigame_bg;
+				} else {
+					this.minigameBg = bg;
+				}
+				
+				this.minigameMask = minigame_mask;
+				
+			} catch (ClassNotFoundException e) {
+				// do nothing
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public Place(int id, String name, String latLng, String bg) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.bg = bg;
 
 		String[] temp = latLng.split(",");
 		this.latLng = new LatLng(Double.parseDouble(temp[0]),
 				Double.parseDouble(temp[1]));
 
 		this.locked = true;
-		if (hasMinigame) {
-			this.minigame = findMinigame(id);
-		}
-	}
-
-	public Place(int id, String name, String latLng, Point pos,
-			boolean hasMinigame) {
-		this(id, name, latLng, hasMinigame);
-		this.setPos(pos);
+		this.minigame = null;
 	}
 
 	public int getId() {
@@ -62,12 +82,16 @@ public class Place {
 		return minigame;
 	}
 
-	public Point getPos() {
-		return pos;
+	public String getBg() {
+		return bg;
 	}
 
-	public void setPos(Point pos) {
-		this.pos = pos;
+	public String getMinigameDescr() {
+		return minigameDescr;
+	}
+
+	public String getMinigameBg() {
+		return minigameBg;
 	}
 
 	public boolean isLocked() {
@@ -100,12 +124,12 @@ public class Place {
 		return s;
 	}
 
-	private Class<?> findMinigame(int id) {
-		switch (id) {
-		case 1:
-			return PredaInDora.class;
-		default:
-			return null;
-		}
+	public List<Team> getTeamsList() {
+		return teamsList;
 	}
+
+	public String getMinigameMask() {
+		return minigameMask;
+	}
+
 }

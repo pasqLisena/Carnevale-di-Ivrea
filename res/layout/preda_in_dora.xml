@@ -4,111 +4,119 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:layout_margin="0dp"
-    tools:context=".MainActivity" >
+    tools:context=".PredaInDoraPlay" >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/predaindora_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/mg_predaindora_bg" />
-
-    <TextView
-        android:id="@+id/instructionPiD"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#99000000"
-        android:gravity="center_horizontal|center_vertical"
-        android:minEms="2"
-        android:minLines="2"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:text="Colpisci una pietra"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white"
-        android:textStyle="italic" />
-
-    <LinearLayout
-        android:id="@+id/rockCont"
-        android:layout_width="wrap_content"
-        android:layout_height="180dp"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/instructionPiD"
-        android:layout_margin="5dp"
-        android:padding="3dp" >
-
-        <ImageView
-            android:id="@+id/rock1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:onClick="breakRock"
-            android:src="@drawable/mg_sasso" />
-
-        <ImageView
-            android:id="@+id/rock2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:onClick="breakRock"
-            android:src="@drawable/mg_sasso" />
-
-        <ImageView
-            android:id="@+id/rock3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:onClick="breakRock"
-            android:src="@drawable/mg_sasso" />
-    </LinearLayout>
+        android:contentDescription="@string/predaindora_bg"
+        android:scaleType="centerCrop"
+        android:src="@drawable/predaindora_bg" />
 
     <LinearLayout
-        android:id="@+id/pidOrangeCont"
+        android:id="@+id/rocksContent"
         android:layout_width="wrap_content"
-        android:layout_height="180dp"
-        android:layout_alignBottom="@+id/rockCont"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/rockCont"
-        android:layout_alignTop="@+id/rockCont"
-        android:layout_margin="5dp"
-        android:layout_weight="0.3"
-        android:padding="3dp" >
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:baselineAligned="false" >
 
-        <TextView
-            android:id="@+id/pidRockOr1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:alpha="0"
-            android:gravity="center"
-            android:text="40"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/pidRockOr2"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/rock1_after"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/rock1_after"
+                    android:contentDescription="@string/predaindora_btn" />
+
+                <TextView
+                    android:id="@+id/orangeText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal" />
+
+                <ImageButton
+                    android:id="@+id/rock1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/rock1"
+                    android:contentDescription="@string/predaindora_btn"
+                    android:onClick="breakRock" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageButton
+                    android:id="@+id/rock3_after"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/rock3_after"
+                    android:contentDescription="@string/predaindora_btn" />
+
+                <TextView
+                    android:id="@+id/orangeText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal" />
+
+                <ImageButton
+                    android:id="@+id/rock3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/rock3"
+                    android:contentDescription="@string/predaindora_btn"
+                    android:onClick="breakRock" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:alpha="0"
-            android:gravity="center"
-            android:text="30"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" >
 
-        <TextView
-            android:id="@+id/pidRockOr3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:alpha="0"
-            android:gravity="center"
-            android:text="20"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            <ImageButton
+                android:id="@+id/rock2_after"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:background="@drawable/rock2_after"
+                android:contentDescription="@string/predaindora_btn" />
 
+            <TextView
+                android:id="@+id/orangeText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal" />
+
+            <ImageButton
+                android:id="@+id/rock2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:background="@drawable/rock2"
+                android:contentDescription="@string/predaindora_btn"
+                android:onClick="breakRock" />
+        </FrameLayout>
     </LinearLayout>
 
 </RelativeLayout>

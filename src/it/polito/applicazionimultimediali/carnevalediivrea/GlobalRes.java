@@ -9,12 +9,9 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.XmlResourceParser;
-import android.graphics.Point;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -78,7 +75,7 @@ public class GlobalRes {
 		int eventType = -1;
 		while (eventType != XmlPullParser.END_DOCUMENT) {
 			if (eventType == XmlPullParser.START_DOCUMENT) {
-				Log.v(DEBUG_TAG, "Document Start");
+				Log.v(DEBUG_TAG, "Teams Document Start");
 			} else if (eventType == XmlPullParser.START_TAG) {
 				String parserName = xml.getName();
 				if (parserName.equals("team")) {
@@ -92,7 +89,7 @@ public class GlobalRes {
 			}
 			eventType = xml.next();
 		}
-		Log.v(DEBUG_TAG, "Document End");
+		Log.v(DEBUG_TAG, "Teams Document End");
 	}
 
 	private static void parsePlaces() throws XmlPullParserException,
@@ -100,42 +97,46 @@ public class GlobalRes {
 		XmlResourceParser xml = ctx.getResources().getXml(R.xml.places);
 
 		int eventType = -1;
-		Place p = null;
 		while (eventType != XmlPullParser.END_DOCUMENT) {
 			if (eventType == XmlPullParser.START_DOCUMENT) {
-				Log.v(DEBUG_TAG, "Document Start");
+				Log.v(DEBUG_TAG, "Places Document Start");
 			} else if (eventType == XmlPullParser.START_TAG) {
 				String parserName = xml.getName();
 				if (parserName.equals("place")) {
 					int id = Integer
 							.parseInt(xml.getAttributeValue(null, "id"));
-					p = new Place(id, xml.getAttributeValue(null, "name"),
-							xml.getAttributeValue(null, "latlng"),
-							xml.getAttributeBooleanValue(null, "minigame",
-									false));
-					String pos = xml.getAttributeValue(null, "xy");
-					if (pos != null) {
-						String[] posSplit = pos.split(",");
-						p.setPos(new Point(Integer.parseInt(posSplit[0]),
-								Integer.parseInt(posSplit[1])));
+					String name = xml.getAttributeValue(null, "name");
+					String latLng = xml.getAttributeValue(null, "latlng");
+					String bg = xml.getAttributeValue(null, "bg");
+					String minigame_class = xml.getAttributeValue(null,
+							"minigame");
+					
+
+					Place p = null;
+					if (minigame_class != null) {
+						String minigame_mask = xml.getAttributeValue(null, "minigame_mask");
+						String minigame_descr = xml.getAttributeValue(null,
+								"minigame_descr");
+						String minigame_bg = xml.getAttributeValue(null,
+								"minigame_bg");
+						p = new Place(id, name, latLng, bg, minigame_class,
+								minigame_descr, minigame_bg, minigame_mask);
+					} else {
+						p = new Place(id, name, latLng, bg);
 					}
 					placesList.put(id, p);
 				}
-				// else if (parserName.equals("team")) {
-				// p.addTeam(xml.getAttributeValue(null, "id"));
-				// }
 			}
 			eventType = xml.next();
 		}
-		Log.v(DEBUG_TAG, "Document End");
+		Log.v(DEBUG_TAG, "Places Document End");
 	}
 
 	public static CurrentPlayer getCurrentPlayer() {
 		return currentPlayer;
 	}
-	
-	public static String getArancieriLeaderboard(){
+
+	public static String getArancieriLeaderboard() {
 		return ctx.getString(R.string.aranceri_leaderboards);
 	}
-
 }

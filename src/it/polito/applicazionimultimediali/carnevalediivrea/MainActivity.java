@@ -24,12 +24,14 @@ public class MainActivity extends BaseGameActivity implements
 	private Runnable goToMap = new Runnable() {
 		@Override
 		public void run() {
+			mHandler.removeCallbacks(showLoginPopup);
 			goToMap(null);
 		}
 	};
 	private Runnable showLoginPopup = new Runnable() {
 		@Override
 		public void run() {
+			mHandler.removeCallbacks(goToMap);
 			if (!isSignedIn()) {
 				showLoginPopup();
 			} else
@@ -99,7 +101,6 @@ public class MainActivity extends BaseGameActivity implements
 
 			GlobalRes.getCurrentPlayer().updateInfo(nickname, icoImg);
 		}
-
 		mHandler.postDelayed(goToMap, 3000);
 	}
 

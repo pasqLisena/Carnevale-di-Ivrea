@@ -50,9 +50,8 @@ public class PlayerActivity extends BaseGameActivity implements
 		pointsCounter.setText(getResources().getQuantityString(R.plurals.point,
 				pointsNum, pointsNum));
 
-		if (isSignedIn()) {
+		if (isSignedIn()) 
 			onSignInSucceeded();
-		}
 	}
 
 	@Override
@@ -63,11 +62,7 @@ public class PlayerActivity extends BaseGameActivity implements
 		}
 	}
 
-	public void showLeaderboard(View v) {
-		startActivityForResult(Games.Leaderboards.getLeaderboardIntent(
-				getApiClient(), GlobalRes.getArancieriLeaderboard()), 1);
-	}
-
+	
 	@Override
 	public void onSignInFailed() {
 		signoutBtn.setVisibility(View.GONE);
