@@ -48,7 +48,6 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 	/** Icon to be used to send gifts/requests */
 	private Bitmap mGiftIcon;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -100,10 +99,9 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 	public void onSignInSucceeded() {
 		findViewById(R.id.sing_in_cont).setVisibility(View.GONE);
 		findViewById(R.id.console_cont).setVisibility(View.VISIBLE);
-		
 
-		if(mRequestListener == null){
-		 mRequestListener = new OnRequestReceivedListener() {
+		if (mRequestListener == null) {
+			mRequestListener = new OnRequestReceivedListener() {
 				@Override
 				public void onRequestReceived(GameRequest request) {
 					int requestStringResource;
@@ -127,8 +125,8 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 				}
 			};
 		}
-		
-		if(mLoadRequestsCallback == null){
+
+		if (mLoadRequestsCallback == null) {
 			mLoadRequestsCallback = new ResultCallback<Requests.LoadRequestsResult>() {
 
 				@Override
@@ -146,8 +144,8 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 					}
 					// Update the counts in the layout
 					((TextView) findViewById(R.id.tv_gift_count))
-							.setText(getResources().getQuantityString(R.plurals.gift,
-									giftCount, giftCount));
+							.setText(getResources().getQuantityString(
+									R.plurals.gift, giftCount, giftCount));
 					((TextView) findViewById(R.id.tv_request_count))
 							.setText(getResources().getQuantityString(
 									R.plurals.request, wishCount, wishCount));
@@ -155,7 +153,7 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 
 			};
 		}
-		
+
 		Games.Requests
 				.registerRequestListener(getApiClient(), mRequestListener);
 
@@ -230,7 +228,7 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 		for (GameRequest request : requests) {
 			int type = request.getType() == GameRequest.TYPE_GIFT ? R.plurals.gift
 					: R.plurals.request;
-			retVal.append(String.format(getString(R.string.accept1),
+			retVal.append(String.format(getString(R.string.acceptMoreLi),
 					getResources().getQuantityString(type, 1, 1),
 					requests.get(0).getSender().getDisplayName()));
 		}
@@ -240,6 +238,7 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 
 	// Actually accepts the requests
 	private void acceptRequests(ArrayList<GameRequest> requests) {
+		showLoader(true);
 		// Attempt to accept these requests.
 		ArrayList<String> requestIds = new ArrayList<String>();
 
@@ -304,6 +303,7 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 						if (numGifts != 0 || numRequests != 0) {
 							updateRequestCounts();
 						}
+						showLoader(false);
 					}
 				});
 
@@ -338,7 +338,6 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 						});
 		// Create the AlertDialog object and return it
 		builder.create().show();
-
 	}
 
 	// Response to inbox check
@@ -371,9 +370,19 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
+	private void showLoader(boolean show) {
+		int vis;
+		if (show)
+			vis = View.VISIBLE;
+		else
+			vis = View.GONE;
+		findViewById(R.id.loader_cont).setVisibility(vis);
+		;
+	}
+
 	@Override
 	public void onClick(View view) {
-		Log.d("AAAA", getResources().getResourceEntryName(view.getId()) );
+		Log.d("AAAA", getResources().getResourceEntryName(view.getId()));
 
 		switch (view.getId()) {
 		case R.id.sign_in_button:

@@ -19,6 +19,8 @@ Il giocatore può scegliere fra 3 sassi dei ruderi per colpirlo con il suo marte
         bg="place_piazzadicitta_bg"
         latlng="45.466779, 7.875750"
         minigame="PredaInDora"
+        minigame_descr="La Mugnaia è il personaggio più importante dello Storico Carnevale. Durante la sfilata la Mugnaia sfila su un carro dorato lanciando caramelle e rametti di mimosa.
+Il giocatore dovrà raccogliere più mimose e caramelle possibili muovendo il proprio device e spostando un cestino"
         minigame_mask="mugnaia" />
     <place
         id="3"
@@ -26,7 +28,6 @@ Il giocatore può scegliere fra 3 sassi dei ruderi per colpirlo con il suo marte
         bg="place_maretta_bg"
         latlng="45.465872, 7.871290"
         minigame="Fagiolata"
-        minigame_bg="predaindora_bg"
         minigame_descr="Se sei loggato su Facebook o su Google, puoi donare ai tuoi amici un set di 10 arance."
         minigame_mask="fagiolata" />
     <place
@@ -41,7 +42,12 @@ Il giocatore può scegliere fra 3 sassi dei ruderi per colpirlo con il suo marte
     <place
         id="6"
         name="Piazza Rondolino"
-        latlng="45.465506, 7.881005" />
+        bg="place_rondolino_bg"
+        latlng="45.465506, 7.881005" 
+        minigame="LibroVerbali"
+        minigame_descr="Il Sostituto Gran Cancelliere ha il compito di redigere e certificare i processi verbali del Carnevale in un apposito Libro. è sempre presente a ogni atto ufficiale per poterne dare precisa testimonianza."
+        minigame_mask="sost_gran_canc"
+        />
     <place
         id="7"
         name="Piazza Ottinetti"

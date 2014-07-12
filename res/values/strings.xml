@@ -45,7 +45,7 @@
         <item quantity="other">%d regali</item>
     </plurals>
 
-    <string name="new_gift_received">Fagiolata per te!</string>
+    <string name="new_gift_received">Regalo inviato!</string>
     <string name="new_request_received">Aiuta il tuo amico!</string>
     <string name="send_gift_description">Aiuta i tuoi amici con un set di 15 arance!</string>
     <string name="send_request_description">A secco di arance? Chiedi agli amici!</string>
@@ -55,16 +55,16 @@
     <string name="accept">Accetta</string>
     <string name="refuse">No, grazie</string>
     <string name="accept0">Nessuna richiesta da accettare</string>
-    <string name="accept1">Vuoi accettare la richiesta di {0}?</string>
+    <string name="accept1">Vuoi accettare la richiesta di %s?</string>
     <string name="acceptMore">Vuoi accettare le seguenti richieste?\n\n</string>
-    <string name="acceptMoreLi">&#8226; {0} arance da {1}</string>
+    <string name="acceptMoreLi" formatted="false">&#8226; %s da %s \n</string>
     <string name="player">Player</string>
     <string name="default_player_name">Anonimo</string>
     <string name="logout">Logout</string>
     <string name="register">Entra</string>
     <string name="loading">loading</string>
-    <string name="gift_gained_msg">hai ottenuto {0} arance</string>
+    <string name="gift_gained_msg">hai ottenuto %d arance</string>
     <string name="fagiolata_title">Fagiolata Benefica</string>
     <string name="fagiolata_invite_singin">Accedi a Google Play Games! Potrai giocare con i tuoi amici e ricevere da loro preziosi carichi di arance.</string>
-
+<string name="libroverbali_title">Libro dei verbali</string>
 </resources>

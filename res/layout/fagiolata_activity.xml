@@ -7,6 +7,21 @@
     android:orientation="vertical"
     tools:context=".FagiolataPlay" >
 
+    <FrameLayout
+        android:id="@+id/loader_cont"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"  android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+
+    </FrameLayout>
+
     <LinearLayout
         android:id="@+id/sing_in_cont"
         android:layout_width="match_parent"
@@ -16,7 +31,8 @@
         android:paddingBottom="10dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
-        android:paddingTop="10dp" android:visibility="gone" >
+        android:paddingTop="10dp"
+        android:visibility="gone" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +52,6 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textColorLink="@color/white" >
-
         </com.google.android.gms.common.SignInButton>
 
         <LinearLayout
@@ -66,7 +81,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white" />
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -156,15 +170,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/orange_button"
                 android:text="@string/send_request" />
-
         </LinearLayout>
     </LinearLayout>
-
-    <!-- MAIN DISPLAY -->
-
-    <!-- SIGN-IN BAR -->
-
-
-    <!-- SIGN-OUT BAR -->
 
 </LinearLayout>
