@@ -44,7 +44,7 @@ Il giocatore dovrà raccogliere più mimose e caramelle possibili muovendo il pr
         name="Piazza Rondolino"
         bg="place_rondolino_bg"
         latlng="45.465506, 7.881005" 
-        minigame="PredaInDora"
+        minigame="LibroVerbali"
         minigame_descr="Il Sostituto Gran Cancelliere ha il compito di redigere e certificare i processi verbali del Carnevale in un apposito Libro. è sempre presente a ogni atto ufficiale per poterne dare precisa testimonianza."
         minigame_mask="sost_gran_canc"
         />

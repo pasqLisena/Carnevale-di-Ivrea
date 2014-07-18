@@ -56,15 +56,16 @@
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora"
+            android:label="@string/predaindora_title"
             android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDoraPlay"
+            android:label="@string/predaindora_title"
             android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.minigame.PredaInDora"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
@@ -82,7 +83,18 @@
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
         <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.LibroVerbali"
+            android:label="@string/libroverbali_title"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.PlaceActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.PlaceActivity" />
+        </activity>
+        <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.Fagiolata"
+            android:label="@string/fagiolata_title"
             android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.PlaceActivity"
             android:screenOrientation="landscape"
             android:theme="@style/OrangeBarTheme" >
@@ -92,6 +104,7 @@
         </activity>
         <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.FagiolataPlay"
+            android:label="@string/fagiolata_title"
             android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.minigame.Fagiolata"
             android:screenOrientation="landscape"
             android:theme="@style/OrangeBarTheme" >
@@ -109,7 +122,6 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_api" />
-
     </application>
 
 </manifest>

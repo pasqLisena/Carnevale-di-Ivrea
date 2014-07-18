@@ -20,15 +20,15 @@ public class PredaInDora extends Minigame {
 	private ProgressBar mgTimerBar;
 	private TextView mgTimerText;
 
-//	private final int hour = 60 * 60 * 1000;
-	private final int hour = 1;
+	private final int hour = 60 * 60 * 1000;
+	// private final int hour = 1;
 	private long lastPlay;
 	private Date nextPlay;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		btnStartMinigame = findViewById(R.id.btnStartMinigame);
 		mgTimerBar = (ProgressBar) findViewById(R.id.mgTimerBar);
 		mgTimerText = (TextView) findViewById(R.id.mgTimerText);
@@ -39,12 +39,12 @@ public class PredaInDora extends Minigame {
 		mgTimerBar.setMax(4 * hour);
 
 		if (new Date().before(nextPlay)) {
-			btnStartMinigame.setVisibility(View.INVISIBLE);
+			btnStartMinigame.setVisibility(View.GONE);
+			mgTimerBar.setVisibility(View.VISIBLE);
+			mgTimerText.setVisibility(View.VISIBLE);
+			mgTimerTextA.setVisibility(View.VISIBLE);
+
 			startTimer();
-		} else {
-			mgTimerBar.setVisibility(View.INVISIBLE);
-			mgTimerText.setVisibility(View.INVISIBLE);
-			mgTimerTextA.setVisibility(View.INVISIBLE);
 		}
 	}
 

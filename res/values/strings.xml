@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="oppure">oppure</string>
     <string name="button_map">PROVA IL GIOCO</string>
+    <string name="button_back">torna indietro</string>
     <string name="minigame_baloon">Gioca con me!</string>
     <string name="otherTeam_baloon">Sfidami!</string>
     <string name="log_out">DISCONNETTITI</string>
@@ -13,11 +14,14 @@
     <string name="ivrea_map_suggest">Scegli un luogo</string>
     <string name="ivrea_map_button_history">Storia</string>
     <string name="ivrea_map_button_minigame">Minigame</string>
+    <string name="start_minigame">Comincia</string>
+    <string name="next_game_in">Prossima partita tra</string>
     <string name="ivrea_map_button_openplace">Apri</string>
     <string name="ivrea_map_button_battle">Battaglia</string>
     <string name="leaderboard_btn">Classifica</string>
     <string name="orange">arance</string>
     <string name="predaindora_bg">Castellazzo</string>
+    <string name="predaindora_title">Preda in Dora</string>
     <string name="predaindora_btn">preda in Dora - roccia</string>
     <string name="quiz">Quiz</string>
 
@@ -41,7 +45,7 @@
         <item quantity="other">%d regali</item>
     </plurals>
 
-    <string name="new_gift_received">Fagiolata per te!</string>
+    <string name="new_gift_received">Regalo inviato!</string>
     <string name="new_request_received">Aiuta il tuo amico!</string>
     <string name="send_gift_description">Aiuta i tuoi amici con un set di 15 arance!</string>
     <string name="send_request_description">A secco di arance? Chiedi agli amici!</string>
@@ -53,14 +57,14 @@
     <string name="accept0">Nessuna richiesta da accettare</string>
     <string name="accept1">Vuoi accettare la richiesta di %s?</string>
     <string name="acceptMore">Vuoi accettare le seguenti richieste?\n\n</string>
-    <string name="acceptMoreLi" formatted="false">&#8226; %s da %s</string>
+    <string name="acceptMoreLi" formatted="false">&#8226; %s da %s \n</string>
     <string name="player">Player</string>
     <string name="default_player_name">Anonimo</string>
     <string name="logout">Logout</string>
     <string name="register">Entra</string>
     <string name="loading">loading</string>
-
     <string name="gift_gained_msg">hai ottenuto %d arance</string>
     <string name="fagiolata_title">Fagiolata Benefica</string>
-    
+    <string name="fagiolata_invite_singin">Accedi a Google Play Games! Potrai giocare con i tuoi amici e ricevere da loro preziosi carichi di arance.</string>
+<string name="libroverbali_title">Libro dei verbali</string>
 </resources>
