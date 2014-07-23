@@ -59,6 +59,10 @@ Il giocatore dovrà raccogliere più mimose e caramelle possibili muovendo il pr
     <place
         id="9"
         name="Piazza Castello"
+        bg="place_castello_bg"
+        minigame="PredaInDora"
+        minigame_descr="Il Generale conserva il regolamento"
+        minigame_mask="generale"
         latlng="45.467721, 7.874919" />
     <place
         id="10"
