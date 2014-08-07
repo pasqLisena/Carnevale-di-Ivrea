@@ -2,7 +2,6 @@ package it.polito.applicazionimultimediali.carnevalediivrea.minigame;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
-import it.polito.applicazionimultimediali.carnevalediivrea.map.Place;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
