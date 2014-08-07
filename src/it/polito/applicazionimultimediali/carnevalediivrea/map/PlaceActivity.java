@@ -3,10 +3,9 @@ package it.polito.applicazionimultimediali.carnevalediivrea.map;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
-import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
+import it.polito.applicazionimultimediali.carnevalediivrea.battle.MyBattleActivity;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -83,7 +82,7 @@ public class PlaceActivity extends Activity {
 
 	
 	public void goToBattle(View view) {
-		Intent intent = new Intent(this, BattleActivity.class);
+		Intent intent = new Intent(this, MyBattleActivity.class);
 		// intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
 	}
