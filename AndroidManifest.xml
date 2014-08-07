@@ -112,6 +112,55 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.Fagiolata" />
         </activity>
+        
+        <!-- Quiz activity -->
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity"
+            android:label="@string/title_activity_quiz"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane"
+            android:screenOrientation="landscape"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
+        </activity>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.VideoActivity"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity" />
+        </activity>/>                    
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.QuizActivity"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity" />
+        </activity>/>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.LooserQuizActivity"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.minigame.QuizActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.QuizActivity" />
+        </activity>/>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.WinQuizActivity"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.minigame.QuizActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/OrangeBarTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.QuizActivity" />
+        </activity>/>
+        
 
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"

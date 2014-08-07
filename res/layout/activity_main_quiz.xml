@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/homeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/hello_main"
+        tools:context=".MainQuizActivity" />
+
+    <Button
+        android:id="@+id/videoPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="27dp"
+        android:layout_marginLeft="70dp"
+        android:text="@string/videoPlay" />
+
+    <Button
+        android:id="@+id/gamePlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/videoPlay"
+        android:layout_alignBottom="@+id/videoPlay"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="58dp"
+        android:text="@string/gamePlay" />
+
+</RelativeLayout>

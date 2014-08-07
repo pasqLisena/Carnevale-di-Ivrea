@@ -67,4 +67,16 @@
     <string name="fagiolata_title">Fagiolata Benefica</string>
     <string name="fagiolata_invite_singin">Accedi a Google Play Games! Potrai giocare con i tuoi amici e ricevere da loro preziosi carichi di arance.</string>
 <string name="libroverbali_title">Libro dei verbali</string>
+
+<!-- Quiz -->
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_main">Benvenuto!\nCosa vuoi fare?</string>
+    <string name="videoPlay">Guarda il video</string>
+    <string name="gamePlay">Gioca</string>
+    <string name="title_activity_quiz">Quiz</string>
+    <string name="title_activity_video">VideoActivity</string>
+    <string name="title_activity_looser">LooserActivity</string>
+    <string name="title_activity_win">WinActivity</string>
 </resources>
