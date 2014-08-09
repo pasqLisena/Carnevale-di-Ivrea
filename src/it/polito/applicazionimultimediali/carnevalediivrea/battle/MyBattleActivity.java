@@ -2,20 +2,13 @@ package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.CurrentPlayer;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
-import android.content.Context;
+import it.polito.applicazionimultimediali.carnevalediivrea.map.PlaceActivity;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.unity3d.player.UnityPlayerActivity;
 
@@ -45,12 +38,9 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		Log.d("MyBattleActivity", "onCreate called!");
 
 	}
-	public void onBackPressed()
-	{
-		// instead of calling UnityPlayerActivity.onBackPressed() we just ignore the back button event
-		Log.d("MyBattleActivity", "onBackPressed()!");
-		super.onBackPressed();
+	public void goToPlaceActivity() {
+		Intent intent = new Intent(this, PlaceActivity.class);
+		// intent.putExtra(EXTRA_MESSAGE, message);
+		startActivity(intent);
 	}
-
-
 }
