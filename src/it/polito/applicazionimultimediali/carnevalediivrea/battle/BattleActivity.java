@@ -3,6 +3,8 @@ package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 import it.polito.applicazionimultimediali.carnevalediivrea.CurrentPlayer;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
+import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,16 +34,15 @@ public class BattleActivity extends BaseGameActivity {
 			googleApiClient = getApiClient();
 		}
 
-
-		if (player.playAGame(googleApiClient)) {
-			text = "Partita effettuata";
+		if (player.getOranges() >= GlobalRes.orangesPerPlay) {
+			Intent intent = new Intent(this, ScoreUpdateActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
 		} else {
 			text = "Non hai abbastanza arance";
+			Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+			toast.show();
 		}
-
-		Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
-		toast.show();
-
 	}
 
 
