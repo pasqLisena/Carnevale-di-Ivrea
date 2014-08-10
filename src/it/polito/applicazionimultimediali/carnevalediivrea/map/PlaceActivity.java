@@ -4,6 +4,7 @@ import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
 import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
+import it.polito.applicazionimultimediali.carnevalediivrea.battle.MyBattleActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -77,14 +78,15 @@ public class PlaceActivity extends Activity {
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
-	    savedInstanceState.putInt("place", place.getId());
+	    savedInstanceState.putString("place", ""+place.getId());
 	    super.onSaveInstanceState(savedInstanceState);
 	}
 
 	
 	public void goToBattle(View view) {
-		Intent intent = new Intent(this, BattleActivity.class);
+		Intent intent = new Intent(this, MyBattleActivity.class);
 		// intent.putExtra(EXTRA_MESSAGE, message);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
 
