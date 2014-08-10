@@ -76,7 +76,7 @@ public class PlaceActivity extends Activity {
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
-	    savedInstanceState.putInt("place", place.getId());
+	    savedInstanceState.putString("place", ""+place.getId());
 	    super.onSaveInstanceState(savedInstanceState);
 	}
 
@@ -84,6 +84,7 @@ public class PlaceActivity extends Activity {
 	public void goToBattle(View view) {
 		Intent intent = new Intent(this, MyBattleActivity.class);
 		// intent.putExtra(EXTRA_MESSAGE, message);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
 
