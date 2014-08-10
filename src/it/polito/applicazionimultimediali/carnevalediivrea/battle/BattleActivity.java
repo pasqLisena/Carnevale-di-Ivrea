@@ -19,10 +19,8 @@ public class BattleActivity extends BaseGameActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.battle_activity);
-		
 	}
 
-	
 	public void fakePlay(View v) {
 		CurrentPlayer player = GlobalRes.getCurrentPlayer();
 		String text;

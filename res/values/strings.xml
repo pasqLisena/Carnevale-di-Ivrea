@@ -51,8 +51,9 @@
     <string name="send_request_description">A secco di arance? Chiedi agli amici!</string>
     <string name="send_gift">Invia arance</string>
     <string name="send_request">Chiedi agli amici</string>
-    <string name="open_inbox">Apri</string><string name="accept">Accetta</string>
-<string name="refuse">No, grazie</string>
+    <string name="open_inbox">Apri</string>
+    <string name="accept">Accetta</string>
+    <string name="refuse">No, grazie</string>
     <string name="accept0">Nessuna richiesta da accettare</string>
     <string name="accept1">Vuoi accettare la richiesta di %s?</string>
     <string name="acceptMore">Vuoi accettare le seguenti richieste?\n\n</string>
@@ -65,9 +66,8 @@
     <string name="gift_gained_msg">hai ottenuto %d arance</string>
     <string name="fagiolata_title">Fagiolata Benefica</string>
     <string name="fagiolata_invite_singin">Accedi a Google Play Games! Potrai giocare con i tuoi amici e ricevere da loro preziosi carichi di arance.</string>
-<string name="libroverbali_title">Libro dei verbali</string>
-
+    <string name="libroverbali_title">Libro dei verbali</string>
     <string name="youGain">Hai conquistato</string>
     <string name="yourScore">Il tuo punteggio</string>
-    
+
 </resources>
