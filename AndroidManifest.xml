@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.polito.applicazionimultimediali.carnevalediivrea"
+    android:installLocation="auto"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -137,6 +138,16 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.Fagiolata" />
+        </activity>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.battle.ScoreUpdateActivity"
+            android:label="@string/fagiolata_title"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
 
         <meta-data

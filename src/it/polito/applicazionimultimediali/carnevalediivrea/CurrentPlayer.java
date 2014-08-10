@@ -22,6 +22,9 @@ public class CurrentPlayer extends Player {
 	public int getOranges() {
 		return oranges;
 	}
+	public int getPoints() {
+		return points;
+	}
 
 	public void gainOranges(int oranges) {
 		this.oranges += oranges;
@@ -36,7 +39,7 @@ public class CurrentPlayer extends Player {
 
 	public boolean playAGame(GoogleApiClient googleApiClient) {
 		if (getOranges() >= GlobalRes.orangesPerPlay) {
-			this.oranges = getOranges() - GlobalRes.orangesPerPlay;
+//			this.oranges = getOranges() - GlobalRes.orangesPerPlay;
 			updateLocalData("oranges", this.oranges);
 			gainPoint(100);
 
