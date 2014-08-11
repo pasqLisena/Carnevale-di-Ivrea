@@ -17,6 +17,7 @@ public class MyBattleActivity extends UnityPlayerActivity {
 	private SharedPreferences prefs;
 	static Context context ;
 	static boolean isBack = false;
+	private Intent myIntent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,32 +33,23 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		
 		editor.commit();
 		
+		 myIntent = new Intent();
+	     myIntent.setAction(Intent.ACTION_VIEW);
+	     myIntent.setData(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
 		Log.d("MyBattleActivity", "onCreate called!");
 
 	}
-	public void goToPlaceActivity(Context c) {
-		Log.d("MainActivity", "next Android called");
+	
+
+	public static void next(Context c){
+		Log.d("MyBattleActivity", "next Android called");
 		Intent intent = new Intent(c, ScoreUpdateActivity.class);
 		isBack = false; 
 		c.startActivity(intent);
-	}
-	public static void Launch(Activity activity)
-	{
-		Intent myIntent = new Intent();
-		activity.startActivity(myIntent);
-	}
-	
-	
-	public static void next(Context c){
-		Log.d("MainActivity", "next Android called");
-		//Intent intent = new Intent(c, ScoreUpdateActivity.class);
-		isBack = false; 
-		
-		((Activity) context).startActivityForResult(new Intent(c, ScoreUpdateActivity.class), 1);
-		((Activity) context).finish();
 		
 	}
+
 	
 	public static void back(Context c){
 		Log.d("MainActivity", "back Android called");
@@ -67,13 +59,14 @@ public class MyBattleActivity extends UnityPlayerActivity {
 	}
 
 
-	//@Override
-	//protected void onPause() {
-	//	if(isBack)
-	//		super.onDestroy();
-	//	else
-	//		super.onPause();
-	//}
+
+	@Override
+	protected void onPause() {
+		if(isBack)
+			super.onDestroy();
+		else
+			super.onPause();
+	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
