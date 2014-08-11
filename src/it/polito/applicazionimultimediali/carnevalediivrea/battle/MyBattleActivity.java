@@ -47,6 +47,11 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		isBack = false; 
 		c.startActivity(intent);
 	}
+	public static void Launch(Activity activity)
+	{
+		Intent myIntent = new Intent();
+		activity.startActivity(myIntent);
+	}
 	
 	
 	public static void next(Context c){
@@ -63,17 +68,17 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		Log.d("MainActivity", "back Android called");
 		isBack = true;
 		//((Activity) context).finish();
-		((Activity) context).startActivityForResult(new Intent(c, ScoreUpdateActivity.class), 1);
+		((Activity) context).startActivityForResult(new Intent(c, ExitActivity.class), 1);
 	}
-	
 
-	@Override
-	protected void onPause() {
-		if(isBack)
-			super.onDestroy();
-		else
-			super.onPause();
-	}
+
+	//@Override
+	//protected void onPause() {
+	//	if(isBack)
+	//		super.onDestroy();
+	//	else
+	//		super.onPause();
+	//}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

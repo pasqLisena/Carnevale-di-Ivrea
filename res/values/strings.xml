@@ -24,7 +24,7 @@
     <string name="predaindora_title">Preda in Dora</string>
     <string name="predaindora_btn">preda in Dora - roccia</string>
     <string name="quiz">Quiz</string>
-
+	<string name="title_activity_exit">ExitActivity</string>
     <plurals name="orange">
         <item quantity="one">1 arancia</item>
         <item quantity="other">%d arance</item>

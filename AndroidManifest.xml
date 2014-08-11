@@ -56,23 +56,7 @@
             android:label="@string/ivrea_map_title"
             android:screenOrientation="landscape" >
         </activity>
-        <activity
-            android:name="it.polito.applicazionimultimediali.carnevalediivrea.battle.MyBattleActivity"
-            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:label="@string/ivrea_map_button_battle"
-            android:launchMode="singleTask"
-            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane"
-            android:screenOrientation="landscape" >
-            <meta-data
-                android:name="unityplayer.UnityActivity"
-                android:value="true" />
-            <meta-data
-                android:name="unityplayer.ForwardNativeEventsToDalvik"
-                android:value="false" />
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
-        </activity>
+       
          <activity
             android:name="it.polito.applicazionimultimediali.carnevalediivrea.battle.MyBattleActivity"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
@@ -166,6 +150,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.battle.ExitActivity"
+            android:label="@string/title_activity_exit" >
+        </activity>
+        
 
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
