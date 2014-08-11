@@ -1,23 +1,19 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
-import it.polito.applicazionimultimediali.carnevalediivrea.CurrentPlayer;
-import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
-import it.polito.applicazionimultimediali.carnevalediivrea.map.PlaceActivity;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
+
 
 import com.unity3d.player.UnityPlayerActivity;
 
 
 public class MyBattleActivity extends UnityPlayerActivity {
 
-	private CurrentPlayer player;
 	private SharedPreferences prefs;
 	static Context context ;
 	static boolean isBack = false;
@@ -27,7 +23,6 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		context = this;
 		prefs = getSharedPreferences("it.polito.applicazionimultimediali.carnevalediivrea", MODE_PRIVATE);
 		SharedPreferences.Editor editor = prefs.edit();
-		player = GlobalRes.getCurrentPlayer();
 		
 		editor.putString("Battle_Piazza", "PiazzaDiCittà");//da sostituire con metodo place.name()
 		editor.putString("Battle_Team", "morte");//da sostituire con metodo player.team()
