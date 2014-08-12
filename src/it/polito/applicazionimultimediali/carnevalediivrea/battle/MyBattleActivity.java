@@ -1,13 +1,13 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
 
+import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-
 
 import com.unity3d.player.UnityPlayerActivity;
 
@@ -40,25 +40,24 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		Log.d("MyBattleActivity", "onCreate called!");
 
 	}
-	
-
-	public static void next(Context c){
-		Log.d("MyBattleActivity", "next Android called");
-		Intent intent = new Intent(c, ScoreUpdateActivity.class);
-		isBack = false; 
-		c.startActivity(intent);
 		
-	}
-
-	
-	public static void back(Context c){
-		Log.d("MainActivity", "back Android called");
+	public static void mostraPunteggio(Context c){
+		Log.d("MyBattleActivity", "mostraPunteggio Android called");
+		Intent intent = new Intent(c, ScoreUpdateActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		isBack = true;
 		//((Activity) context).finish();
-		((Activity) context).startActivityForResult(new Intent(c, ExitActivity.class), 1);
+		((Activity) context).startActivityForResult(intent, 1);
 	}
-
-
+	
+	public static void tornaAllaMappa(Context c){
+		Log.d("MyBattleActivity", "tornaAllaMappa Android called");
+		Intent intent = new Intent(c, MapPane.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		isBack = true;
+		//((Activity) context).finish();
+		((Activity) context).startActivityForResult(intent, 1);
+	}
 
 	@Override
 	protected void onPause() {

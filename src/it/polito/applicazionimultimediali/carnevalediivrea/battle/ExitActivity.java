@@ -11,7 +11,7 @@ public class ExitActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Log.d("ExitActivity", "onCreate Finish");
+		Log.d("ExitActivity", "startActivity ScoreUpdateActivity");
 		Intent myIntent = new Intent(this, ScoreUpdateActivity.class);
 		this.startActivity(myIntent);
 		//finish();
