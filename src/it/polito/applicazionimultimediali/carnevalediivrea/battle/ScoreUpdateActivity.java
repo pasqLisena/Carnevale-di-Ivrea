@@ -23,8 +23,10 @@ public class ScoreUpdateActivity extends Activity {
 
 		newScore = 100;
 		oldScore = 50;
-		//GlobalRes.getCurrentPlayer().gainPoint(newScore);
-		//oldScore = GlobalRes.getCurrentPlayer().getPoints();
+		
+		GlobalRes.prepareResources(getApplicationContext());
+		GlobalRes.getCurrentPlayer().gainPoint(newScore);
+		oldScore = GlobalRes.getCurrentPlayer().getPoints();
 
 		newScoreView = (TextView) findViewById(R.id.newScore);
 		newScoreView.setText(getResources().getQuantityString(R.plurals.point,
