@@ -1,6 +1,7 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
 
+import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.app.Activity;
 import android.content.Context;
@@ -14,7 +15,7 @@ import com.unity3d.player.UnityPlayerActivity;
 
 public class MyBattleActivity extends UnityPlayerActivity {
 
-	private SharedPreferences prefs;
+	private static SharedPreferences prefs;
 	static Context context ;
 	static boolean isBack = false;
 	private Intent myIntent;
@@ -22,12 +23,17 @@ public class MyBattleActivity extends UnityPlayerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		context = this;
+		
+		GlobalRes.prepareResources(getApplicationContext());
+		
 		prefs = getSharedPreferences("it.polito.applicazionimultimediali.carnevalediivrea", MODE_PRIVATE);
+		
 		SharedPreferences.Editor editor = prefs.edit();
 		
-		editor.putString("Battle_Piazza", "PiazzaDiCittà");//da sostituire con metodo place.name()
-		editor.putString("Battle_Team", "morte");//da sostituire con metodo player.team()
-		editor.putString("Battle_OpposingTeam", "picche");//da sostituire con metodo player.OpposingTeam()
+		editor.putInt("Battle_NumArance", GlobalRes.getCurrentPlayer().getOranges());
+		editor.putString("Battle_Piazza", "Piazza Di Città");//da sostituire con metodo place.name()
+		editor.putString("Battle_Team", "Morte");//da sostituire con metodo player.team()
+		editor.putString("Battle_OpposingTeam", "Picche");//da sostituire con metodo player.OpposingTeam()
 		
 		//una volta chiuso il gioco salvo il punteggio in SharedPreferences in una variabile di tipo int "Battle_Score"
 		
@@ -43,19 +49,19 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		
 	public static void mostraPunteggio(Context c){
 		Log.d("MyBattleActivity", "mostraPunteggio Android called");
+			
 		Intent intent = new Intent(c, ScoreUpdateActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		isBack = true;
-		//((Activity) context).finish();
 		((Activity) context).startActivityForResult(intent, 1);
 	}
 	
 	public static void tornaAllaMappa(Context c){
 		Log.d("MyBattleActivity", "tornaAllaMappa Android called");
+		
 		Intent intent = new Intent(c, MapPane.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		isBack = true;
-		//((Activity) context).finish();
 		((Activity) context).startActivityForResult(intent, 1);
 	}
 

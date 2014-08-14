@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,7 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		setContentView(R.layout.map_activity);
 		
 		GlobalRes.prepareResources(getApplicationContext());
+				
 		markerMap = new HashMap<Marker, Place>();
 		// Get a handle to the Map Fragment
 		GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(

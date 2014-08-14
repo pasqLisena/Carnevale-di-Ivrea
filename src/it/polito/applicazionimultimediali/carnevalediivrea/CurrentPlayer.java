@@ -15,12 +15,16 @@ public class CurrentPlayer extends Player {
 				.getString("icoImg", "")));
 		this.playerData = playerData;
 		this.points = playerData.getInt("points", 0);
-		this.oranges = playerData.getInt("oranges", 30);
+		this.oranges = playerData.getInt("oranges", 50);
 		// this.team = playerData.getString("Team", null);
 	}
 
 	public int getOranges() {
 		return oranges;
+	}
+	public void setOranges(int oranges) {
+		this.oranges = oranges;
+		updateLocalData("oranges", this.oranges);
 	}
 	public int getPoints() {
 		return points;

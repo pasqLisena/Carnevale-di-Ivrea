@@ -5,8 +5,10 @@ import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,17 +16,26 @@ import android.widget.TextView;
 
 public class ScoreUpdateActivity extends Activity {
 	TextView newScoreView, totalScoreView, scoreToAddView;
-	int newScore, oldScore;
+	int newScore, oldScore, numOranges;
+	private SharedPreferences prefs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.score_update_activity);
-
-		newScore = 100;
-		oldScore = 50;
+		
+		prefs = getSharedPreferences("it.polito.applicazionimultimediali.carnevalediivrea", MODE_PRIVATE);
+		
+		newScore = prefs.getInt("Battle_Score", 0);
+		
+		numOranges =  prefs.getInt("Battle_NumAranceRimaste", 0);
+		
 		
 		GlobalRes.prepareResources(getApplicationContext());
+		
+		Log.d("ScoreUpdateActivity", "numOranges:"+numOranges);
+		GlobalRes.getCurrentPlayer().setOranges(numOranges);
+		
 		GlobalRes.getCurrentPlayer().gainPoint(newScore);
 		oldScore = GlobalRes.getCurrentPlayer().getPoints();
 
@@ -90,4 +101,5 @@ public class ScoreUpdateActivity extends Activity {
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
+	
 }
