@@ -1,21 +1,29 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.minigame;
 
+import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
+import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 
 import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.RadioButton;
@@ -30,6 +38,10 @@ public class QuizActivity extends Activity {
 	private int idPosto = 0; 	//id del luogo
 	private String jName; 		//nome del file json
 	private int domCount=0;
+	private int ndomanda=0;
+	ArrayList <Integer> ndomandauscita= new ArrayList<Integer>();
+	
+	int orangeWin=0;
 	
 	//Creo un array per salvarmi tutte le domande che leggero' dal json del luogo selezionato
 	final ArrayList<Domanda> domande = new ArrayList<Domanda>();
@@ -102,31 +114,21 @@ public class QuizActivity extends Activity {
         
         //Gestire toast e listener delle risposte
         
-        textLayout(domCount);
-        final Intent i0 = new Intent(getApplicationContext(), LooserQuizActivity.class);
-        final Intent i1 = new Intent(getApplicationContext(), WinQuizActivity.class);
+        ndomanda=generaNDomanda();
+   
+        textLayout(ndomanda);    
         
         
-        r0.setOnClickListener(new View.OnClickListener() {
-			
+        r0.setOnClickListener(new View.OnClickListener() {			
+        
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				if( isCorretta(domCount, r0.getText().toString())){
-					if(domCount==2){
-						Toast.makeText(getApplicationContext(), "Hai completato il livello", Toast.LENGTH_SHORT).show();
-						startActivity(i1);
-					}
-					else {
-						domCount++;
-						textLayout(domCount);
-					//il domCount verra' incrementato in ogni caso, bisogna solo memeorizzare il punteggio
-					}
+				if( isCorretta(ndomanda, r0.getText().toString())){
+					corretta();
 				}
 				else {
-					Toast.makeText(getApplicationContext(), "Non e' la risposta giusta", Toast.LENGTH_SHORT).show();
-					startActivity(i0);
-					
+					sbagliata();										
 				}		
 			}
 		});
@@ -136,20 +138,11 @@ public class QuizActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				if( isCorretta(domCount, r1.getText().toString())){
-					if(domCount==2){
-						Toast.makeText(getApplicationContext(), "Hai completato il livello", Toast.LENGTH_SHORT).show();
-						startActivity(i1);
-					}
-					else {
-						domCount++;
-						textLayout(domCount);
-					//il domCount verra' incrementato in ogni caso, bisogna solo memeorizzare il punteggio
-					}
+				if( isCorretta(ndomanda, r1.getText().toString())){
+					corretta();
 				}
 				else{
-					Toast.makeText(getApplicationContext(), "Non e' la risposta giusta", Toast.LENGTH_SHORT).show();
-					startActivity(i0);
+					sbagliata();
 				}				
 			}
 		});
@@ -159,46 +152,114 @@ public class QuizActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				if( isCorretta(domCount, r2.getText().toString())){
-					if(domCount==2){
-						Toast.makeText(getApplicationContext(), "Hai completato il livello", Toast.LENGTH_SHORT).show();
-						startActivity(i1);
-					}
-					else {
-						domCount++;
-						textLayout(domCount);
-					//il domCount verra' incrementato in ogni caso, bisogna solo memeorizzare il punteggio
-					}
+				if( isCorretta(ndomanda, r2.getText().toString())){					
+					corretta();
 				}
 				else{
-					Toast.makeText(getApplicationContext(), "Non e' la risposta giusta", Toast.LENGTH_SHORT).show();
-					startActivity(i0);
+					sbagliata();
 				}
 			}
 		});
         
     }
     
+    
     //Creo un metodo (per ottimizzare codice) per settare il testo della domanda e delle risposte.
     public void textLayout(int i){
     	 domandaText.setText(domande.get(i).getTesto());
          r0.setText(domande.get(i).getRisposte().get(0));
          r1.setText(domande.get(i).getRisposte().get(1));
-         r2.setText(domande.get(i).getRisposte().get(2));
-         
+         r2.setText(domande.get(i).getRisposte().get(2));        
     }
+    
+    
+    public int generaNDomanda(){
+    	int n=0;
+    	boolean trovato=true;
+    	while (trovato==true)
+    	{
+    		trovato=false;
+    			n=new Random().nextInt(10);
+    			for(int j=0; j< ndomandauscita.size();j++){
+    					if(n==ndomandauscita.get(j))
+    					trovato=true;	
+    			}
+    	}
+    	ndomandauscita.add(n);
+    	return n;
+    }
+    
+    
     
     //Metodo per controllare quale e' il radiobutton con la risposta corretta. j e' indice per scorrere nell'array di domande.
     public boolean isCorretta(int j, String s){
     	boolean corretta = false;
     	
-    	if(domande.get(j).getRispGiusta().equals(s))
+    	if(domande.get(j).getRispGiusta().equals(s)){
     		corretta = true;
-    	
+    		orangeWin=orangeWin+10;
+			Toast.makeText(getApplicationContext(), "+10 arance", Toast.LENGTH_SHORT).show();
+    	}
     	return corretta;
     }
     
+    
+    public void corretta(){
+    	//final Intent i1 = new Intent(getApplicationContext(), WinQuizActivity.class);
+    	final Intent i2 = new Intent(getBaseContext(), MapPane.class);
+    	if(domCount==9){
+    		GlobalRes.getCurrentPlayer().gainOranges(orangeWin);
+    		
+    		AlertDialog.Builder builder = new AlertDialog.Builder(
+					QuizActivity.this);
+    		builder.setTitle("Livello completato");
+    		builder.setMessage("Complimenti. Hai vinto " + orangeWin + "/100 arance.")
+					.setPositiveButton("OK",
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog,
+										int id) {
+									startActivity(i2);
+								}
+							});
+    		builder.create().show();
+			//Toast.makeText(getApplicationContext(), "Hai completato il livello", Toast.LENGTH_SHORT).show();
 
+    	}
+		else {
+			domCount++;
+			ndomanda=generaNDomanda();  
+			textLayout(ndomanda);
+		//il domCount verra' incrementato in ogni caso, bisogna solo memeorizzare il punteggio
+		}
+    }
+    
+    
+    public void sbagliata(){
+    	//final Intent i0 = new Intent(getApplicationContext(), LooserQuizActivity.class);
+    	//startActivity(i0);
+    	
+		GlobalRes.getCurrentPlayer().gainOranges(orangeWin);
+        Toast.makeText(getApplicationContext(), "Non e' la risposta giusta", Toast.LENGTH_SHORT).show();
+       
+        final Intent i1 = new Intent(getBaseContext(), MapPane.class);
+    		
+    		AlertDialog.Builder builder = new AlertDialog.Builder(
+					QuizActivity.this);
+    		builder.setTitle("Livello completato");
+    		builder.setMessage("Risposta sbagliata. Non puoi proseguire. Hai vinto " + orangeWin + "/100 arance. Torna a giocare per vincere altre arance.")
+					.setPositiveButton("OK",
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog,
+										int id) {
+									startActivity(i1);
+								}
+							});
+			builder.create().show();
+        
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_quiz, menu);

@@ -1,5 +1,6 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.minigame;
 
+import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ public class WinQuizActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win);
         
-        mappa = (Button) findViewById(R.id.mappa);
+		mappa = (Button) findViewById(R.id.mappa);
 
         mappa.setOnClickListener(new View.OnClickListener() {
 			

@@ -99,4 +99,5 @@ public class PlaceActivity extends Activity {
 		startActivity(intent);
 	}
 
+	
 }

@@ -27,13 +27,13 @@ public class VideoActivity extends Activity {
 		
 		switch (idPosto){
 			case 0:
-				uri = Uri.parse("android.resource://com.example.quiz/"+R.raw.finale);
+				uri = Uri.parse("android.resource://it.polito.applicazionimultimediali.carnevalediivrea/"+R.raw.castello);
 				break;
 			case 1:
-				uri = Uri.parse("android.resource://it.polito.applicazionimultimediali.carnevalediivrea/"+R.raw.finale);
+				uri = Uri.parse("android.resource://it.polito.applicazionimultimediali.carnevalediivrea/"+R.raw.castello);
 				break;
 			case 2:
-				uri = Uri.parse("android.resource://it.polito.applicazionimultimediali.carnevalediivrea/"+R.raw.finale);
+				uri = Uri.parse("android.resource://it.polito.applicazionimultimediali.carnevalediivrea/"+R.raw.castello);
 				break;
 		}
 		

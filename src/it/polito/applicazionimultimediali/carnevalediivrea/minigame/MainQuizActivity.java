@@ -23,7 +23,7 @@ public class MainQuizActivity extends Activity {
         
         
         
-       String placeId = null;
+      /* String placeId = null;
 		if (savedInstanceState == null) {
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
@@ -33,7 +33,7 @@ public class MainQuizActivity extends Activity {
 			placeId = (String) savedInstanceState.getSerializable("place");
 		}
        	
-		Log.d("Place id ",placeId);
+		Log.d("Place id ",placeId);*/
         	
 
         
