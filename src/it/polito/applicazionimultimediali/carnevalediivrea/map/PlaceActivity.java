@@ -1,5 +1,7 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.map;
 
+import java.util.List;
+
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
@@ -7,12 +9,16 @@ import it.polito.applicazionimultimediali.carnevalediivrea.battle.MyBattleActivi
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class PlaceActivity extends Activity {
 
 	private Place place;
+	private String oppTeamName;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,8 +48,8 @@ public class PlaceActivity extends Activity {
 					getPackageName());
 			if (bg != 0)
 				((ImageView) findViewById(R.id.bgPlace)).setImageResource(bg);
-			
-			
+
+
 			int count = 0;
 			if (place.getTeamsList() != null)
 				for (Team t : place.getTeamsList()) {
@@ -60,7 +66,7 @@ public class PlaceActivity extends Activity {
 							"id", getPackageName());
 					if (team_mask != 0)
 						findViewById(idTeamButton).setBackgroundResource(team_mask);
-					
+
 				}
 
 			if (place.hasMinigame()) {
@@ -76,16 +82,33 @@ public class PlaceActivity extends Activity {
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
-	    savedInstanceState.putString("place", ""+place.getId());
-	    super.onSaveInstanceState(savedInstanceState);
+		savedInstanceState.putString("place", ""+place.getId());
+		super.onSaveInstanceState(savedInstanceState);
 	}
 
-	
+
 	public void goToBattle(View view) {
-		Intent intent = new Intent(this, MyBattleActivity.class);
-		// intent.putExtra(EXTRA_MESSAGE, message);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(intent);
+		
+		if(GlobalRes.getCurrentPlayer().getOranges()>=5){
+			oppTeamName = place.getTeamsList().get(Integer.parseInt((String) view.getTag())).getName();
+			Log.d("PlaceActivity", "oppTeamName: " + oppTeamName);
+			
+			Intent intent = new Intent(this, MyBattleActivity.class);
+			// intent.putExtra(EXTRA_MESSAGE, message);
+			intent.putExtra("place", place.getId() + "");
+			intent.putExtra("oppteam", oppTeamName+"");
+			
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+		}
+		else{
+			if(GlobalRes.getCurrentPlayer().getOranges()==0){
+				Toast.makeText(getApplicationContext()," Ma dove vuoi andare se non hai arance? \n Vai alla scoperta dei luoghi per guadagnarle ", Toast.LENGTH_LONG).show();
+			}
+			else{
+				Toast.makeText(getApplicationContext()," Non hai un numero di arance sufficiente!!! \n  Vai alla scoperta dei luoghi per guadagnarle ", Toast.LENGTH_LONG).show();
+			}
+		}
 	}
 
 	public void goToMinigame(View view) {

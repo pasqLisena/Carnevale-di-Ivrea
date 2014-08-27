@@ -124,7 +124,8 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/mer"
                         android:contentDescription="@string/otherTeam_baloon"
-                        android:onClick="goToBattle" />
+                        android:onClick="goToBattle"
+                        android:tag="2" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -159,7 +160,8 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/pan"
                         android:contentDescription="@string/otherTeam_baloon"
-                        android:onClick="goToBattle" />
+                        android:onClick="goToBattle"
+                        android:tag="1"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -194,7 +196,8 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/dia"
                         android:contentDescription="@string/otherTeam_baloon"
-                        android:onClick="goToBattle" />
+                        android:onClick="goToBattle"
+                        android:tag="0" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

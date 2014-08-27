@@ -2,7 +2,9 @@ package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
 
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
+import it.polito.applicazionimultimediali.carnevalediivrea.Team;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
+import it.polito.applicazionimultimediali.carnevalediivrea.map.Place;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,21 +21,46 @@ public class MyBattleActivity extends UnityPlayerActivity {
 	static Context context ;
 	static boolean isBack = false;
 	private Intent myIntent;
+	private String firstTime;
+	private Place place;
+	private Team oppTeam;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		context = this;
+		String placeId = null;
+		String oppTeamName = null;
+		if (savedInstanceState == null) {
+			Bundle extras = getIntent().getExtras();
+			if (extras != null) {
+				placeId = extras.getString("place");
+				oppTeamName = extras.getString("oppteam");
+			}
+		} else {
+			placeId = (String) savedInstanceState.getSerializable("place");
+			oppTeamName = (String) savedInstanceState.getSerializable("oppteam");
+		}
+		
+		place = GlobalRes.placesList.get(Integer.parseInt(placeId));
+
 		
 		GlobalRes.prepareResources(getApplicationContext());
 		
 		prefs = getSharedPreferences("it.polito.applicazionimultimediali.carnevalediivrea", MODE_PRIVATE);
-		
 		SharedPreferences.Editor editor = prefs.edit();
 		
+		Log.d("MyBattleActivity", "oppTeamName: " + oppTeamName);
+		
+		
 		editor.putInt("Battle_NumArance", GlobalRes.getCurrentPlayer().getOranges());
-		editor.putString("Battle_Piazza", "Piazza Di Città");//da sostituire con metodo place.name()
-		editor.putString("Battle_Team", "Morte");//da sostituire con metodo player.team()
-		editor.putString("Battle_OpposingTeam", "Picche");//da sostituire con metodo player.OpposingTeam()
+		editor.putString("Battle_Piazza", place.getName());
+		editor.putString("Battle_Team", "Morte");
+		editor.putString("Battle_OpposingTeam", oppTeamName.toString());
+		
+		
+		editor.putString("Battle_FirstBattle", prefs.getString("Battle_FirstBattle", "true"));
+		
 		
 		//una volta chiuso il gioco salvo il punteggio in SharedPreferences in una variabile di tipo int "Battle_Score"
 		
@@ -46,6 +73,7 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		Log.d("MyBattleActivity", "onCreate called!");
 
 	}
+	
 		
 	public static void mostraPunteggio(Context c){
 		Log.d("MyBattleActivity", "mostraPunteggio Android called");
