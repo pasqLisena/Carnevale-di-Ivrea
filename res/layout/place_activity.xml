@@ -25,22 +25,45 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
+			
+			<LinearLayout 
+			    android:id= "@+id/LLQuiz"	
+			    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"              
+                android:orientation="vertical"  
+               	android:visibility="invisible"             
+			   >	
+			  
+			  
+			    <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" 
+                    android:layout_marginStart="10dp"
+                     >
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_weight="1" >
-
+                    <com.mobsandgeeks.ui.TypefaceTextView
+                        android:id="@+id/balloonQuiz"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/Quiz_baloon"                     
+                        android:textSize="20sp"
+                        geekui:customTypeface="fonts/rumpelstiltskin.ttf" />
+              
+			    </FrameLayout>
             <ImageButton
                 android:id="@+id/history_cloud"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:background="@drawable/history_button"
-                android:contentDescription="@string/quiz" />
-        </FrameLayout>
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:background="@drawable/history_button"             
+                android:contentDescription="@string/quiz"
+                android:onClick="goToQuiz" />
+            
+            </LinearLayout>
+      
 
         <LinearLayout
             android:layout_width="match_parent"

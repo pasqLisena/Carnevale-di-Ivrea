@@ -54,11 +54,8 @@ Il giocatore dovrà raccogliere più mimose e caramelle possibili muovendo il pr
         latlng="45.467436, 7.878425" />
     <place
         id="8"
-        name="Piazza Duomo"
+        name="Piazza Duomo"        
         latlng="45.468433, 7.875700"
-        minigame="MainQuizActivity"
-        minigame_descr="Quiz sulla storia del duomo"
-        minigame_mask="sost_gran_canc"
          />
     <place
         id="9"

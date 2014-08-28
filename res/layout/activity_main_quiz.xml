@@ -12,6 +12,16 @@
         android:text="@string/hello_main"
         tools:context=".MainQuizActivity" />
 
+     <TextView
+        android:id="@+id/DescrText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/homeText"
+        android:text="@string/quiz_descr"
+        tools:context=".MainQuizActivity" />
+    
     <Button
         android:id="@+id/videoPlay"
         android:layout_width="wrap_content"
@@ -20,6 +30,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="27dp"
         android:layout_marginLeft="70dp"
+        android:background="@drawable/orange_button"
         android:text="@string/videoPlay" />
 
     <Button
@@ -30,6 +41,7 @@
         android:layout_alignBottom="@+id/videoPlay"
         android:layout_alignParentRight="true"
         android:layout_marginRight="58dp"
+        android:background="@drawable/orange_button"
         android:text="@string/gamePlay" />
 
 </RelativeLayout>

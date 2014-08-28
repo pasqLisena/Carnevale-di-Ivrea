@@ -3,6 +3,7 @@ package it.polito.applicazionimultimediali.carnevalediivrea.minigame;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
+import it.polito.applicazionimultimediali.carnevalediivrea.map.Place;
 
 import java.io.BufferedReader;
 import java.io.Console;
@@ -34,8 +35,9 @@ public class QuizActivity extends Activity {
 
 	private TextView domandaText;
 	private RadioButton r0, r1, r2;
-	
-	private int idPosto = 0; 	//id del luogo
+	private Place place;
+
+	private int idPosto; 	//id del luogo
 	private String jName; 		//nome del file json
 	private int domCount=0;
 	private int ndomanda=0;
@@ -47,11 +49,26 @@ public class QuizActivity extends Activity {
 	final ArrayList<Domanda> domande = new ArrayList<Domanda>();
 	
 	
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        
+        String placeId = null;
+		if (savedInstanceState == null) {
+			Bundle extras = getIntent().getExtras();
+			if (extras != null) {
+				placeId = extras.getString("place");
+			}
+		} else {
+			placeId = (String) savedInstanceState.getSerializable("place");
+		}
+        		
+		if (placeId != null) {
+			place = GlobalRes.placesList.get(Integer.parseInt(placeId));
+		}
+		
+		idPosto=place.getId();
         
         domandaText = (TextView) findViewById(R.id.domandaText);
         r0 = (RadioButton) findViewById(R.id.radio0);
@@ -59,17 +76,14 @@ public class QuizActivity extends Activity {
         r2 = (RadioButton) findViewById(R.id.radio2);
            
         switch(idPosto){
-        case 0:
+        case 9:
         	jName = "Castello.json";
         	break;
         
-        case 1:
+        case 8:
         	jName = "Duomo.json";
         	break;
         	
-        case 2:
-        	jName = "Olivetti.json";
-        	break;
         }
         
         //leggo file json in base allo switch
@@ -246,8 +260,8 @@ public class QuizActivity extends Activity {
     		
     		AlertDialog.Builder builder = new AlertDialog.Builder(
 					QuizActivity.this);
-    		builder.setTitle("Livello completato");
-    		builder.setMessage("Risposta sbagliata. Non puoi proseguire. Hai vinto " + orangeWin + "/100 arance. Torna a giocare per vincere altre arance.")
+    		builder.setTitle("Partita completata");
+    		builder.setMessage("Risposta sbagliata, non puoi proseguire. Hai vinto " + orangeWin + "/100 arance. Torna a giocare per vincere altre arance.")
 					.setPositiveButton("OK",
 							new DialogInterface.OnClickListener() {
 								@Override

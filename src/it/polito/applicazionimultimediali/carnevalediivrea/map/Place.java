@@ -21,7 +21,7 @@ public class Place {
 	private boolean locked;
 	private Class<?> minigame;
 	private String minigameDescr, minigameBg, minigameMask;
-
+	private boolean quiz=false;
 
 	public Place(int id, String name, String latLng, String bg,
 			String minigame_class, String minigame_descr, String minigame_bg, String minigame_mask) {
@@ -46,6 +46,9 @@ public class Place {
 				e.printStackTrace();
 			}
 		}
+		if(id==9 || id==8 ){
+			quiz=true;
+		}
 	}
 
 	public Place(int id, String name, String latLng, String bg) {
@@ -60,6 +63,9 @@ public class Place {
 
 		this.locked = true;
 		this.minigame = null;
+		if(id==9 || id==8 ){
+			quiz=true;
+		}
 	}
 
 	public int getId() {
@@ -70,6 +76,7 @@ public class Place {
 		return minigame != null;
 	}
 
+	
 	public String getName() {
 		return name;
 	}
@@ -97,7 +104,16 @@ public class Place {
 	public boolean isLocked() {
 		return locked;
 	}
+	
+	public boolean isQuiz(){
+		return quiz;
+	}
 
+	public void setQuiz(boolean value){
+		quiz=value;
+	}
+	
+	
 	public void addTeam(Team team) {
 		if (teamsList == null) {
 			teamsList = new ArrayList<Team>();

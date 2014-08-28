@@ -69,10 +69,12 @@
 <string name="libroverbali_title">Libro dei verbali</string>
 
 <!-- Quiz -->
+	<string name="Quiz_baloon">Gioca al Quiz</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="hello_main">Benvenuto!\nCosa vuoi fare?</string>
+    <string name="hello_main">Benvenuto nel Quiz!</string>
+    <string name="quiz_descr">Guarda il video e rispondi alle domande per guadagnare più arance possibili!</string>
     <string name="videoPlay">Guarda il video</string>
     <string name="gamePlay">Gioca</string>
     <string name="title_activity_quiz">Quiz</string>
