@@ -357,5 +357,10 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 			return null;
 		}
 	}
+	public void toggleSpinner(boolean show) {
+		int visibility = (show) ? View.VISIBLE : View.GONE;
+		findViewById(R.id.progressLayout).setVisibility(visibility);
+	}
 
 }
+
