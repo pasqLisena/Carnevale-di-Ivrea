@@ -141,17 +141,19 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 
 		if (turn < 1) {
 			// multiplayer data not still available
-			// TODO spinner
+			toggleSpinner(true);
 		} else {
 			startMultiplayerAnimation();
 		}
 	}
 
 	private void startMultiplayerAnimation() {
-		// TODO remove spinner
+		toggleSpinner(false);
+		// TODO
 	}
 
 	private void startSingleBattleAnimation() {
+		toggleSpinner(false);
 		Animation goRightAnim = AnimationUtils.loadAnimation(this,
 				R.anim.su_go_right);
 		Animation goLeftAnim = AnimationUtils.loadAnimation(this,
@@ -357,5 +359,10 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 			return null;
 		}
 	}
+	public void toggleSpinner(boolean show) {
+		int visibility = (show) ? View.VISIBLE : View.GONE;
+		findViewById(R.id.progressLayout).setVisibility(visibility);
+	}
 
 }
+
