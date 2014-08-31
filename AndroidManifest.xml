@@ -123,7 +123,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane" />
         </activity>
-
+        <activity
+            android:name="it.polito.applicazionimultimediali.carnevalediivrea.minigame.Challenge"
+            android:label="@string/challenge"
+            android:parentActivityName="it.polito.applicazionimultimediali.carnevalediivrea.map.PLaceActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.polito.applicazionimultimediali.carnevalediivrea.map.PLaceActivity" />
+        </activity>
+        
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
             android:value="@string/app_id" />

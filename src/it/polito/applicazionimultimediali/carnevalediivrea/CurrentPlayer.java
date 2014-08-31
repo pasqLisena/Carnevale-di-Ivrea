@@ -2,6 +2,7 @@ package it.polito.applicazionimultimediali.carnevalediivrea;
 
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
@@ -9,6 +10,8 @@ import com.google.android.gms.games.Games;
 public class CurrentPlayer extends Player {
 	private int oranges;
 	private SharedPreferences playerData;
+	private boolean isSignedIn;
+	private String TAG = "CurrentPlayer";
 
 	public CurrentPlayer(SharedPreferences playerData) {
 		super(playerData.getString("nickname", "Anonimo"), Uri.parse(playerData
@@ -16,12 +19,14 @@ public class CurrentPlayer extends Player {
 		this.playerData = playerData;
 		this.points = playerData.getInt("points", 0);
 		this.oranges = playerData.getInt("oranges", 30);
+		setSignedIn(false);
 		// this.team = playerData.getString("Team", null);
 	}
 
 	public int getOranges() {
 		return oranges;
 	}
+
 	public int getPoints() {
 		return points;
 	}
@@ -37,29 +42,18 @@ public class CurrentPlayer extends Player {
 		prefEditor.commit();
 	}
 
-	public boolean playAGame(GoogleApiClient googleApiClient) {
-		if (getOranges() >= GlobalRes.orangesPerPlay) {
-//			this.oranges = getOranges() - GlobalRes.orangesPerPlay;
-			updateLocalData("oranges", this.oranges);
-			gainPoint(100);
-
-			if (googleApiClient != null) {
-				Games.Leaderboards.submitScore(googleApiClient,
-						GlobalRes.getArancieriLeaderboard(), this.points);
-			}
-			return true;
-		}
-		return false;
-	}
-
-	public void gainPoint(int points) {
+	public void gainPoint(int points, GoogleApiClient googleApiClient) {
 		this.points += points;
 		updateLocalData("points", this.points);
+		if (googleApiClient != null) {
+			Games.Leaderboards.submitScore(googleApiClient,
+					GlobalRes.getArancieriLeaderboard(), this.points);
+		}
 	}
 
-	public void lostPoint(int points) {
+	public void lostPoint(int points, GoogleApiClient googleApiClient) {
 		int newPoints = 0 - points;
-		gainPoint(newPoints);
+		gainPoint(newPoints, googleApiClient);
 	}
 
 	public void updateInfo(String nickname, Uri icoImg) {
@@ -72,5 +66,28 @@ public class CurrentPlayer extends Player {
 			prefEditor.putString("icoImg", icoImg.toString());
 		}
 		prefEditor.commit();
+	}
+
+	public void updateInfo(GoogleApiClient googleApiClient) {
+		com.google.android.gms.games.Player p = Games.Players.getCurrentPlayer(googleApiClient);
+		if (p == null) {
+			Log.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
+		} else {
+			setSignedIn(true);
+			String nickname = p.getDisplayName();
+			Uri icoImg = null;
+			if (p.hasIconImage())
+				icoImg = p.getIconImageUri();
+
+			this.updateInfo(nickname, icoImg);
+		}
+	}
+
+	public boolean isSignedIn() {
+		return isSignedIn;
+	}
+
+	public void setSignedIn(boolean isSignedIn) {
+		this.isSignedIn = isSignedIn;
 	}
 }

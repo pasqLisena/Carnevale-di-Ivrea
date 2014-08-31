@@ -71,6 +71,8 @@ public class PlayerActivity extends BaseGameActivity implements
 
 	@Override
 	public void onSignInSucceeded() {
+		GlobalRes.getCurrentPlayer().updateInfo(getApiClient());
+
 		signinBtn.setVisibility(View.GONE);
 		signoutBtn.setVisibility(View.VISIBLE);
 
