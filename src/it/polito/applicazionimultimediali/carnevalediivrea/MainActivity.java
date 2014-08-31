@@ -1,5 +1,6 @@
 package it.polito.applicazionimultimediali.carnevalediivrea;
 
+import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,16 +12,22 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.Player;
+import com.google.android.gms.games.multiplayer.Invitation;
+import com.google.android.gms.games.multiplayer.Multiplayer;
+import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
 public class MainActivity extends BaseGameActivity implements
-		View.OnClickListener {
+		View.OnClickListener, GoogleApiClient.ConnectionCallbacks {
 
 	private static final String TAG = "Main Activity";
 	private View signinBtn, loginPopup;
 	private Handler mHandler;
+	private boolean activityStarted;
+
 	private Runnable goToMap = new Runnable() {
 		@Override
 		public void run() {
@@ -42,9 +49,10 @@ public class MainActivity extends BaseGameActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		activityStarted = false;
 		setContentView(R.layout.activity_main);
 		getGameHelper().setMaxAutoSignInAttempts(0);
-
+		getApiClient().registerConnectionCallbacks(this);
 		mHandler = new Handler();
 
 		loginPopup = findViewById(R.id.login_popup);
@@ -69,13 +77,16 @@ public class MainActivity extends BaseGameActivity implements
 	};
 
 	public void goToMap(View view) {
+		if (activityStarted) // this happen on notifications
+			return;
+
 		Intent intent = new Intent(this, MapPane.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
 
 	public void showLoginPopup() {
-		 loginPopup.setVisibility(View.VISIBLE);
+		loginPopup.setVisibility(View.VISIBLE);
 		Animation myFadeInAnimation = AnimationUtils.loadAnimation(this,
 				R.anim.fadein);
 		loginPopup.startAnimation(myFadeInAnimation);
@@ -90,17 +101,7 @@ public class MainActivity extends BaseGameActivity implements
 	public void onSignInSucceeded() {
 		loginPopup.setVisibility(View.GONE);
 
-		Player p = Games.Players.getCurrentPlayer(getApiClient());
-		if (p == null) {
-			Log.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
-		} else {
-			String nickname = p.getDisplayName();
-			Uri icoImg = null;
-			if (p.hasIconImage())
-				icoImg = p.getIconImageUri();
-
-			GlobalRes.getCurrentPlayer().updateInfo(nickname, icoImg);
-		}
+		GlobalRes.getCurrentPlayer().updateInfo(getApiClient());
 		mHandler.postDelayed(goToMap, 3000);
 	}
 
@@ -109,5 +110,35 @@ public class MainActivity extends BaseGameActivity implements
 		if (view.getId() == R.id.sign_in_button) {
 			beginUserInitiatedSignIn();
 		}
+	}
+
+	@Override
+	public void onConnected(Bundle bundle) {
+		Log.v(TAG, "connect");
+
+		if (bundle == null)
+			return;
+
+		Intent intent = new Intent(this, BattleActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+		TurnBasedMatch tbm = bundle
+				.getParcelable(Multiplayer.EXTRA_TURN_BASED_MATCH);
+		Invitation inv = bundle.getParcelable(Multiplayer.EXTRA_INVITATION);
+
+		if (tbm != null) {
+			intent.putExtra(Multiplayer.EXTRA_TURN_BASED_MATCH, tbm);
+			startActivity(intent);
+		} else if (inv != null) {
+			intent.putExtra(Multiplayer.EXTRA_INVITATION, inv);
+		}
+		startActivity(intent);
+		activityStarted = true;
+	}
+
+	@Override
+	public void onConnectionSuspended(int arg0) {
+		// TODO Auto-generated method stub
+
 	}
 }

@@ -24,6 +24,8 @@ public class LibroVerbali extends Minigame implements OnClickListener{
 		GameHelperListener listener = new GameHelper.GameHelperListener() {
 			@Override
 			public void onSignInSucceeded() {
+				GlobalRes.getCurrentPlayer().updateInfo(mHelper.getApiClient());
+
 				findViewById(R.id.sign_in_button).setVisibility(View.GONE);
 				findViewById(R.id.btnStartMinigame).setVisibility(View.VISIBLE);
 			}
