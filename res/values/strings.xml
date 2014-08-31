@@ -72,6 +72,19 @@
     <string name="libroverbali_title">Libro dei verbali</string>
     <string name="youGain">Hai conquistato</string>
     <string name="yourScore">Il tuo punteggio</string>
+    <string name="you">TU</string>
+    <string name="yourOpponent">IL TUO\n AVVERSARIO</string>
+    <string name="youWin">HAI VINTO</string>
+    <string name="youLoose">HAI PERSO</string><string name="pair">PAREGGIO!</string>
+    <string name="waitYourOpponent">Ora attendi che giochi il tuo avversario</string>
     <string name="challenge">Sfida</string>
+    <string name="mp_not_your_turn_title">Sii paziente!</string>
+    <string name="mp_not_your_turn_text">Non è ancora il tuo turno!</string>
+    <string name="mp_auto_match_title">Sii paziente!</string>
+    <string name="mp_auto_match_text">Non abbiamo ancora trovato un avversario alla tua altezza!</string>
+    <string name="mp_cancelled_title">Partita annullata!</string>
+    <string name="mp_cancelled_text">La partita è stata annullata.\nForse il tuo avversario non ha accettato la tua sfida.</string>
+    <string name="mp_expired_title">Partita annullata!</string>
+    <string name="mp_expired_text">La partita è stata annullata.\nForse uno di voi due ha dimenticato di giocare .</string>
 
 </resources>
