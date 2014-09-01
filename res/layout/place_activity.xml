@@ -11,7 +11,6 @@
 
     <ImageView
         android:id="@+id/bgPlace"
-        android:contentDescription="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
@@ -19,8 +18,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/place_castellazzo_bg"
-        android:scaleType="centerCrop"
-        />
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,10 +53,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                android:orientation="vertical" 
-                android:visibility="invisible">
+                android:orientation="vertical"
+                android:visibility="invisible" >
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -98,8 +98,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|right"
-                    android:orientation="vertical" 
-                    android:visibility="invisible">
+                    android:orientation="vertical"
+                    android:visibility="invisible" >
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -125,7 +125,8 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/mer"
                         android:contentDescription="@string/otherTeam_baloon"
-                        android:onClick="goToBattle" />
+                        android:onClick="goToBattle"
+                        android:tag="2" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -133,8 +134,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|right"
-                    android:orientation="vertical" 
-                    android:visibility="invisible">
+                    android:orientation="vertical"
+                    android:visibility="invisible" >
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -160,7 +161,8 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/pan"
                         android:contentDescription="@string/otherTeam_baloon"
-                        android:onClick="goToBattle" />
+                        android:onClick="goToBattle"
+                        android:tag="1" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -168,8 +170,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:orientation="vertical" 
-                    android:visibility="invisible">
+                    android:orientation="vertical"
+                    android:visibility="invisible" >
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -195,7 +197,8 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:background="@drawable/dia"
                         android:contentDescription="@string/otherTeam_baloon"
-                        android:onClick="goToBattle" />
+                        android:onClick="goToBattle"
+                        android:tag="0" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

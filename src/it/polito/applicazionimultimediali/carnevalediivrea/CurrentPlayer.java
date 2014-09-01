@@ -18,13 +18,18 @@ public class CurrentPlayer extends Player {
 				.getString("icoImg", "")));
 		this.playerData = playerData;
 		this.points = playerData.getInt("points", 0);
-		this.oranges = playerData.getInt("oranges", 30);
+		this.oranges = playerData.getInt("oranges", 50);
 		setSignedIn(false);
 		// this.team = playerData.getString("Team", null);
 	}
 
 	public int getOranges() {
 		return oranges;
+	}
+
+	public void setOranges(int oranges) {
+		this.oranges = oranges;
+		updateLocalData("oranges", this.oranges);
 	}
 
 	public int getPoints() {
@@ -69,7 +74,8 @@ public class CurrentPlayer extends Player {
 	}
 
 	public void updateInfo(GoogleApiClient googleApiClient) {
-		com.google.android.gms.games.Player p = Games.Players.getCurrentPlayer(googleApiClient);
+		com.google.android.gms.games.Player p = Games.Players
+				.getCurrentPlayer(googleApiClient);
 		if (p == null) {
 			Log.w(TAG, "mGamesClient.getCurrentPlayer() is NULL!");
 		} else {

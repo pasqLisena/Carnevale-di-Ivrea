@@ -32,7 +32,7 @@ public class GlobalRes {
 
 	private static SharedPreferences playerData;
 
-	static void prepareResources(Context context) {
+	public static void prepareResources(Context context) {
 		ctx = context;
 
 		// Load places

@@ -39,7 +39,9 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map_activity);
-
+		
+		GlobalRes.prepareResources(getApplicationContext());
+				
 		markerMap = new HashMap<Marker, Place>();
 		// Get a handle to the Map Fragment
 		GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(

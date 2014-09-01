@@ -386,31 +386,25 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 	public void onClick(View view) {
 		Log.d("AAAA", getResources().getResourceEntryName(view.getId()));
 
-		switch (view.getId()) {
-		case R.id.sign_in_button:
+		int id = view.getId();
+		if (id == R.id.sign_in_button) {
 			beginUserInitiatedSignIn();
-			break;
-		case R.id.goBack:
+		} else if (id == R.id.goBack) {
 			finish();
-			break;
-		case R.id.button_send_gift:
-			// send gift!
+		} else if (id == R.id.button_send_gift) {
 			showSendIntent(GameRequest.TYPE_GIFT);
-			break;
-		case R.id.button_send_request:
-			// request gift!
+		} else if (id == R.id.button_send_request) {
 			showSendIntent(GameRequest.TYPE_WISH);
-			break;
-		case R.id.button_open_inbox:
-		case R.id.button_open_inbox2:
-			// show inbox!
+		} else if (id == R.id.button_send_request) {
+			showSendIntent(GameRequest.TYPE_WISH);
+		} else if (id == R.id.button_open_inbox || id ==  R.id.button_open_inbox2) {
 			if (getGameHelper().isSignedIn()) {
 				startActivityForResult(
 						Games.Requests.getInboxIntent(getApiClient()),
 						SHOW_INBOX);
 			}
-			break;
 		}
+		
 	}
 
 }

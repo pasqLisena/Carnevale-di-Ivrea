@@ -14,6 +14,7 @@ import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -42,7 +43,7 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 
 	TextView newScoreView, totalScoreView, scoreToAddView, yourScoreView,
 			waitYourOpponentView, youGainView;
-	int newScore, oldScore, otherScore;
+	int newScore, oldScore, otherScore, numOranges;
 	private String matchId;
 	private TurnBasedMatch mMatch;
 	private boolean updated;
@@ -55,11 +56,15 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 	private Animation fadeIn;
 	private int realScore;
 	private int incrScore, incrSpeed;
+	private SharedPreferences prefs;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.score_update_activity);
+
+		GlobalRes.prepareResources(getApplicationContext());
 
 		newScoreView = (TextView) findViewById(R.id.newScore);
 		totalScoreView = (TextView) findViewById(R.id.totalScore);
@@ -74,6 +79,12 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 			updated = savedInstanceState.getBoolean("Score_Updated", false);
 			matchId = savedInstanceState.getString("Battle_MatchId", null);
 		} else {
+			prefs = getSharedPreferences("it.polito.applicazionimultimediali.carnevalediivrea", MODE_PRIVATE);
+		
+			newScore = prefs.getInt("Battle_Score", 0);
+			numOranges =  prefs.getInt("Battle_NumAranceRimaste", 0);
+				GlobalRes.getCurrentPlayer().setOranges(numOranges);
+		
 			// FIXME maybe it has to be moved to sharedPref
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
