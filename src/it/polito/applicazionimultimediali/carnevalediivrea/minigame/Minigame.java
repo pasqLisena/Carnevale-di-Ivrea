@@ -42,25 +42,22 @@ public abstract class Minigame extends Activity {
 	}
 
 	private void renderView() {
-		if (mg_bg == null) {
+		if (mg_mask == null) {
 			finish();
 			return;
 		}
+		int mask = getResources().getIdentifier(mg_mask, "drawable",
+				getPackageName());
+		if (mask != 0) {
+			((ImageView) findViewById(R.id.character)).setImageResource(mask);
+			((ImageView) findViewById(R.id.character2)).setImageResource(mask);
+		}
 
-		int bg = getResources().getIdentifier(mg_bg, "drawable", null);
-		if (bg != 0)
-			findViewById(R.id.startMinigameFullLayout)
-					.setBackgroundResource(bg);
-		if (mg_mask != null) {
-
-			int mask = getResources().getIdentifier(mg_mask, "drawable",
-					getPackageName());
-			if (mask != 0) {
-				((ImageView) findViewById(R.id.character))
-						.setImageResource(mask);
-				((ImageView) findViewById(R.id.character2))
-						.setImageResource(mask);
-			}
+		if (mg_bg != null) {
+			int bg = getResources().getIdentifier(mg_bg, "drawable", null);
+			if (bg != 0)
+				findViewById(R.id.startMinigameFullLayout)
+						.setBackgroundResource(bg);
 		}
 
 		((TextView) findViewById(R.id.descrStartMinigame)).setText(descr);

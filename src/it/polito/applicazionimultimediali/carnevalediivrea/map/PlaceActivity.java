@@ -47,7 +47,7 @@ public class PlaceActivity extends Activity {
 			finish();
 			return;
 		}
-		
+
 		place = GlobalRes.placesList.get(Integer.parseInt(placeId));
 
 		setTitle(place.getName());

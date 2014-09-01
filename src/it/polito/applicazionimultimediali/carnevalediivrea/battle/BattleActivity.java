@@ -88,6 +88,7 @@ public class BattleActivity extends BaseGameActivity implements
 		// if not single, wait for signin
 		if (!isSignedIn()) {
 			// ask for login
+			toggleSpinner(false);
 			signinPopup.setVisibility(View.VISIBLE);
 		} else
 			onSignInSucceeded();
