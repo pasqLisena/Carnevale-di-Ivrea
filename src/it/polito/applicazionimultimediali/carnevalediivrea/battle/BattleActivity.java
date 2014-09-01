@@ -47,6 +47,7 @@ public class BattleActivity extends BaseGameActivity implements
 	final static int RC_SELECT_PLAYERS = 10000;
 	final static int RC_LOOK_AT_MATCHES = 10001;
 	private boolean isNotification;
+	private String placeid, oppTeamName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,8 @@ public class BattleActivity extends BaseGameActivity implements
 			if (extras != null) {
 				inv = extras.getParcelable(Multiplayer.EXTRA_INVITATION);
 				tbm = extras.getParcelable(Multiplayer.EXTRA_TURN_BASED_MATCH);
+				placeid = extras.getString("place");
+				oppTeamName = extras.getString("oppteam");
 				isAChallenge = extras.getBoolean("Challenge");
 			}
 		} else {
@@ -333,36 +336,23 @@ public class BattleActivity extends BaseGameActivity implements
 	private void goToGame(TurnBasedMatch match) {
 		mMatch = match;
 		toggleSpinner(false);
-		// TODO open unity activity
+
+		Intent intent = new Intent(this, BattleActivity.class);
+		intent.putExtra("place", placeid);
+		intent.putExtra("oppteam", oppTeamName);
+		if (mMatch != null)
+			intent.putExtra("Battle_MatchId", mMatch.getMatchId());
+
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
 	};
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
 		savedInstanceState.putBoolean("challenge", isAChallenge);
+		savedInstanceState.putString("oppteam", oppTeamName);
+		savedInstanceState.putString("place", placeid);
 		super.onSaveInstanceState(savedInstanceState);
-	}
-
-	public void fakePlay(View v) {
-		toggleSpinner(true);
-		CurrentPlayer player = GlobalRes.getCurrentPlayer();
-		if (isNotification && !isSignedIn()) {
-			return;
-		}
-
-		if (player.getOranges() >= GlobalRes.orangesPerPlay) {
-
-			Intent intent = new Intent(this, ScoreUpdateActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.putExtra("Battle_Score",
-					(int) Math.ceil(Math.random() * 100));
-			if (mMatch != null)
-				intent.putExtra("Battle_MatchId", mMatch.getMatchId());
-			startActivity(intent);
-		} else {
-			// FIXME string as resources
-			showWarning("Peccato!", "Non hai abbastanza arance");
-		}
-
 	}
 
 	// Convert score in byteArray

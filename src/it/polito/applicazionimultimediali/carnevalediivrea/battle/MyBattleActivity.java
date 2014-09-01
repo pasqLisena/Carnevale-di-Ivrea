@@ -2,7 +2,6 @@ package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
 
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
-import it.polito.applicazionimultimediali.carnevalediivrea.Team;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.Place;
 import android.app.Activity;
@@ -21,9 +20,8 @@ public class MyBattleActivity extends UnityPlayerActivity {
 	static Context context ;
 	static boolean isBack = false;
 	private Intent myIntent;
-	private String firstTime;
 	private Place place;
-	private Team oppTeam;
+	private String matchId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +35,12 @@ public class MyBattleActivity extends UnityPlayerActivity {
 			if (extras != null) {
 				placeId = extras.getString("place");
 				oppTeamName = extras.getString("oppteam");
+				matchId = extras.getString("Battle_MatchId");
 			}
 		} else {
-			placeId = (String) savedInstanceState.getSerializable("place");
-			oppTeamName = (String) savedInstanceState.getSerializable("oppteam");
+			placeId = savedInstanceState.getString("place");
+			oppTeamName = savedInstanceState.getString("oppteam");
+			matchId = savedInstanceState.getString("Battle_MatchId");
 		}
 		
 		GlobalRes.prepareResources(getApplicationContext());
@@ -54,6 +54,7 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		editor.putString("Battle_Piazza", place.getName());
 		editor.putString("Battle_OpposingTeam", oppTeamName.toString());	
 		editor.putString("Battle_FirstBattle", prefs.getString("Battle_FirstBattle", "true"));
+		editor.putString("Battle_MatchId", matchId);
 		editor.commit();
 		
 		 myIntent = new Intent();

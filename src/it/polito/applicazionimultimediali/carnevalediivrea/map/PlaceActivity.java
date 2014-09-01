@@ -3,11 +3,10 @@ package it.polito.applicazionimultimediali.carnevalediivrea.map;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
-import it.polito.applicazionimultimediali.carnevalediivrea.battle.MyBattleActivity;
+import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -85,13 +84,10 @@ public class PlaceActivity extends Activity {
 
 
 	public void goToBattle(View view) {
-		
 		if(GlobalRes.getCurrentPlayer().getOranges()>=5){
-			
 			oppTeamName = place.getTeamsList().get(Integer.parseInt((String) view.getTag())).getName();
 			
-			Intent intent = new Intent(this, MyBattleActivity.class);
-			// intent.putExtra(EXTRA_MESSAGE, message);
+			Intent intent = new Intent(this, BattleActivity.class);
 			intent.putExtra("place", place.getId() + "");
 			intent.putExtra("oppteam", oppTeamName+"");
 			

@@ -35,7 +35,7 @@ import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer.L
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer.UpdateMatchResult;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
-public class ScoreUpdateActivity<V> extends BaseGameActivity {
+public class ScoreUpdateActivity extends BaseGameActivity {
 	final static int MATCH_SINGLE = 0;
 	final static int MATCH_WON = 1;
 	final static int MATCH_LOST = 2;
@@ -57,7 +57,6 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 	private int realScore;
 	private int incrScore, incrSpeed;
 	private SharedPreferences prefs;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,18 +78,21 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 			updated = savedInstanceState.getBoolean("Score_Updated", false);
 			matchId = savedInstanceState.getString("Battle_MatchId", null);
 		} else {
-			prefs = getSharedPreferences("it.polito.applicazionimultimediali.carnevalediivrea", MODE_PRIVATE);
-		
+			prefs = getSharedPreferences(
+					"it.polito.applicazionimultimediali.carnevalediivrea",
+					MODE_PRIVATE);
+
 			newScore = prefs.getInt("Battle_Score", 0);
-			numOranges =  prefs.getInt("Battle_NumAranceRimaste", 0);
-				GlobalRes.getCurrentPlayer().setOranges(numOranges);
-		
-			// FIXME maybe it has to be moved to sharedPref
-			Bundle extras = getIntent().getExtras();
-			if (extras != null) {
-				newScore = extras.getInt("Battle_Score");
-				matchId = extras.getString("Battle_MatchId", null);
-			}
+			numOranges = prefs.getInt("Battle_NumAranceRimaste", 0);
+			GlobalRes.getCurrentPlayer().setOranges(numOranges);
+			matchId = prefs.getString("Battle_MatchId", null);
+			
+			// remove from sharedPref for avoid duplicates and save memory
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.remove("Battle_MatchId");
+			editor.remove("Battle_Score");
+			editor.remove("Battle_NumAranceRimaste");
+			editor.commit();
 		}
 
 		newScoreView.setText(getResources().getQuantityString(R.plurals.point,
@@ -365,7 +367,7 @@ public class ScoreUpdateActivity<V> extends BaseGameActivity {
 				}
 
 				oldScore += incrSpeed;
-				incrScore+= incrSpeed;
+				incrScore += incrSpeed;
 
 				totalScoreView.setText(oldScore + "");
 				String scoreAdd = "";
