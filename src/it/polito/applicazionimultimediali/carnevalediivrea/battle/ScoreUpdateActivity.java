@@ -27,13 +27,10 @@ public class ScoreUpdateActivity extends Activity {
 		prefs = getSharedPreferences("it.polito.applicazionimultimediali.carnevalediivrea", MODE_PRIVATE);
 		
 		newScore = prefs.getInt("Battle_Score", 0);
-		
 		numOranges =  prefs.getInt("Battle_NumAranceRimaste", 0);
-		
 		
 		GlobalRes.prepareResources(getApplicationContext());
 		
-		Log.d("ScoreUpdateActivity", "numOranges:"+numOranges);
 		GlobalRes.getCurrentPlayer().setOranges(numOranges);
 		
 		GlobalRes.getCurrentPlayer().gainPoint(newScore);

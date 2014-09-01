@@ -31,6 +31,7 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		context = this;
 		String placeId = null;
 		String oppTeamName = null;
+		
 		if (savedInstanceState == null) {
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
@@ -42,38 +43,24 @@ public class MyBattleActivity extends UnityPlayerActivity {
 			oppTeamName = (String) savedInstanceState.getSerializable("oppteam");
 		}
 		
-		place = GlobalRes.placesList.get(Integer.parseInt(placeId));
-
-		
 		GlobalRes.prepareResources(getApplicationContext());
+		
+		place = GlobalRes.placesList.get(Integer.parseInt(placeId));
 		
 		prefs = getSharedPreferences("it.polito.applicazionimultimediali.carnevalediivrea", MODE_PRIVATE);
 		SharedPreferences.Editor editor = prefs.edit();
 		
-		Log.d("MyBattleActivity", "oppTeamName: " + oppTeamName);
-		
-		
 		editor.putInt("Battle_NumArance", GlobalRes.getCurrentPlayer().getOranges());
 		editor.putString("Battle_Piazza", place.getName());
-		editor.putString("Battle_Team", "Morte");
-		editor.putString("Battle_OpposingTeam", oppTeamName.toString());
-		
-		
+		editor.putString("Battle_OpposingTeam", oppTeamName.toString());	
 		editor.putString("Battle_FirstBattle", prefs.getString("Battle_FirstBattle", "true"));
-		
-		
-		//una volta chiuso il gioco salvo il punteggio in SharedPreferences in una variabile di tipo int "Battle_Score"
-		
 		editor.commit();
 		
 		 myIntent = new Intent();
 	     myIntent.setAction(Intent.ACTION_VIEW);
 	     myIntent.setData(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
-		Log.d("MyBattleActivity", "onCreate called!");
-
 	}
-	
 		
 	public static void mostraPunteggio(Context c){
 		Log.d("MyBattleActivity", "mostraPunteggio Android called");
@@ -108,6 +95,4 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-
-	
 }

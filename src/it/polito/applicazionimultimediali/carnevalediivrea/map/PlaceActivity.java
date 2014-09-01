@@ -1,7 +1,5 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.map;
 
-import java.util.List;
-
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
@@ -11,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -90,8 +87,8 @@ public class PlaceActivity extends Activity {
 	public void goToBattle(View view) {
 		
 		if(GlobalRes.getCurrentPlayer().getOranges()>=5){
+			
 			oppTeamName = place.getTeamsList().get(Integer.parseInt((String) view.getTag())).getName();
-			Log.d("PlaceActivity", "oppTeamName: " + oppTeamName);
 			
 			Intent intent = new Intent(this, MyBattleActivity.class);
 			// intent.putExtra(EXTRA_MESSAGE, message);
@@ -103,10 +100,10 @@ public class PlaceActivity extends Activity {
 		}
 		else{
 			if(GlobalRes.getCurrentPlayer().getOranges()==0){
-				Toast.makeText(getApplicationContext()," Ma dove vuoi andare se non hai arance? \n Vai alla scoperta dei luoghi per guadagnarle ", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(),R.string.messZeroArance, Toast.LENGTH_LONG).show();
 			}
 			else{
-				Toast.makeText(getApplicationContext()," Non hai un numero di arance sufficiente!!! \n  Vai alla scoperta dei luoghi per guadagnarle ", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(),R.string.messPocheArance, Toast.LENGTH_LONG).show();
 			}
 		}
 	}
