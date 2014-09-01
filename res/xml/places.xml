@@ -18,9 +18,9 @@ Il giocatore può scegliere fra 3 sassi dei ruderi per colpirlo con il suo marte
         name="Piazza di Città"
         bg="place_piazzadicitta_bg"
         latlng="45.466779, 7.875750"
-        minigame="PredaInDora"
+        minigame="Challenge"
         minigame_descr="La Mugnaia è il personaggio più importante dello Storico Carnevale. Durante la sfilata la Mugnaia sfila su un carro dorato lanciando caramelle e rametti di mimosa.
-Il giocatore dovrà raccogliere più mimose e caramelle possibili muovendo il proprio device e spostando un cestino"
+Sfida un avversario!"
         minigame_mask="mugnaia" />
     <place
         id="3"
@@ -38,35 +38,40 @@ Il giocatore dovrà raccogliere più mimose e caramelle possibili muovendo il pr
     <place
         id="5"
         name="Piazza Freguglia"
+        bg="place_freguglia_bg"
         latlng="45.466290, 7.881392" />
     <place
         id="6"
         name="Piazza Rondolino"
         bg="place_rondolino_bg"
-        latlng="45.465506, 7.881005" 
+        latlng="45.465506, 7.881005"
         minigame="LibroVerbali"
+        minigame_bg = "place_rondolino_bg"
         minigame_descr="Il Sostituto Gran Cancelliere ha il compito di redigere e certificare i processi verbali del Carnevale in un apposito Libro. è sempre presente a ogni atto ufficiale per poterne dare precisa testimonianza."
-        minigame_mask="sost_gran_canc"
-        />
+        minigame_mask="sost_gran_canc" />
     <place
         id="7"
         name="Piazza Ottinetti"
+        bg="place_ottinetti_bg"
         latlng="45.467436, 7.878425" />
     <place
         id="8"
         name="Piazza Duomo"
+        bg="place_under_construction_bg"
         latlng="45.468433, 7.875700" />
     <place
         id="9"
         name="Piazza Castello"
         bg="place_castello_bg"
-        minigame="PredaInDora"
+        latlng="45.467721, 7.874919"
+        minigame="UnderConstruction"
+        minigame_bg="place_under_construction_bg"
         minigame_descr="Il Generale conserva il regolamento"
-        minigame_mask="generale"
-        latlng="45.467721, 7.874919" />
+        minigame_mask="generale" />
     <place
         id="10"
         name="Via Palma"
+        bg="place_under_construction_bg"
         latlng="45.467134, 7.874530" />
 
 </places>

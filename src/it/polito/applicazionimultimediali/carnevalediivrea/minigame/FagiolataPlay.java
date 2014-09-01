@@ -97,6 +97,8 @@ public class FagiolataPlay extends BaseGameActivity implements OnClickListener {
 	 */
 	@Override
 	public void onSignInSucceeded() {
+		GlobalRes.getCurrentPlayer().updateInfo(getApiClient());
+
 		findViewById(R.id.sing_in_cont).setVisibility(View.GONE);
 		findViewById(R.id.console_cont).setVisibility(View.VISIBLE);
 
