@@ -22,26 +22,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesStatusCodes;
 import com.google.android.gms.games.multiplayer.Invitation;
 import com.google.android.gms.games.multiplayer.Multiplayer;
-import com.google.android.gms.games.multiplayer.OnInvitationReceivedListener;
 import com.google.android.gms.games.multiplayer.realtime.RoomConfig;
-import com.google.android.gms.games.multiplayer.turnbased.OnTurnBasedMatchUpdateReceivedListener;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatchConfig;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer;
-import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer.UpdateMatchResult;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
 public class BattleActivity extends BaseGameActivity implements
-		View.OnClickListener, OnInvitationReceivedListener,
-		OnTurnBasedMatchUpdateReceivedListener {
+		View.OnClickListener {
 	private boolean isAChallenge;
 	private View signinPopup;
 	private AlertDialog mAlertDialog;
@@ -52,7 +46,6 @@ public class BattleActivity extends BaseGameActivity implements
 	// For our intents
 	final static int RC_SELECT_PLAYERS = 10000;
 	final static int RC_LOOK_AT_MATCHES = 10001;
-	private int TOAST_DELAY = 200;
 	private boolean isNotification;
 
 	@Override
@@ -212,8 +205,6 @@ public class BattleActivity extends BaseGameActivity implements
 			updateMatch(match);
 			return;
 		}
-
-		// setViewVisibility();
 	}
 
 	// This is the main function that gets called when players choose a match
@@ -226,47 +217,37 @@ public class BattleActivity extends BaseGameActivity implements
 
 		switch (status) {
 		case TurnBasedMatch.MATCH_STATUS_CANCELED:
-			showWarning("Canceled!", "This game was canceled!");
+			showWarning(R.string.mp_cancelled_title, R.string.mp_cancelled_text);
 			return;
 		case TurnBasedMatch.MATCH_STATUS_EXPIRED:
-			showWarning("Expired!", "This game is expired.  So sad!");
+			showWarning(R.string.mp_expired_title, R.string.mp_expired_text);
 			return;
 		case TurnBasedMatch.MATCH_STATUS_AUTO_MATCHING:
-			showWarning("Waiting for auto-match...",
-					"We're still waiting for an automatch partner.");
+			showWarning(R.string.mp_auto_match_title,
+					R.string.mp_auto_match_text);
+			goToMap(null);
 			return;
 		case TurnBasedMatch.MATCH_STATUS_COMPLETE:
-			if (turnStatus == TurnBasedMatch.MATCH_TURN_STATUS_COMPLETE) {
-				showWarning(
-						"Complete!",
-						"This game is over; someone finished it, and so did you!  There is nothing to be done.");
-				break;
-			}
-
-			// Note that in this state, you must still call "Finish" yourself,
-			// so we allow this to continue.
-			showWarning("Complete!",
-					"This game is over; someone finished it!  You can only finish it now.");
+			Intent intent = new Intent(this, ScoreUpdateActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("Battle_MatchId", mMatch.getMatchId());
+			startActivity(intent);
+			return;
 		}
 
 		// OK, it's active. Check on turn status.
 		switch (turnStatus) {
 		case TurnBasedMatch.MATCH_TURN_STATUS_MY_TURN:
-			showWarning("My turn", "My turn.");
 			goToGame(mMatch);
 			return;
 		case TurnBasedMatch.MATCH_TURN_STATUS_THEIR_TURN:
-			// Should return results.
-			showWarning("Alas...", "It's not your turn.");
+			showWarning(R.string.mp_not_your_turn_title,
+					R.string.mp_not_your_turn_text);
 			break;
 		case TurnBasedMatch.MATCH_TURN_STATUS_INVITED:
-			showWarning("Good inititative!",
-					"Still waiting for invitations.\n\nBe patient!");
+			showWarning(R.string.mp_not_your_turn_title,
+					R.string.mp_not_your_turn_text);
 		}
-
-		// mTurnData = null;
-
-		// setViewVisibility();
 	}
 
 	public void showErrorMessage(TurnBasedMatch match, int statusCode,
@@ -287,8 +268,7 @@ public class BattleActivity extends BaseGameActivity implements
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int id) {
-						// if this button is clicked, close
-						// current activity
+						goToMap(null);
 					}
 				});
 
@@ -297,6 +277,11 @@ public class BattleActivity extends BaseGameActivity implements
 
 		// show it
 		mAlertDialog.show();
+	}
+
+	public void showWarning(int titleId, int messageId) {
+		showWarning(getResources().getString(titleId), getResources()
+				.getString(messageId));
 	}
 
 	// Returns false if something went wrong, probably. This should handle
@@ -373,82 +358,10 @@ public class BattleActivity extends BaseGameActivity implements
 			if (mMatch != null)
 				intent.putExtra("Battle_MatchId", mMatch.getMatchId());
 			startActivity(intent);
-
-			// String playerId =
-			// Games.Players.getCurrentPlayerId(getApiClient());
-			// String myParticipantId = mMatch.getParticipantId(playerId);
-			//
-			//
-			// ArrayList<String> participantIds = mMatch.getParticipantIds();
-			//
-			// int desiredIndex = -1;
-			//
-			// for (int i = 0; i < participantIds.size(); i++) {
-			// if (participantIds.get(i).equals(myParticipantId)) {
-			// desiredIndex = i + 1;
-			// }
-			// }
-			//
-			// String nextParticipantId;
-			// if (desiredIndex < participantIds.size()) {
-			// nextParticipantId = participantIds.get(desiredIndex);
-			// } else if (mMatch.getAvailableAutoMatchSlots() <= 0) {
-			// // You've run out of automatch slots, so we start over.
-			// nextParticipantId = participantIds.get(0);
-			// } else {
-			// // You have not yet fully automatched, so null will find a new
-			// // person to play against.
-			// nextParticipantId = null;
-			// }
-			//
-			// byte[] oldData = mMatch.getData();
-			// Map<String, Integer> scoreMap = decode(oldData);
-			// if (scoreMap == null) {
-			// scoreMap = new HashMap<String, Integer>();
-			// }
-			// scoreMap.put(playerId, (int) Math.ceil(Math.random() * 100));
-			//
-			// if (scoreMap.size() >= 2) {
-			// endMatch();
-			// return;
-			// }
-			//
-			// Games.TurnBasedMultiplayer
-			// .takeTurn(getApiClient(), mMatch.getMatchId(),
-			// encode(scoreMap), nextParticipantId)
-			// .setResultCallback(
-			// new ResultCallback<TurnBasedMultiplayer.UpdateMatchResult>() {
-			// @Override
-			// public void onResult(UpdateMatchResult result) {
-			// mMatch = result.getMatch();
-			// endMatch();
-			// }
-			// });
-
 		} else {
 			// FIXME string as resources
 			showWarning("Peccato!", "Non hai abbastanza arance");
 		}
-
-	}
-
-	private void endMatch() {
-		Games.TurnBasedMultiplayer.finishMatch(getApiClient(),
-				mMatch.getMatchId()).setResultCallback(
-				new ResultCallback<TurnBasedMultiplayer.UpdateMatchResult>() {
-					@Override
-					public void onResult(
-							TurnBasedMultiplayer.UpdateMatchResult result) {
-						Log.d("UPDATE_MATCH_RESULT", result.getStatus()
-								.toString());
-
-					}
-				});
-		Intent intent = new Intent(this, ScoreUpdateActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		intent.putExtra("Battle_Score", (int) Math.ceil(Math.random() * 100));
-		intent.putExtra("Battle_MatchId", mMatch.getMatchId());
-		startActivity(intent);
 
 	}
 
@@ -523,8 +436,6 @@ public class BattleActivity extends BaseGameActivity implements
 		}
 
 		if (isNotification) {
-			Log.d(TAG, "bla bla");
-
 			// If I came from a notification of my turn, I have mMatch
 			if (mMatch != null) {
 				updateMatch(mMatch);
@@ -543,31 +454,6 @@ public class BattleActivity extends BaseGameActivity implements
 		if (view.getId() == R.id.sign_in_button) {
 			beginUserInitiatedSignIn();
 		}
-	}
-
-	// Handle notification events.
-	@Override
-	public void onInvitationReceived(Invitation invitation) {
-		Toast.makeText(
-				this,
-				"An invitation has arrived from "
-						+ invitation.getInviter().getDisplayName(), TOAST_DELAY)
-				.show();
-	}
-
-	@Override
-	public void onInvitationRemoved(String invitationId) {
-		Toast.makeText(this, "An invitation was removed.", TOAST_DELAY).show();
-	}
-
-	@Override
-	public void onTurnBasedMatchReceived(TurnBasedMatch match) {
-		Toast.makeText(this, "A match was updated.", TOAST_DELAY).show();
-	}
-
-	@Override
-	public void onTurnBasedMatchRemoved(String matchId) {
-		Toast.makeText(this, "A match was removed.", TOAST_DELAY).show();
 	}
 
 	public void toggleSpinner(boolean show) {
