@@ -6,7 +6,6 @@ import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,7 +13,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -70,15 +68,15 @@ public class PredaInDoraPlay extends Activity {
 
 	public void breakRock(View v) {
 
-		int index = 0;
+		int index = -1;
 		if (v == rock1)
-			index = 1;
+			index = 0;
 		else if (v == rock2)
-			index = 2;
+			index = 1;
 		else if (v == rock3)
-			index = 3;
+			index = 2;
 
-		if (index == 0) {
+		if (index == -1) {
 			Log.e("PredaInDoraPlay", "Click on a unrecognized obj");
 			// TODO
 			return;

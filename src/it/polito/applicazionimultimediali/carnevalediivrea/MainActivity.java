@@ -126,11 +126,12 @@ public class MainActivity extends BaseGameActivity implements
 		if (tbm != null) {
 			intent.putExtra(Multiplayer.EXTRA_TURN_BASED_MATCH, tbm);
 			startActivity(intent);
+			activityStarted = true;
 		} else if (inv != null) {
 			intent.putExtra(Multiplayer.EXTRA_INVITATION, inv);
+			startActivity(intent);
+			activityStarted = true;
 		}
-		startActivity(intent);
-		activityStarted = true;
 	}
 
 	@Override

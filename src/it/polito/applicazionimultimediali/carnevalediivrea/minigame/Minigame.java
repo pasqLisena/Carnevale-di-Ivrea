@@ -14,6 +14,7 @@ public abstract class Minigame extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.start_minigame_activity);
+
 		if (savedInstanceState == null) {
 			Bundle extras = getIntent().getExtras();
 			if (extras != null) {
@@ -22,17 +23,34 @@ public abstract class Minigame extends Activity {
 				mg_mask = extras.getString("mg_mask");
 			}
 		} else {
-			mg_bg = (String) savedInstanceState.getSerializable("mg_bg");
-			descr = (String) savedInstanceState.getSerializable("mg_descr");
-			mg_mask = (String) savedInstanceState.getSerializable("mg_mask");
+			mg_bg = savedInstanceState.getString("mg_bg");
+			descr = savedInstanceState.getString("mg_descr");
+			mg_mask = savedInstanceState.getString("mg_mask");
 		}
 
-		if (mg_bg != null) {
-			int bg = getResources().getIdentifier(mg_bg, "drawable", null);
-			if (bg != 0)
-				findViewById(R.id.startMinigameFullLayout)
-						.setBackgroundResource(bg);
+		renderView();
+	}
+
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		mg_bg = savedInstanceState.getString("mg_bg");
+		descr = savedInstanceState.getString("mg_descr");
+		mg_mask = savedInstanceState.getString("mg_mask");
+
+		renderView();
+	}
+
+	private void renderView() {
+		if (mg_bg == null) {
+			finish();
+			return;
 		}
+
+		int bg = getResources().getIdentifier(mg_bg, "drawable", null);
+		if (bg != 0)
+			findViewById(R.id.startMinigameFullLayout)
+					.setBackgroundResource(bg);
 		if (mg_mask != null) {
 
 			int mask = getResources().getIdentifier(mg_mask, "drawable",
@@ -46,6 +64,7 @@ public abstract class Minigame extends Activity {
 		}
 
 		((TextView) findViewById(R.id.descrStartMinigame)).setText(descr);
+
 	}
 
 	@Override
