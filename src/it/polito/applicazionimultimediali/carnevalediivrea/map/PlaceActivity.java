@@ -76,6 +76,7 @@ public class PlaceActivity extends Activity {
 		}
 	}
 
+
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
 		savedInstanceState.putString("place", ""+place.getId());

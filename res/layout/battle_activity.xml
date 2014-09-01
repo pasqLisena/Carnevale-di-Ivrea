@@ -4,25 +4,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
-        android:gravity="center"
-        android:text="Premendo il bottone verranno sottratte 15 arance al totale e si guadagnano 100 punti... Mica Male!"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick="fakePlay"
-        android:text="@string/button_battle" />
-
     <FrameLayout
         android:id="@+id/login_popup"
         android:layout_width="wrap_content"

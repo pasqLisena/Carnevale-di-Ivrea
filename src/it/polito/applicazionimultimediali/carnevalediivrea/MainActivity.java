@@ -3,7 +3,6 @@ package it.polito.applicazionimultimediali.carnevalediivrea;
 import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -13,8 +12,6 @@ import android.view.animation.AnimationUtils;
 
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.games.Games;
-import com.google.android.gms.games.Player;
 import com.google.android.gms.games.multiplayer.Invitation;
 import com.google.android.gms.games.multiplayer.Multiplayer;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch;

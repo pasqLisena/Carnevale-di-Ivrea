@@ -1,6 +1,5 @@
 package it.polito.applicazionimultimediali.carnevalediivrea.battle;
 
-import it.polito.applicazionimultimediali.carnevalediivrea.CurrentPlayer;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
@@ -83,7 +82,6 @@ public class BattleActivity extends BaseGameActivity implements
 
 		// single battle
 		if (!isAChallenge && !isNotification) {
-			goToGame(null);
 			return;
 		}
 
@@ -93,9 +91,18 @@ public class BattleActivity extends BaseGameActivity implements
 			signinPopup.setVisibility(View.VISIBLE);
 		} else
 			onSignInSucceeded();
-
 	}
 
+	@Override
+	public void onResume(){
+		super.onResume();
+		// single battle
+		if (!isAChallenge && !isNotification) {
+			goToGame(null);
+			return;
+		}
+	}
+	
 	private void startChallenge() {
 		toggleSpinner(true);
 		Intent intent = Games.TurnBasedMultiplayer.getSelectOpponentsIntent(
@@ -337,7 +344,7 @@ public class BattleActivity extends BaseGameActivity implements
 		mMatch = match;
 		toggleSpinner(false);
 
-		Intent intent = new Intent(this, BattleActivity.class);
+		Intent intent = new Intent(this, MyBattleActivity.class);
 		intent.putExtra("place", placeid);
 		intent.putExtra("oppteam", oppTeamName);
 		if (mMatch != null)

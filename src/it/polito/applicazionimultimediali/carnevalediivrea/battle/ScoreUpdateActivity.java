@@ -367,7 +367,7 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 				}
 
 				oldScore += incrSpeed;
-				incrScore += incrSpeed;
+				incrScore = incrScore - incrSpeed;
 
 				totalScoreView.setText(oldScore + "");
 				String scoreAdd = "";

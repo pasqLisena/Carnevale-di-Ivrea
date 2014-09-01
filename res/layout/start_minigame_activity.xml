@@ -50,6 +50,14 @@
             android:gravity="center"
             android:orientation="horizontal" >
 
+            <Button
+                android:id="@+id/btnStartMinigame"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/orange_button"
+                android:onClick="play"
+                android:text="@string/start_minigame" />
+
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/sign_in_button"
                 android:layout_width="match_parent"
@@ -59,14 +67,6 @@
                 android:textColorLink="@color/white"
                 android:visibility="gone" >
             </com.google.android.gms.common.SignInButton>
-
-            <Button
-                android:id="@+id/btnStartMinigame"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@drawable/orange_button"
-                android:onClick="play"
-                android:text="@string/start_minigame" />
 
             <TextView
                 android:id="@+id/mgTimerTextA"
