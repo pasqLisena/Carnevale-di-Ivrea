@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainQuizActivity extends Activity {
@@ -35,6 +36,17 @@ public class MainQuizActivity extends Activity {
         		
 		if (placeId != null) {
 			place = GlobalRes.placesList.get(Integer.parseInt(placeId));
+			
+			String bg_place;
+			if (place.getBg() == null || place.getBg() == "")
+				bg_place = "place_piazzadicitta_bg";
+			else
+				bg_place = place.getBg();
+			
+			int bg = getResources().getIdentifier(bg_place, "drawable", getPackageName());
+			if (bg != 0)
+				((ImageView) findViewById(R.id.bgQuizPlace)).setImageResource(bg);
+			
 		}
 		
         videoPlay = (Button) findViewById(R.id.videoPlay);

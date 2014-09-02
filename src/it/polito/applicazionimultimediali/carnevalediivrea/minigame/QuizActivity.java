@@ -27,7 +27,9 @@ import android.content.res.AssetManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ public class QuizActivity extends Activity {
 
 	private TextView domandaText;
 	private RadioButton r0, r1, r2;
+	private RadioGroup rg;
 	private Place place;
 
 	private int idPosto; 	//id del luogo
@@ -66,11 +69,23 @@ public class QuizActivity extends Activity {
         		
 		if (placeId != null) {
 			place = GlobalRes.placesList.get(Integer.parseInt(placeId));
+			
+			String bg_place;
+			if (place.getBg() == null || place.getBg() == "")
+				bg_place = "place_piazzadicitta_bg";
+			else
+				bg_place = place.getBg();
+			
+			int bg = getResources().getIdentifier(bg_place, "drawable", getPackageName());
+			if (bg != 0)
+				((ImageView) findViewById(R.id.bgQuizPlace)).setImageResource(bg);			
+			
 		}
 		
 		idPosto=place.getId();
         
         domandaText = (TextView) findViewById(R.id.domandaText);
+        rg=(RadioGroup) findViewById(R.id.radioGroup1);
         r0 = (RadioButton) findViewById(R.id.radio0);
         r1 = (RadioButton) findViewById(R.id.radio1);
         r2 = (RadioButton) findViewById(R.id.radio2);
@@ -180,10 +195,14 @@ public class QuizActivity extends Activity {
     
     //Creo un metodo (per ottimizzare codice) per settare il testo della domanda e delle risposte.
     public void textLayout(int i){
+    	
+    	
     	 domandaText.setText(domande.get(i).getTesto());
          r0.setText(domande.get(i).getRisposte().get(0));
          r1.setText(domande.get(i).getRisposte().get(1));
-         r2.setText(domande.get(i).getRisposte().get(2));        
+         r2.setText(domande.get(i).getRisposte().get(2));           
+         rg.clearCheck();
+        
     }
     
     

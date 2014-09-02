@@ -34,6 +34,7 @@ public class PlaceActivity extends Activity {
 			place = GlobalRes.placesList.get(Integer.parseInt(placeId));
 
 			setTitle(place.getName());
+			
 			String bg_place;
 			if (place.getBg() == null || place.getBg() == "")
 				bg_place = "place_piazzadicitta_bg";
