@@ -8,10 +8,9 @@
         latlng="45.465090, 7.872041"
         minigame="PredaInDora"
         minigame_bg="predaindora_bg"
-        minigame_descr="Il Podestà era il supremo capo del governo del Comune, nominato ogni anno dai Credendari, i “senatori” della Città.
-Quando entrava in carica, svolgeva la cerimonia chiamata Preda in Dora: andava a prelevare, con un apposito martello conservato in Comune, un sasso tra i ruderi del Castellazzo e lo gettava in Dora in spregio al Marchese del Monferrato.
+        minigame_descr="Io sono il Podestà, supremo capo del governo del Comune. Ho enorme potere sulla città, per questo sono un forestiero…almeno non sono spinto da interessi personali! 
 
-Il giocatore può scegliere fra 3 sassi dei ruderi per colpirlo con il suo martello. Un numero diverso di arance è nascosto sotto ciascun sasso. Il giocatore vincerà il numero di arance corrispondente al sasso scelto."
+Giocando con me avrai l’onore di svolgere la cerimonia della Preda in Dora: scegli un sasso tra i ruderi del Castellazzo e, gettandolo in Dora, vincerai delle arance che potrai usare per la battaglia, ma attento: puoi giocare solo una volta ogni 5 ore!"
         minigame_mask="podesta" />
     <place
         id="2"
@@ -19,8 +18,9 @@ Il giocatore può scegliere fra 3 sassi dei ruderi per colpirlo con il suo marte
         bg="place_piazzadicitta_bg"
         latlng="45.466779, 7.875750"
         minigame="Challenge"
-        minigame_descr="La Mugnaia è il personaggio più importante dello Storico Carnevale. Durante la sfilata la Mugnaia sfila su un carro dorato lanciando caramelle e rametti di mimosa.
-Sfida un avversario!"
+        minigame_descr="Io sono la Mugnaia, sono il simbolo dello Storico Carnevale! Il mio nome è Violetta e sono l’eroina che liberò la città dal tiranno decapitandolo. Lo sapevi che le arance rappresentano proprio la tua testa?
+
+Giocando con me potrai sfidare un amico alla battaglia…e sarà gloria per chi vincerà!"
         minigame_mask="mugnaia" />
     <place
         id="3"
@@ -28,7 +28,9 @@ Sfida un avversario!"
         bg="place_maretta_bg"
         latlng="45.465872, 7.871290"
         minigame="Fagiolata"
-        minigame_descr="Se sei loggato su Facebook o su Google, puoi donare ai tuoi amici un set di 10 arance."
+        minigame_descr="Piazza Maretta è ormai conosciuta da tutti come “piazza dei fagioli”, e io sono un pentolone stracolmo di fagiolata. Che fai tutto solo? Il bello del carnevale è condividere! 
+        
+        Regala 10 arance ai tuoi amici e riempitevi la pancia insieme!"
         minigame_mask="fagiolata" />
     <place
         id="4"
@@ -46,8 +48,10 @@ Sfida un avversario!"
         bg="place_rondolino_bg"
         latlng="45.465506, 7.881005"
         minigame="LibroVerbali"
-        minigame_bg = "place_rondolino_bg"
-        minigame_descr="Il Sostituto Gran Cancelliere ha il compito di redigere e certificare i processi verbali del Carnevale in un apposito Libro. è sempre presente a ogni atto ufficiale per poterne dare precisa testimonianza."
+        minigame_bg="place_rondolino_bg"
+        minigame_descr="Io sono il Sostituto Gran Cancelliere, il mio ruolo consiste nel prendere nota di tutti gli atti ufficiali sul mio preziosissimo Libro del Carnevale. Se qualcuno provasse a sottrarmelo cadrebbe nel mio tranello: il libro che porto ovunque è un facsimile, quello autentico, lo custodisco gelosamente in un luogo che solo io conosco. Geniale, vero?
+
+Attraverso me puoi consultare la classifica, l’ho detto che prendo nota di tutto, vero?"
         minigame_mask="sost_gran_canc" />
     <place
         id="7"
@@ -66,7 +70,9 @@ Sfida un avversario!"
         latlng="45.467721, 7.874919"
         minigame="UnderConstruction"
         minigame_bg="place_under_construction_bg"
-        minigame_descr="Il Generale conserva il regolamento"
+        minigame_descr="Io sono il Generale, e davanti a me non puoi sgarrare! Sono il responsabile del mantenimento dell’ordine pubblico durante il Carnevale, conosco tutte le regole e le farò rispettare. 
+        
+        A proposito…passando di qua puoi leggere il regolamento tutte le volte che ne avrai bisogno."
         minigame_mask="generale" />
     <place
         id="10"
