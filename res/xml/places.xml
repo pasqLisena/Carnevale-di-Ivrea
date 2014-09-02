@@ -61,7 +61,7 @@ Attraverso me puoi consultare la classifica, l’ho detto che prendo nota di tut
     <place
         id="8"
         name="Piazza Duomo"
-        bg="place_under_construction_bg"
+        bg="place_duomo_bg"
         latlng="45.468433, 7.875700" />
     <place
         id="9"

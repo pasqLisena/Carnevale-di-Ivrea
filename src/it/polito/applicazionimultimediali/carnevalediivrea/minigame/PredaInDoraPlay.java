@@ -104,6 +104,7 @@ public class PredaInDoraPlay extends Activity {
 			rocks.get(i).setVisibility(View.GONE);
 		}
 
+		
 		final Handler mHandler = new Handler();
 		Runnable showAllOranges = new Runnable() {
 			@Override
@@ -126,5 +127,4 @@ public class PredaInDoraPlay extends Activity {
 		};
 		mHandler.postDelayed(showAllOranges, 2000);
 	}
-
 }
