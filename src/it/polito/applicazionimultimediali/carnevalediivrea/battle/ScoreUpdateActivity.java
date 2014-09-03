@@ -86,7 +86,7 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 			numOranges = prefs.getInt("Battle_NumAranceRimaste", 0);
 			GlobalRes.getCurrentPlayer().setOranges(numOranges);
 			matchId = prefs.getString("Battle_MatchId", null);
-			
+
 			// remove from sharedPref for avoid duplicates and save memory
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.remove("Battle_MatchId");
@@ -421,10 +421,12 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 
 	@Override
 	public void onSignInFailed() {
-		// TODO move string in xml
-		Toast.makeText(this, "Problemi di connessione, riprova più tardi",
-				Toast.LENGTH_SHORT).show();
-		goToMap();
+		if (matchId != null) {
+			// TODO move string in xml
+			Toast.makeText(this, "Problemi di connessione, riprova più tardi",
+					Toast.LENGTH_SHORT).show();
+			goToMap();
+		}
 	}
 
 	@Override
