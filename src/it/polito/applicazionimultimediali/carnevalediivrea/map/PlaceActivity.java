@@ -34,7 +34,7 @@ public class PlaceActivity extends Activity {
 			setTitle(place.getName());
 			String bg_place;
 			if (place.getBg() == null || place.getBg() == "")
-				bg_place = "place_piazzadicitta_bg";
+				bg_place = "place_under_construction_bg";
 			else
 				bg_place = place.getBg();
 
