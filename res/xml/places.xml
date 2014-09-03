@@ -54,7 +54,8 @@ Il giocatore dovrà raccogliere più mimose e caramelle possibili muovendo il pr
         latlng="45.467436, 7.878425" />
     <place
         id="8"
-        name="Piazza Duomo"        
+        name="Piazza Duomo"  
+        bg="place_duomo_bg"      
         latlng="45.468433, 7.875700"
          />
     <place
