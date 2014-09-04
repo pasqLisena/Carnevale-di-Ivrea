@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.games.Games;
@@ -80,6 +81,15 @@ public class BattleActivity extends BaseGameActivity implements
 
 		mMatch = tbm;
 
+		if (GlobalRes.getCurrentPlayer().getOranges() < 5) {
+			if (GlobalRes.getCurrentPlayer().getOranges() == 0) {
+				showWarning(R.string.whatAPity, R.string.messZeroArance);
+			} else {
+				showWarning(R.string.whatAPity, R.string.messPocheArance);
+			}
+			goToMap(null);
+		}
+
 		// single battle
 		if (!isAChallenge && !isNotification) {
 			return;
@@ -95,7 +105,7 @@ public class BattleActivity extends BaseGameActivity implements
 	}
 
 	@Override
-	public void onResume(){
+	public void onResume() {
 		super.onResume();
 		// single battle
 		if (!isAChallenge && !isNotification) {
@@ -103,7 +113,7 @@ public class BattleActivity extends BaseGameActivity implements
 			return;
 		}
 	}
-	
+
 	private void startChallenge() {
 		toggleSpinner(true);
 		Intent intent = Games.TurnBasedMultiplayer.getSelectOpponentsIntent(

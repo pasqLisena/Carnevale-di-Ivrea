@@ -72,8 +72,9 @@
     <string name="libroverbali_title">Libro dei verbali</string>
     <string name="youGain">Hai conquistato</string>
     <string name="yourScore">Il tuo punteggio</string>
+    <string name="whatAPity">Che peccato!</string>
     <string name="messPocheArance"> Non hai un numero di arance sufficiente!!! \n  Vai alla scoperta dei luoghi per guadagnarle </string>
-    <string name="messZeroArance"> Ma dove vuoi andare se non hai arance? \n Vai alla scoperta dei luoghi per guadagnarle </string>
+    <string name="messZeroArance"> Ma dove vai se l\'arancia non ce l\'hai? \n Vai alla scoperta dei luoghi per guadagnarle </string>
     <string name="you">TU</string>
     <string name="yourOpponent">IL TUO\n AVVERSARIO</string>
     <string name="youWin">HAI VINTO</string>
