@@ -49,6 +49,9 @@ public class PlaceBarFragment extends Fragment {
 		if (place.hasMinigame()) {
 			v.findViewById(R.id.minigame_ico).setVisibility(View.VISIBLE);
 		}
+		if (place.isQuiz()) {
+			v.findViewById(R.id.history_ico).setVisibility(View.VISIBLE);
+		}
 
 		TextView placeName = ((TextView) v
 				.findViewById(R.id.placebar_place_name));

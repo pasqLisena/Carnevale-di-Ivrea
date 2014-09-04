@@ -47,7 +47,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:contentDescription="@string/ivrea_map_button_history"
-            android:src="@drawable/badge_history" />
+            android:src="@drawable/badge_history"
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

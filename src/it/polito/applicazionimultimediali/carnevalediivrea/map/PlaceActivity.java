@@ -60,8 +60,11 @@ public class PlaceActivity extends Activity {
 							"id", getPackageName());
 					if (team_mask != 0)
 						findViewById(idTeamButton).setBackgroundResource(team_mask);
-					
 				}
+			
+			if(place.isQuiz()){
+				findViewById(R.id.quiz).setVisibility(View.VISIBLE);
+			}
 
 			if (place.hasMinigame()) {
 				findViewById(R.id.LLminigame).setVisibility(View.VISIBLE);
