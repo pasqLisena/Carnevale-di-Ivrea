@@ -4,6 +4,7 @@ import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.Team;
 import it.polito.applicazionimultimediali.carnevalediivrea.battle.BattleActivity;
+import it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -81,7 +82,7 @@ public class PlaceActivity extends Activity {
 			}
 
 		if (place.isQuiz()) {
-			findViewById(R.id.quiz).setVisibility(View.VISIBLE);
+			findViewById(R.id.LLQuiz).setVisibility(View.VISIBLE);
 		}
 
 		if (place.hasMinigame()) {
@@ -133,5 +134,12 @@ public class PlaceActivity extends Activity {
 		intent.putExtra("mg_mask", place.getMinigameMask());
 		startActivity(intent);
 	}
-
+	
+	
+	public void goToQuiz (View view){
+		Intent intent=new Intent(this, MainQuizActivity.class);
+		intent.putExtra("place", place.getId() + "");
+		startActivity(intent);
+	}
+	
 }

@@ -61,21 +61,21 @@ Attraverso me puoi consultare la classifica, l’ho detto che prendo nota di tut
     <place
         id="8"
         name="Piazza Duomo"
-        quiz="true"
         bg="place_duomo_bg"
-        latlng="45.468433, 7.875700" />
+        latlng="45.468433, 7.875700"
+        quiz="true" />
     <place
         id="9"
         name="Piazza Castello"
         bg="place_castello_bg"
         latlng="45.467721, 7.874919"
-        quiz="true"
         minigame="UnderConstruction"
         minigame_bg="place_under_construction_bg"
         minigame_descr="Io sono il Generale, e davanti a me non puoi sgarrare! Sono il responsabile del mantenimento dell’ordine pubblico durante il Carnevale, conosco tutte le regole e le farò rispettare. 
         
         \nA proposito…passando di qua puoi leggere il regolamento tutte le volte che ne avrai bisogno."
-        minigame_mask="generale" />
+        minigame_mask="generale"
+        quiz="true" />
     <place
         id="10"
         name="Via Palma"

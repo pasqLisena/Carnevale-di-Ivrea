@@ -24,7 +24,8 @@ public class Place {
 	private boolean quiz;
 
 	public Place(int id, String name, String latLng, String bg,
-			String minigame_class, String minigame_descr, String minigame_bg, String minigame_mask) {
+			String minigame_class, String minigame_descr, String minigame_bg,
+			String minigame_mask) {
 		this(id, name, latLng, bg);
 		if (minigame_class != null && minigame_class.length() > 0) {
 			try {
@@ -38,13 +39,16 @@ public class Place {
 				} else {
 					this.minigameBg = bg;
 				}
-				
+
 				this.minigameMask = minigame_mask;
-				
+
 			} catch (ClassNotFoundException e) {
 				// do nothing
 				e.printStackTrace();
 			}
+		}
+		if (id == 9 || id == 8) {
+			quiz = true;
 		}
 	}
 
@@ -60,7 +64,7 @@ public class Place {
 
 		this.locked = true;
 		this.minigame = null;
-		quiz=false;
+		quiz = false;
 	}
 
 	public int getId() {
@@ -71,7 +75,6 @@ public class Place {
 		return minigame != null;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -99,16 +102,15 @@ public class Place {
 	public boolean isLocked() {
 		return locked;
 	}
-	
-	public boolean isQuiz(){
+
+	public boolean isQuiz() {
 		return quiz;
 	}
 
-	public void setQuiz(boolean value){
-		quiz=value;
+	public void setQuiz(boolean value) {
+		quiz = value;
 	}
-	
-	
+
 	public void addTeam(Team team) {
 		if (teamsList == null) {
 			teamsList = new ArrayList<Team>();

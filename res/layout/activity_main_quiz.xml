@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivreaGray" >
+    
+    <ImageView
+        android:id="@+id/bgQuizPlace"
+        android:contentDescription="@string/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/place_castellazzo_bg"
+        android:scaleType="fitEnd"
+        android:alpha=".50" />   
+     
+           
+    <TextView
+        android:id="@+id/homeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/hello_main"
+        android:textSize="30sp"
+        tools:context=".MainQuizActivity" />
+    
+     <TextView
+        android:id="@+id/DescrText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/homeText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/quiz_descr"
+        tools:context=".MainQuizActivity" />
+     
+     
+     <Button
+        android:id="@+id/gamePlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/videoPlay"
+        android:layout_alignBottom="@+id/videoPlay"
+        android:layout_alignRight="@+id/DescrText"
+        android:layout_marginRight="73dp"
+        android:background="@drawable/orange_button"
+        android:text="@string/gamePlay" 
+        android:onClick="play" />
+
+    <Button
+        android:id="@+id/videoPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/DescrText"
+        android:layout_below="@+id/DescrText"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/orange_button"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:text="@string/videoPlay" />
+    
+        <ProgressBar
+            android:id="@+id/mgTimerBarQuiz"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mgTimerTextAQuiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mgTimerBarQuiz"
+            android:layout_alignLeft="@+id/homeText"
+            android:layout_marginBottom="17dp"
+            android:text="@string/next_game_in"
+            android:textColor="@android:color/white"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mgTimerTextQuiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/mgTimerTextAQuiz"
+            android:layout_alignBottom="@+id/mgTimerTextAQuiz"
+            android:layout_margin="5dp"
+            android:layout_marginRight="24dp"
+            android:layout_toLeftOf="@+id/gamePlay"
+            android:text="00:00"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+            android:visibility="gone" />
+        
+</RelativeLayout>
