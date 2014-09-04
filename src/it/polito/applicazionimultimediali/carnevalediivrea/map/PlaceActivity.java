@@ -53,7 +53,7 @@ public class PlaceActivity extends Activity {
 		setTitle(place.getName());
 		String bg_place;
 		if (place.getBg() == null || place.getBg() == "")
-			bg_place = "place_piazzadicitta_bg";
+			bg_place = "place_under_construction_bg";
 		else
 			bg_place = place.getBg();
 
@@ -78,8 +78,11 @@ public class PlaceActivity extends Activity {
 						"ButtonTeam" + count, "id", getPackageName());
 				if (team_mask != 0)
 					findViewById(idTeamButton).setBackgroundResource(team_mask);
-
 			}
+
+		if (place.isQuiz()) {
+			findViewById(R.id.quiz).setVisibility(View.VISIBLE);
+		}
 
 		if (place.hasMinigame()) {
 			findViewById(R.id.LLminigame).setVisibility(View.VISIBLE);

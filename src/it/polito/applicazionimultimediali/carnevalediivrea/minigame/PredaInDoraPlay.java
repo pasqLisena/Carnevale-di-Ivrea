@@ -2,6 +2,7 @@ package it.polito.applicazionimultimediali.carnevalediivrea.minigame;
 
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
+import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,6 +10,7 @@ import java.util.Collections;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -102,27 +104,51 @@ public class PredaInDoraPlay extends Activity {
 			rocks.get(i).setVisibility(View.GONE);
 		}
 
+		
 		final Handler mHandler = new Handler();
 		Runnable showAllOranges = new Runnable() {
 			@Override
 			public void run() {
-				AlertDialog.Builder builder = new AlertDialog.Builder(
-						PredaInDoraPlay.this);
-				builder.setMessage("Hai vinto " + gainedOranges + " arance")
-						.setPositiveButton("OK",
-								new DialogInterface.OnClickListener() {
-									@Override
-									public void onClick(DialogInterface dialog,
-											int id) {
-										finish();
-									}
-								});
-
-				// Create the AlertDialog object and return it
-				builder.create().show();
+				showWarning("Complimenti","Hai vinto " + gainedOranges + " arance");
 			}
 		};
 		mHandler.postDelayed(showAllOranges, 2000);
 	}
+	
+	// Generic warning/info dialog
+	public void showWarning(String title, String message) {
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+		// set title
+		alertDialogBuilder.setTitle(title).setMessage(message);
+
+		// set dialog message
+		alertDialogBuilder.setCancelable(false).setNegativeButton("OK",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int id) {
+						goToMap();
+					}
+				});
+
+		// create alert dialog
+		AlertDialog mAlertDialog = alertDialogBuilder.create();
+
+		// show it
+		mAlertDialog.show();
+	}
+
+	public void goToMap() {
+		Intent intent = new Intent(this, MapPane.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
+
+	public void showWarning(int titleId, int messageId) {
+		showWarning(getResources().getString(titleId), getResources()
+				.getString(messageId));
+	}
+	
+	
+	
 }

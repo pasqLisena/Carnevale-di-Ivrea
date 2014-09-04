@@ -124,6 +124,8 @@ public class GlobalRes {
 					} else {
 						p = new Place(id, name, latLng, bg);
 					}
+					boolean quiz = "true".equals(xml.getAttributeValue(null,"quiz"));
+					p.setQuiz(quiz);
 					placesList.put(id, p);
 				}
 			}
