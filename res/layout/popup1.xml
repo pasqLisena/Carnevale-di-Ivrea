@@ -2,14 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#95000000"
-    android:orientation="horizontal">
+    android:orientation="horizontal" >
 
  <LinearLayout
      android:layout_width="match_parent"
      android:layout_height="match_parent"
      android:layout_margin="20dp"
-     android:background="#95000000"
+     android:background="@color/ivreaGrayOpacity80"
      android:orientation="horizontal" >
 
      <LinearLayout
@@ -24,7 +23,7 @@
              android:layout_height="wrap_content"
              android:layout_margin="2dp"
              android:gravity="center"
-             android:text="Tocca le icone per scoprire i luoghi"
+             android:text="@string/popup1text"
              android:textColor="@android:color/white"
              android:textSize="20dp" />
 
@@ -45,7 +44,7 @@
              android:layout_gravity="right"
              android:layout_marginBottom="5dp"
              android:layout_marginRight="5dp"
-             android:text="Ho Capito" />
+             android:text="@string/buttonpopUptext" />
 
      </LinearLayout>
 
