@@ -3,21 +3,24 @@ package it.polito.applicazionimultimediali.carnevalediivrea.map;
 import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.PlayerActivity;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
-import it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-
+import android.view.Window;
+import android.widget.Button;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
@@ -35,14 +38,17 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 	private Map<Marker, Place> markerMap;
 	private Place selectedPlace;
 	private View openPlace;
+	private boolean firstTime;
+
+	private static SharedPreferences prefs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map_activity);
-		
+
 		GlobalRes.prepareResources(getApplicationContext());
-				
+
 		markerMap = new HashMap<Marker, Place>();
 		// Get a handle to the Map Fragment
 		GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(
@@ -56,8 +62,8 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		mapSettings.setTiltGesturesEnabled(false);
 
 		CameraPosition cameraPosition = new CameraPosition.Builder()
-				.target(GlobalRes.placesList.get(8).getLatLng()).zoom(16)
-				.tilt(45).build();
+		.target(GlobalRes.placesList.get(8).getLatLng()).zoom(16)
+		.tilt(45).build();
 		map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 		for (int i = 0, nsize = GlobalRes.placesList.size(); i < nsize; i++) {
@@ -84,8 +90,61 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		}
 
 		openPlace = findViewById(R.id.open_place);
-	}
 
+		prefs = getSharedPreferences(
+				"it.polito.applicazionimultimediali.carnevalediivrea",
+				MODE_PRIVATE);
+		firstTime = prefs.getBoolean("FirstTime", true);
+
+		ShowFirstDialog();
+
+	}
+	public void ShowFirstDialog(){
+		if(firstTime){
+
+			final Dialog dialog1 = new Dialog(this);
+			dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+			dialog1.setContentView(R.layout.popup1);
+			dialog1.setCancelable(false);
+
+			Button dialogButton = (Button) dialog1.findViewById(R.id.dialog1ButtonOK);
+			// if button is clicked, close the custom dialog
+			dialogButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					dialog1.dismiss();
+				}
+			});
+
+			dialog1.show();
+		}
+	}
+	public void ShowSecondDialog(){
+		if(firstTime){
+			
+			final Dialog dialog2 = new Dialog(this);
+			dialog2.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+			dialog2.setContentView(R.layout.popup2);
+			dialog2.setCancelable(false);
+
+			Button dialogButton = (Button) dialog2.findViewById(R.id.dialog2ButtonOK);
+			// if button is clicked, close the custom dialog
+			dialogButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					dialog2.dismiss();
+					firstTime = false;
+					SharedPreferences.Editor editor = prefs.edit();
+					editor.putBoolean("FirstTime", firstTime );
+					editor.commit();
+				}
+			});
+
+			dialog2.show();
+		}
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -109,6 +168,9 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 
 	@Override
 	public boolean onMarkerClick(Marker m) {
+
+		ShowSecondDialog();
+
 		Place p = markerMap.get(m);
 
 		Fragment placeBarFrag = new PlaceBarFragment();
@@ -117,7 +179,7 @@ public class MapPane extends Activity implements OnMarkerClickListener {
 		placeBarFrag.setArguments(data);
 		if (selectedPlace == null) {
 			((ViewGroup) this.findViewById(R.id.placebar_container))
-					.removeAllViews();
+			.removeAllViews();
 		}
 		selectedPlace = p;
 

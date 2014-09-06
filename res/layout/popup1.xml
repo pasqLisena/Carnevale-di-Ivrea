@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#95000000"
+    android:orientation="horizontal">
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_margin="20dp"
+     android:background="#95000000"
+     android:orientation="horizontal" >
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_margin="2dp"
+         android:orientation="vertical" >
+
+         <TextView
+             android:id="@+id/textpopup"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="2dp"
+             android:gravity="center"
+             android:text="Tocca le icone per scoprire i luoghi"
+             android:textColor="@android:color/white"
+             android:textSize="20dp" />
+
+         <ImageView
+             android:id="@+id/imagepopup"
+             android:layout_width="fill_parent"
+             android:layout_height="match_parent"
+             android:layout_gravity="center_horizontal"
+             android:layout_margin="3dp"
+             android:layout_weight="1"
+             android:src="@drawable/popup1" />
+
+         <Button
+             android:id="@+id/dialog1ButtonOK"
+             style="@style/OrangeBar"
+             android:layout_width="250dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="right"
+             android:layout_marginBottom="5dp"
+             android:layout_marginRight="5dp"
+             android:text="Ho Capito" />
+
+     </LinearLayout>
+
+ </LinearLayout>
+</LinearLayout>
