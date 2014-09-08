@@ -73,8 +73,8 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 		youGainView = (TextView) findViewById(R.id.youGain);
 
 		if (savedInstanceState != null) {
-			newScore = savedInstanceState.getInt("Battle_Score");
-			realScore = savedInstanceState.getInt("Real_Score");
+			newScore = savedInstanceState.getInt("Battle_Score", -1);
+			realScore = savedInstanceState.getInt("Real_Score", -1);
 			updated = savedInstanceState.getBoolean("Score_Updated", false);
 			matchId = savedInstanceState.getString("Battle_MatchId", null);
 		} else {
@@ -82,9 +82,10 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 					"it.polito.applicazionimultimediali.carnevalediivrea",
 					MODE_PRIVATE);
 
-			newScore = prefs.getInt("Battle_Score", 0);
-			numOranges = prefs.getInt("Battle_NumAranceRimaste", 0);
-			GlobalRes.getCurrentPlayer().setOranges(numOranges);
+			newScore = prefs.getInt("Battle_Score", -1);
+			numOranges = prefs.getInt("Battle_NumAranceRimaste", -1);
+			if (numOranges != -1)
+				GlobalRes.getCurrentPlayer().setOranges(numOranges);
 			matchId = prefs.getString("Battle_MatchId", null);
 
 			// remove from sharedPref for avoid duplicates and save memory
@@ -130,6 +131,10 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 			// wait for signin
 			return;
 		}
+		if (newScore == -1) {
+			goToMap();
+		}
+
 		if (!updated) {
 			if (getApiClient().isConnected())
 				GlobalRes.getCurrentPlayer()
@@ -171,9 +176,7 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 										realScore = -otherScore;
 									} // else pair! nothing happens
 
-									GlobalRes.getCurrentPlayer().gainPoint(
-											realScore, getApiClient());
-
+									updateUserScore(realScore);
 								} // else you must wait other player
 
 								toggleSpinner(false);
