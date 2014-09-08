@@ -27,7 +27,10 @@
     <string name="predaindora_title">Preda in Dora</string>
     <string name="predaindora_btn">preda in Dora - roccia</string>
     <string name="quiz">Quiz</string>
-
+    <string name="popup1text">Tocca le icone per scoprire i luoghi</string>
+    <string name="popup2text">Tocca la barra per proseguire</string>
+    <string name="buttonpopUptext">Ho Capito</string>
+    
     <plurals name="orange">
         <item quantity="one">1 arancia</item>
         <item quantity="other">%d arance</item>
