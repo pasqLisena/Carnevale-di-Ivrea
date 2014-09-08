@@ -64,16 +64,14 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		myIntent = new Intent();
 		myIntent.setAction(Intent.ACTION_VIEW);
 		myIntent.setData(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-
 	}
 
 	public static void mostraPunteggio(Context c) {
 		Log.d("MyBattleActivity", "mostraPunteggio Android called");
-
 		Intent intent = new Intent(c, ScoreUpdateActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		isBack = true;
-		((Activity) context).startActivityForResult(intent, 1);
+		((Activity) context).startActivity(intent);
 	}
 
 	public static void tornaAllaMappa(Context c) {
@@ -82,7 +80,7 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		Intent intent = new Intent(c, MapPane.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		isBack = true;
-		((Activity) context).startActivityForResult(intent, 1);
+		((Activity) context).startActivity(intent);
 	}
 
 	@Override

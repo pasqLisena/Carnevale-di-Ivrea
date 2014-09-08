@@ -20,6 +20,7 @@ public class LibroVerbali extends Minigame implements OnClickListener{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
+		mHelper.setMaxAutoSignInAttempts(0);
 
 		GameHelperListener listener = new GameHelper.GameHelperListener() {
 			@Override

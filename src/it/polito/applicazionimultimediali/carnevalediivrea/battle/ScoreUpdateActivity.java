@@ -95,6 +95,8 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 			editor.remove("Battle_NumAranceRimaste");
 			editor.commit();
 		}
+		
+		GlobalRes.getCurrentPlayer().getPoints();
 
 		newScoreView.setText(getResources().getQuantityString(R.plurals.point,
 				newScore, newScore));
@@ -307,8 +309,6 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 	}
 
 	private void startSingleBattleAnimation(final int code) {
-		oldScore = GlobalRes.getCurrentPlayer().getPoints();
-
 		newScoreView.setText(getResources().getQuantityString(R.plurals.point,
 				newScore, newScore));
 		totalScoreView.setText(oldScore + "");

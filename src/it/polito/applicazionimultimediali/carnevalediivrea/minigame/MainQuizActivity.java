@@ -123,12 +123,6 @@ public class MainQuizActivity extends Activity {
 		super.onSaveInstanceState(outState);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_main_quiz, menu);
-		return true;
-	}
-
 	public void play() {
 		SharedPreferences.Editor prefEditor = getPreferences(
 				Context.MODE_PRIVATE).edit();

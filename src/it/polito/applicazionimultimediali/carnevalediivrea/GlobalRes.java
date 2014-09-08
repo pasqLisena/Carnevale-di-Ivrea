@@ -110,21 +110,25 @@ public class GlobalRes {
 					String bg = xml.getAttributeValue(null, "bg");
 					String minigame_class = xml.getAttributeValue(null,
 							"minigame");
-					
 
 					Place p = null;
 					if (minigame_class != null) {
-						String minigame_mask = xml.getAttributeValue(null, "minigame_mask");
+						String minigame_mask = xml.getAttributeValue(null,
+								"minigame_mask");
 						String minigame_descr = xml.getAttributeValue(null,
 								"minigame_descr");
 						String minigame_bg = xml.getAttributeValue(null,
 								"minigame_bg");
+						if (minigame_bg == null)
+							minigame_bg = bg;
+						
 						p = new Place(id, name, latLng, bg, minigame_class,
 								minigame_descr, minigame_bg, minigame_mask);
 					} else {
 						p = new Place(id, name, latLng, bg);
 					}
-					boolean quiz = "true".equals(xml.getAttributeValue(null,"quiz"));
+					boolean quiz = "true".equals(xml.getAttributeValue(null,
+							"quiz"));
 					p.setQuiz(quiz);
 					placesList.put(id, p);
 				}

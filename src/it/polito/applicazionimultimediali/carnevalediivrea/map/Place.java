@@ -40,6 +40,9 @@ public class Place {
 					this.minigameBg = bg;
 				}
 
+				Log.w("PLACE", this.minigameBg);
+				Log.w("PLACE", this.bg);
+
 				this.minigameMask = minigame_mask;
 
 			} catch (ClassNotFoundException e) {

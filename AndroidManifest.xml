@@ -204,7 +204,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity" />
         </activity>
-/>                    
         <activity
             android:name=".minigame.QuizActivity"
             android:parentActivityName=".minigame.MainQuizActivity"
@@ -213,25 +212,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.MainQuizActivity" />
-        </activity>
-/>
-        <activity
-            android:name=".minigame.LooserQuizActivity"
-            android:parentActivityName=".minigame.QuizActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/OrangeBarTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.QuizActivity" />
-        </activity>
-        <activity
-            android:name=".minigame.WinQuizActivity"
-            android:parentActivityName=".minigame.QuizActivity"
-            android:screenOrientation="landscape"
-            android:theme="@style/OrangeBarTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="it.polito.applicazionimultimediali.carnevalediivrea.minigame.QuizActivity" />
         </activity>
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"

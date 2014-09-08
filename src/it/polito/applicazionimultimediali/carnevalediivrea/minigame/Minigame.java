@@ -52,9 +52,8 @@ public abstract class Minigame extends Activity {
 			((ImageView) findViewById(R.id.character)).setImageResource(mask);
 			((ImageView) findViewById(R.id.character2)).setImageResource(mask);
 		}
-
 		if (mg_bg != null) {
-			int bg = getResources().getIdentifier(mg_bg, "drawable", null);
+			int bg = getResources().getIdentifier(mg_bg, "drawable", getPackageName());
 			if (bg != 0)
 				findViewById(R.id.startMinigameFullLayout)
 						.setBackgroundResource(bg);

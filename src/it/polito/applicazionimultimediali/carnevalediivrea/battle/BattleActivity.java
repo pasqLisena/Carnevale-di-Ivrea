@@ -4,15 +4,7 @@ import it.polito.applicazionimultimediali.carnevalediivrea.GlobalRes;
 import it.polito.applicazionimultimediali.carnevalediivrea.R;
 import it.polito.applicazionimultimediali.carnevalediivrea.map.MapPane;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,7 +13,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.games.Games;
@@ -81,6 +72,10 @@ public class BattleActivity extends BaseGameActivity implements
 
 		mMatch = tbm;
 
+		if (GlobalRes.getCurrentPlayer() == null) {
+			finish();
+			return;
+		}
 		if (GlobalRes.getCurrentPlayer().getOranges() < 5) {
 			if (GlobalRes.getCurrentPlayer().getOranges() == 0) {
 				showWarning(R.string.whatAPity, R.string.messZeroArance);
@@ -353,8 +348,6 @@ public class BattleActivity extends BaseGameActivity implements
 
 	private void goToGame(TurnBasedMatch match) {
 		mMatch = match;
-		toggleSpinner(false);
-
 		Intent intent = new Intent(this, MyBattleActivity.class);
 		intent.putExtra("place", placeid);
 		intent.putExtra("oppteam", oppTeamName);
@@ -371,61 +364,6 @@ public class BattleActivity extends BaseGameActivity implements
 		savedInstanceState.putString("oppteam", oppTeamName);
 		savedInstanceState.putString("place", placeid);
 		super.onSaveInstanceState(savedInstanceState);
-	}
-
-	// Convert score in byteArray
-	private byte[] encode(Map<String, Integer> map) {
-		JSONObject retVal = new JSONObject();
-
-		for (String key : map.keySet()) {
-			try {
-				retVal.put(key, map.get(key));
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-
-		String st = retVal.toString();
-
-		Log.d(TAG, "==== ENCODING\n" + st);
-
-		return st.getBytes(Charset.forName("UTF-16"));
-	}
-
-	private Map<String, Integer> decode(byte[] byteArray) {
-
-		if (byteArray == null) {
-			Log.d(TAG, "Empty array---possible bug.");
-			return null;
-		}
-
-		String st = null;
-		try {
-			st = new String(byteArray, "UTF-16");
-		} catch (UnsupportedEncodingException e1) {
-			e1.printStackTrace();
-			return null;
-		}
-
-		Log.d(TAG, "====DECODING \n" + st);
-
-		try {
-			JSONObject jObject = new JSONObject(st);
-			Iterator<?> keys = jObject.keys();
-
-			Map<String, Integer> scoreMap = new HashMap<String, Integer>();
-			while (keys.hasNext()) {
-				String key = (String) keys.next();
-				int value = jObject.getInt(key);
-				scoreMap.put(key, value);
-			}
-
-			return scoreMap;
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
 	}
 
 	@Override

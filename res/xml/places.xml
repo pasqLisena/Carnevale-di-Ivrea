@@ -8,7 +8,7 @@
         latlng="45.465090, 7.872041"
         minigame="PredaInDora"
         minigame_bg="predaindora_bg"
-        minigame_descr="Io sono il Podestà, supremo capo del governo del Comune. Ho enorme potere sulla città, per questo sono un forestiero…almeno non sono spinto da interessi personali! 
+        minigame_descr="Io sono il Podestà, supremo capo del governo del Comune. Ho enorme potere sulla città, per questo sono un forestiero…almeno non sono spinto da interessi personali!\n\n
 
 Giocando con me avrai l’onore di svolgere la cerimonia della Preda in Dora: scegli un sasso tra i ruderi del Castellazzo e, gettandolo in Dora, vincerai delle arance che potrai usare per la battaglia, ma attento: puoi giocare solo una volta ogni 5 ore!"
         minigame_mask="podesta" />
@@ -18,8 +18,7 @@ Giocando con me avrai l’onore di svolgere la cerimonia della Preda in Dora: sc
         bg="place_piazzadicitta_bg"
         latlng="45.466779, 7.875750"
         minigame="Challenge"
-        minigame_descr="Io sono la Mugnaia, sono il simbolo dello Storico Carnevale! Il mio nome è Violetta e sono l’eroina che liberò la città dal tiranno decapitandolo. Lo sapevi che le arance rappresentano proprio la tua testa?
-
+        minigame_descr="Io sono la Mugnaia, sono il simbolo dello Storico Carnevale! Il mio nome è Violetta e sono l’eroina che liberò la città dal tiranno decapitandolo. Lo sapevi che le arance rappresentano proprio la tua testa?\n\n
 Giocando con me potrai sfidare un amico alla battaglia…e sarà gloria per chi vincerà!"
         minigame_mask="mugnaia" />
     <place
@@ -28,8 +27,7 @@ Giocando con me potrai sfidare un amico alla battaglia…e sarà gloria per chi 
         bg="place_maretta_bg"
         latlng="45.465872, 7.871290"
         minigame="Fagiolata"
-        minigame_descr="Piazza Maretta è ormai conosciuta da tutti come “piazza dei fagioli”, e io sono un pentolone stracolmo di fagiolata. Che fai tutto solo? Il bello del carnevale è condividere! 
-        
+        minigame_descr="Piazza Maretta è ormai conosciuta da tutti come “piazza dei fagioli”, e io sono un pentolone stracolmo di fagiolata. Che fai tutto solo? Il bello del carnevale è condividere!\n\n
         Regala 10 arance ai tuoi amici e riempitevi la pancia insieme!"
         minigame_mask="fagiolata" />
     <place
@@ -49,9 +47,8 @@ Giocando con me potrai sfidare un amico alla battaglia…e sarà gloria per chi 
         latlng="45.465506, 7.881005"
         minigame="LibroVerbali"
         minigame_bg="place_rondolino_bg"
-        minigame_descr="Io sono il Sostituto Gran Cancelliere, il mio ruolo consiste nel prendere nota di tutti gli atti ufficiali sul mio preziosissimo Libro del Carnevale. Se qualcuno provasse a sottrarmelo cadrebbe nel mio tranello: il libro che porto ovunque è un facsimile, quello autentico, lo custodisco gelosamente in un luogo che solo io conosco. Geniale, vero?
-
-Attraverso me puoi consultare la classifica, l’ho detto che prendo nota di tutto, vero?"
+        minigame_descr="Io sono il Sostituto Gran Cancelliere, il mio ruolo consiste nel prendere nota di tutti gli atti ufficiali sul mio preziosissimo Libro del Carnevale. Se qualcuno provasse a sottrarmelo cadrebbe nel mio tranello: il libro che porto ovunque è un facsimile, quello autentico, lo custodisco gelosamente in un luogo che solo io conosco. Geniale, vero?\n
+\nAttraverso me puoi consultare la classifica, l’ho detto che prendo nota di tutto, vero?"
         minigame_mask="sost_gran_canc" />
     <place
         id="7"
@@ -71,9 +68,8 @@ Attraverso me puoi consultare la classifica, l’ho detto che prendo nota di tut
         latlng="45.467721, 7.874919"
         minigame="UnderConstruction"
         minigame_bg="place_under_construction_bg"
-        minigame_descr="Io sono il Generale, e davanti a me non puoi sgarrare! Sono il responsabile del mantenimento dell’ordine pubblico durante il Carnevale, conosco tutte le regole e le farò rispettare. 
-        
-        \nA proposito…passando di qua puoi leggere il regolamento tutte le volte che ne avrai bisogno."
+        minigame_descr="Io sono il Generale, e davanti a me non puoi sgarrare! Sono il responsabile del mantenimento dell’ordine pubblico durante il Carnevale, conosco tutte le regole e le farò rispettare. \n
+        \nA proposito… passando di qua puoi leggere il regolamento tutte le volte che ne avrai bisogno."
         minigame_mask="generale"
         quiz="true" />
     <place

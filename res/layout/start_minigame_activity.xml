@@ -30,17 +30,27 @@
                 android:src="@drawable/podesta"
                 android:visibility="invisible" />
 
-            <TextView
-                android:id="@+id/descrStartMinigame"
+            <ScrollView
+                android:id="@+id/descrScrollView"
+                android:scrollbars="vertical"
+                android:scrollY="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
-                android:background="#99000000"
-                android:padding="8dp"
-                android:text="@string/ivrea_map_button_minigame"
-                android:textColor="@android:color/white"
-                android:textStyle="italic" />
+                android:background="#99000000" >
+
+                <TextView
+                    android:id="@+id/descrStartMinigame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical"
+                    android:padding="50dp"
+                    android:text="@string/ivrea_map_button_minigame"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
+            </ScrollView>
         </LinearLayout>
 
         <LinearLayout

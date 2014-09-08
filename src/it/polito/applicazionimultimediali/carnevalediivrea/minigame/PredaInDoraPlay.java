@@ -26,7 +26,6 @@ public class PredaInDoraPlay extends Activity {
 	private static ArrayList<TextView> orangeText;
 	private ImageButton rock1, rock2, rock3;
 	private TextView orangeTex1, orangeTex2, orangeTex3;
-	private View rock1After, rock2After, rock3After;
 	private Integer gainedOranges;
 
 	@Override
@@ -37,10 +36,6 @@ public class PredaInDoraPlay extends Activity {
 		rock1 = (ImageButton) findViewById(R.id.rock1);
 		rock2 = (ImageButton) findViewById(R.id.rock2);
 		rock3 = (ImageButton) findViewById(R.id.rock3);
-
-		rock1After = findViewById(R.id.rock1_after);
-		rock2After = findViewById(R.id.rock2_after);
-		rock3After = findViewById(R.id.rock3_after);
 
 		orangeTex1 = (TextView) findViewById(R.id.orangeText1);
 		orangeTex2 = (TextView) findViewById(R.id.orangeText2);

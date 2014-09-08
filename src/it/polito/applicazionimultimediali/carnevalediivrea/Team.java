@@ -4,8 +4,8 @@ import it.polito.applicazionimultimediali.carnevalediivrea.map.Place;
 
 public class Team {
 	private String id, name, shortname;
-	private Place square;
-	private int points;
+//	private Place square;
+//	private int points;
 
 	public Team(String id, String name, String shortname, Place square) {
 		super();
@@ -21,7 +21,7 @@ public class Team {
 			throw new RuntimeException("Undefined square for team " + this.name);
 		}
 
-		this.square = square;
+//		this.square = square;
 		square.addTeam(this);
 	}
 
@@ -36,7 +36,5 @@ public class Team {
 	public String getShortName() {
 		return shortname;
 	}
-
-	
 
 }
