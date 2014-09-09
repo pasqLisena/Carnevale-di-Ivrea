@@ -21,8 +21,10 @@ public abstract class Minigame extends Activity {
 				mg_bg = extras.getString("mg_bg");
 				descr = extras.getString("mg_descr");
 				mg_mask = extras.getString("mg_mask");
+
 			}
 		} else {
+			findViewById(R.id.descrScrollView).scrollTo(0, 150);
 			mg_bg = savedInstanceState.getString("mg_bg");
 			descr = savedInstanceState.getString("mg_descr");
 			mg_mask = savedInstanceState.getString("mg_mask");

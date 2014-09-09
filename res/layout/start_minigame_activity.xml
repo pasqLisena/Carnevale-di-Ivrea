@@ -33,7 +33,6 @@
             <ScrollView
                 android:id="@+id/descrScrollView"
                 android:scrollbars="vertical"
-                android:scrollY="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#99000000" >
