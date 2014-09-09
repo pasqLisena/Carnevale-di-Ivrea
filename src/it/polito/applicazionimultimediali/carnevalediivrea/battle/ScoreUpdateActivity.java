@@ -95,9 +95,9 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 			editor.remove("Battle_NumAranceRimaste");
 			editor.commit();
 		}
-		
-		GlobalRes.getCurrentPlayer().getPoints();
 
+		oldScore = GlobalRes.getCurrentPlayer().getPoints();
+		
 		newScoreView.setText(getResources().getQuantityString(R.plurals.point,
 				newScore, newScore));
 
@@ -369,7 +369,7 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 					return;
 				}
 
-				oldScore += incrSpeed;
+				oldScore = oldScore + incrSpeed;
 				incrScore = incrScore - incrSpeed;
 
 				totalScoreView.setText(oldScore + "");
@@ -596,7 +596,6 @@ public class ScoreUpdateActivity extends BaseGameActivity {
 
 			return scoreMap;
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}

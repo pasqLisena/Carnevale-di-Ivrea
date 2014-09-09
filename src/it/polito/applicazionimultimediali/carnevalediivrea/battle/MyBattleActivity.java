@@ -63,6 +63,7 @@ public class MyBattleActivity extends UnityPlayerActivity {
 
 		myIntent = new Intent();
 		myIntent.setAction(Intent.ACTION_VIEW);
+		myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		myIntent.setData(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 	}
 
