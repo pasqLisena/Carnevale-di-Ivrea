@@ -78,7 +78,7 @@ public class MainActivity extends BaseGameActivity implements
 			return;
 
 		Intent intent = new Intent(this, MapPane.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(intent);
 	}
 
@@ -117,7 +117,7 @@ public class MainActivity extends BaseGameActivity implements
 			return;
 
 		Intent intent = new Intent(this, BattleActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 
 		TurnBasedMatch tbm = bundle
 				.getParcelable(Multiplayer.EXTRA_TURN_BASED_MATCH);
@@ -136,7 +136,5 @@ public class MainActivity extends BaseGameActivity implements
 
 	@Override
 	public void onConnectionSuspended(int arg0) {
-		// TODO Auto-generated method stub
-
 	}
 }

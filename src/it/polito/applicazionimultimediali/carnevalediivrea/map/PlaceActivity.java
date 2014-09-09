@@ -111,7 +111,7 @@ public class PlaceActivity extends Activity {
 			intent.putExtra("place", place.getId() + "");
 			intent.putExtra("oppteam", oppTeamName + "");
 
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(intent);
 		} else {
 			if (GlobalRes.getCurrentPlayer().getOranges() == 0) {

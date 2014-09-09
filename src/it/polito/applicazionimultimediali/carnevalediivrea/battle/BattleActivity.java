@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -73,10 +74,12 @@ public class BattleActivity extends BaseGameActivity implements
 		mMatch = tbm;
 
 		if (GlobalRes.getCurrentPlayer() == null) {
+			Log.e(TAG, "Null player");
 			finish();
 			return;
 		}
-		if (GlobalRes.getCurrentPlayer().getOranges() < 5) {
+		
+		if (!isNotification && GlobalRes.getCurrentPlayer().getOranges() < 5) {
 			if (GlobalRes.getCurrentPlayer().getOranges() == 0) {
 				showWarning(R.string.whatAPity, R.string.messZeroArance);
 			} else {
@@ -227,10 +230,12 @@ public class BattleActivity extends BaseGameActivity implements
 	// from the inbox, or else create a match and want to start it.
 	public void updateMatch(TurnBasedMatch match) {
 		mMatch = match;
+		Log.v(TAG, mMatch.toString());
 
 		int status = match.getStatus();
 		int turnStatus = match.getTurnStatus();
 
+		SharedPreferences prefs;
 		switch (status) {
 		case TurnBasedMatch.MATCH_STATUS_CANCELED:
 			showWarning(R.string.mp_cancelled_title, R.string.mp_cancelled_text);
@@ -244,8 +249,16 @@ public class BattleActivity extends BaseGameActivity implements
 			goToMap(null);
 			return;
 		case TurnBasedMatch.MATCH_STATUS_COMPLETE:
+			prefs = getSharedPreferences(
+					"it.polito.applicazionimultimediali.carnevalediivrea",
+					MODE_PRIVATE);
+
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putString("Battle_MatchId", mMatch.getMatchId());
+			editor.commit();
+
 			Intent intent = new Intent(this, ScoreUpdateActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.putExtra("Battle_MatchId", mMatch.getMatchId());
 			startActivity(intent);
 			return;
@@ -354,7 +367,7 @@ public class BattleActivity extends BaseGameActivity implements
 		if (mMatch != null)
 			intent.putExtra("Battle_MatchId", mMatch.getMatchId());
 
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(intent);
 	};
 
@@ -392,7 +405,7 @@ public class BattleActivity extends BaseGameActivity implements
 
 	public void goToMap(View view) {
 		Intent intent = new Intent(this, MapPane.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(intent);
 	}
 

@@ -135,7 +135,7 @@ public class PredaInDoraPlay extends Activity {
 
 	public void goToMap() {
 		Intent intent = new Intent(this, MapPane.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(intent);
 	}
 

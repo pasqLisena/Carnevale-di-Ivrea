@@ -63,14 +63,14 @@ public class MyBattleActivity extends UnityPlayerActivity {
 
 		myIntent = new Intent();
 		myIntent.setAction(Intent.ACTION_VIEW);
-		myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 		myIntent.setData(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 	}
 
 	public static void mostraPunteggio(Context c) {
 		Log.d("MyBattleActivity", "mostraPunteggio Android called");
 		Intent intent = new Intent(c, ScoreUpdateActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 		isBack = true;
 		((Activity) context).startActivity(intent);
 	}
@@ -79,7 +79,7 @@ public class MyBattleActivity extends UnityPlayerActivity {
 		Log.d("MyBattleActivity", "tornaAllaMappa Android called");
 
 		Intent intent = new Intent(c, MapPane.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 		isBack = true;
 		((Activity) context).startActivity(intent);
 	}
